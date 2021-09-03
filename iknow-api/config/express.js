@@ -3,13 +3,19 @@ const express = require('express')
 const setupRoutes = require('../routes')
 
 const expressConfig = () => {
-  const app = express()
+    const app = express()
 
-  setupRoutes(app)
+    app.use(express.json())
 
-  app.listen(process.env.PORT, () => {
-    console.info(`api running on port ${process.env.PORT}`)
-  })
+    setupRoutes(app)
+
+    app.use((err, req, res, next) => {
+        res.status(500).send({ error: err.message })
+    })
+
+    app.listen(process.env.PORT, () => {
+        console.info(`api running on port ${process.env.PORT}`)
+    })
 }
 
 module.exports = expressConfig
