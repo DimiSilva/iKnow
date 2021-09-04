@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const { errorsEnum } = require('iknow-common/enums')
 const { User } = require('../../../models')
 
 const validationSchema = {
@@ -8,7 +9,7 @@ const validationSchema = {
         normalize: true,
         custom: async (v, errors) => {
             const alreadyRegisteredUser = await User.findOne({ email: v })
-            if (alreadyRegisteredUser) errors.push({ message: 'already registered user' })
+            if (alreadyRegisteredUser) errors.push({ message: errorsEnum.ALREADY_REGISTERED_USER })
             return v
         } },
     phone: { type: 'string', length: 11 },

@@ -1,0 +1,6 @@
+module.exports.InvalidOperationException = require('./invalid-operation')
+module.exports.NotFoundException = require('./not-found')
+module.exports.ForbiddenException = require('./forbidden')
+module.exports.ConflictException = require('./conflict')
+module.exports.InternalException = require('./internal')
+module.exports.UnauthorizedException = require('./unauthorized')

@@ -1,0 +1,3 @@
+module.exports = {
+    ALREADY_REGISTERED_USER: 'ALREADY_REGISTERED_USER',
+}
