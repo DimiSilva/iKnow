@@ -1,8 +1,13 @@
 const bcrypt = require('bcrypt')
+const FastestValidator = require('fastest-validator')
 const { errorsEnum } = require('iknow-common/enums')
 const { User } = require('../../../models')
 
-const validationSchema = {
+const fv = new FastestValidator({
+    useNewCustomCheckerFunction: true,
+})
+
+const validator = fv.compile({
     $$async: true,
     name: { type: 'string', max: 100, min: 1, trim: true, convert: true },
     email: { type: 'email',
@@ -19,6 +24,6 @@ const validationSchema = {
         convert: true,
         custom: async (v, errors) => bcrypt.hashSync(v, Number(process.env.PASSWORD_HASH_SALT_ROUNDS)),
     },
-}
+})
 
-module.exports = validationSchema
+module.exports = validator

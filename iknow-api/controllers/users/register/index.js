@@ -10,13 +10,15 @@ const { User } = require('../../../models')
  * @param {NextFunction} next
  */
 
-const register = asyncHandler(async (req, res, next) => {
+const register = async (req, res, next) => {
     const { name, email, password, phone } = get(req, 'body', {})
+
+    console.log(password, email)
 
     const user = new User({ name, email, password, phone })
     await user.save()
 
     res.status(200).send()
-})
+}
 
-module.exports = register
+module.exports = asyncHandler(register)

@@ -2,6 +2,8 @@ const express = require('express')
 
 const setupRoutes = require('../routes')
 
+const { errorHandler } = require('../middlewares')
+
 const expressConfig = () => {
     const app = express()
 
@@ -9,9 +11,7 @@ const expressConfig = () => {
 
     setupRoutes(app)
 
-    app.use((err, req, res, next) => {
-        res.status(500).send({ error: err.message })
-    })
+    app.use(errorHandler)
 
     app.listen(process.env.PORT, () => {
         console.info(`api running on port ${process.env.PORT}`)
