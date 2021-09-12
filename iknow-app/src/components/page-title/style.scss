@@ -1,34 +1,34 @@
 @import "../../theme/variables";
 
-.main-container {
+.page-title-container {
     display: inline-flex;
     flex-direction: column;
 
-    .text-container {
+    .page-title-text-container {
         h1 {
             color: $tertiary-color;
             font-weight: 900;
         }
     }
-    .title-decoration-container {
+    .page-title-decoration-container {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        .line-container {
+        .page-title-line-container {
             display: flex;
             justify-content: flex-end;
             padding: 1px 0;
-            .line-1 {
+            .page-title-line-1 {
                 width: 100%;
                 height: 3px;
                 background: linear-gradient(to right, transparent, $tertiary-color);
             }
-            .line-2 {
+            .page-title-line-2 {
                 width: 80%;
                 height: 2px;
                 background: linear-gradient(to right, transparent, $tertiary-color);
             }
-            .line-3 {
+            .page-title-line-3 {
                 width: 60%;
                 height: 1px;
                 background: linear-gradient(to right, transparent, $tertiary-color);

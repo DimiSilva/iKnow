@@ -1,17 +1,17 @@
-.header-container {
+.page-header-container {
     display: flex;
     width: 100%;
 
-    .header-content-container {
+    .page-header-content-container {
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
 
-        .back-handler-container {
+        .page-header-back-handler-container {
             display: inline-flex;
         }
-        .title-container {
+        .page-header-title-container {
             display: inline-flex;
         }
     }

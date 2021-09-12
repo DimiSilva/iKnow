@@ -10,13 +10,17 @@ const fv = new FastestValidator({
 const validator = fv.compile({
     $$async: true,
     name: { type: 'string', max: 100, min: 1, trim: true, convert: true },
-    email: { type: 'email',
+    email: {
+        type: 'email',
         normalize: true,
+        max: 100,
+        min: 1,
         custom: async (v, errors) => {
             const alreadyRegisteredUser = await User.findOne({ email: v })
             if (alreadyRegisteredUser) errors.push({ message: errorsEnum.ALREADY_REGISTERED_USER })
             return v
-        } },
+        },
+    },
     phone: { type: 'string', length: 11 },
     password: { type: 'string',
         min: 6,

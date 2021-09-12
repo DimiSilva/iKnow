@@ -4,19 +4,22 @@ import {
 
 import { IonReactRouter } from '@ionic/react-router'
 
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
+import React from 'react'
 import Login from './pages/login'
 import { BaseLayout } from './components'
 
-const loginPages = [
-    { path: '/login', exact: true, component: <Login /> },
+interface page { path: string, exact: boolean, component: React.FC<any>, pageTitle: string }
+
+const loginPages: Array<page> = [
+    { path: '/login', exact: true, component: Login, pageTitle: 'Login' },
 ]
 
-const loggedPages = [
+const loggedPages: Array<page> = [
 
 ]
 
-const Router = () => {
+const Router: React.FC = () => {
     const logged = false
     return (
         <IonReactRouter>
@@ -24,10 +27,15 @@ const Router = () => {
                 {!logged ? (
                     <IonRouterOutlet>
                         {loginPages.map((page) => (
-                            <Route exact path="/login">
-                                <Login />
+                            <Route exact path={page.path}>
+                                <page.component
+                                    pageTitle={page.pageTitle}
+                                />
                             </Route>
-                        )) }
+                        ))}
+                        <Route exact path="/">
+                            <Redirect to="/login" />
+                        </Route>
                     </IonRouterOutlet>
                 )
                     : (

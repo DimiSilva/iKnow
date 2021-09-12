@@ -91,3 +91,10 @@ h6 {
     font-weight: 400;
     color: $text-color;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5 all;
+}

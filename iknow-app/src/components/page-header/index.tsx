@@ -2,12 +2,13 @@ import './style.scss'
 
 import React from 'react'
 import { PageTitle } from '../index'
+import IComponentProps from './interfaces/i-component-props'
 
-const PageHeader = ({ style = {}, title, backPath }: {style?: React.CSSProperties, title?: String, backPath?: String}) => (
-    <header className="header-container" style={style}>
-        <div className="header-content-container">
-            <div className="back-handler-container">{backPath ? 'a' : ''}</div>
-            <div className="title-container"><PageTitle title={title} /></div>
+const PageHeader: React.FC<IComponentProps> = ({ style = {}, title, backPath }) => (
+    <header className="page-header-container" style={style}>
+        <div className="page-header-content-container">
+            <div className="page-header-back-handler-container">{backPath ? 'a' : ''}</div>
+            <div className="page-header-title-container"><PageTitle title={title} /></div>
         </div>
     </header>
 )

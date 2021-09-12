@@ -11,7 +11,9 @@ import { ellipse, square, triangle } from 'ionicons/icons'
 import React from 'react'
 import { PageHeader } from '../index'
 
-const BaseLayout = ({ children }: {children: React.ReactNode}) => (
+import IComponentProps from './interfaces/i-component-props'
+
+const BaseLayout: React.FC<IComponentProps> = ({ children }) => (
     <IonTabs>
         <PageHeader />
         {children}
