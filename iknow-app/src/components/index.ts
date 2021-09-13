@@ -5,5 +5,6 @@ import PageTitle from './page-title'
 import Input from './input'
 import Button from './button'
 import LinkButton from './link-button'
+import Icons from './icons'
 
-export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton }
+export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton, Icons }

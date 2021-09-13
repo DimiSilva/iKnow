@@ -5,7 +5,8 @@ interface IComponentProps {
     value: string,
     onChange: (value: string) => void,
     maxLength?: number,
-    type?: string
+    type?: string,
+    invalidDataMessage?: string | undefined
 }
 
 export default IComponentProps

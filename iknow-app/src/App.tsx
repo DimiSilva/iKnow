@@ -1,10 +1,10 @@
 import { IonApp } from '@ionic/react'
 
 import Router from './router'
+import Providers from './providers'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
-
 /* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css'
 import '@ionic/react/css/structure.css'
@@ -21,7 +21,9 @@ import './app.scss'
 
 const App = () => (
     <IonApp className="app">
-        <Router />
+        <Providers>
+            <Router />
+        </Providers>
     </IonApp>
 )
 

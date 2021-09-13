@@ -1,6 +1,7 @@
 interface IComponentProps {
-    pageTitle?: string,
-    history: any
+    height?: string,
+    width?: string,
+    color?: string
 }
 
 export default IComponentProps

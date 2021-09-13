@@ -28,3 +28,45 @@
         }
     }
 }
+
+.input-container-with-error {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: 45px;
+    width: 100%;
+    border: 1px solid $error-color;
+
+    .input-header-container {
+        display: flex;
+        justify-content: space-between;
+        height: 13px;
+
+        .input-header-label-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding-right: 8px;
+            }
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 10px;
+            opacity: 50%;
+        }
+    }
+    input {
+        height: 100%;
+        background: none;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
