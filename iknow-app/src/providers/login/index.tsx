@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useToasts } from 'react-toast-notifications'
+import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
 
 const LoginContext = createContext(dataModels.context)
 
 export const LoginProvider: React.FC = ({ children }) => {
+    const { addToast } = useToasts()
+
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [loginData, setLoginData] = useState(dataModels.login)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
@@ -13,7 +17,7 @@ export const LoginProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         if (alreadyRanOnce) {
-            if (loginData.email.length < 3 || !loginData.email.includes('@')) setInvalidLoginData({ ...invalidLoginData, email: 'E-mail inválido' })
+            if (!emailValidate(loginData.email)) setInvalidLoginData({ ...invalidLoginData, email: 'E-mail inválido' })
             else setInvalidLoginData({ ...invalidLoginData, email: undefined })
         }
     }, [loginData.email])
@@ -33,7 +37,7 @@ export const LoginProvider: React.FC = ({ children }) => {
         setSubmitted(true)
         if (Object.values(invalidLoginData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
-        const res = await services.users.login(loginData)
+        const res = await services.users.login(loginData, addToast)
         setLoadingsData({ ...loadingsData, submitting: false })
     }
 

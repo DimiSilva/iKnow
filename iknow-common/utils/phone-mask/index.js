@@ -1,9 +1,7 @@
-import utils from './index'
-
-const phoneMask = (phone: string) => {
+const phoneMask = (phone) => {
     if (!phone) return ''
 
-    const paramByTypePhone = utils.removeMaskOfNumbers(phone).length < 11 ? /(\d{4})(\d)/ : /(\d{5})(\d)/
+    const paramByTypePhone = ((phone).match(/\d+/g) ? ((phone).match(/\d+/g) || []).join('') : '').length < 11 ? /(\d{4})(\d)/ : /(\d{5})(\d)/
 
     return phone
         .replace(/\D/g, '')
@@ -12,4 +10,4 @@ const phoneMask = (phone: string) => {
         .replace(paramByTypePhone, '$1-$2')
 }
 
-export default phoneMask
+module.exports = phoneMask

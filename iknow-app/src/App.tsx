@@ -1,5 +1,6 @@
 import { IonApp } from '@ionic/react'
 
+import { ToastProvider } from 'react-toast-notifications'
 import Router from './router'
 import Providers from './providers'
 
@@ -21,9 +22,11 @@ import './app.scss'
 
 const App = () => (
     <IonApp className="app">
-        <Providers>
-            <Router />
-        </Providers>
+        <ToastProvider placement="top-center">
+            <Providers>
+                <Router />
+            </Providers>
+        </ToastProvider>
     </IonApp>
 )
 

@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useToasts } from 'react-toast-notifications'
+import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
 
 const RegisterContext = createContext(dataModels.context)
 
 export const RegisterProvider: React.FC = ({ children }) => {
+    const { addToast } = useToasts()
+
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [registerData, setRegisterData] = useState(dataModels.register)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
@@ -20,7 +24,7 @@ export const RegisterProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         if (alreadyRanOnce) {
-            if (registerData.email.length < 3 || !registerData.email.includes('@')) setInvalidRegisterData({ ...invalidRegisterData, email: 'E-mail inválido' })
+            if (!emailValidate(registerData.email)) setInvalidRegisterData({ ...invalidRegisterData, email: 'E-mail inválido' })
             else setInvalidRegisterData({ ...invalidRegisterData, email: undefined })
         }
     }, [registerData.email])
@@ -47,7 +51,7 @@ export const RegisterProvider: React.FC = ({ children }) => {
         setSubmitted(true)
         if (Object.values(invalidRegisterData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
-        const res = await services.users.register(registerData)
+        const res = await services.users.register(registerData, addToast)
         console.log(res)
         setLoadingsData({ ...loadingsData, submitting: false })
     }

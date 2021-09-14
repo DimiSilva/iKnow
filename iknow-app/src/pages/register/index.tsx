@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { phoneMask, removeMaskOfNumbers } from 'iknow-common/utils'
 import { Card, PageHeader, Input, Button, LinkButton } from '../../components'
 import './style.scss'
 import IComponentProps from './interfaces/i-component-props'
 import { useRegister } from '../../providers/register'
-import utils from '../../utils'
 
 const Register: React.FC<IComponentProps> = ({ pageTitle, history }) => {
     const { registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register } = useRegister()
@@ -36,8 +36,8 @@ const Register: React.FC<IComponentProps> = ({ pageTitle, history }) => {
                             <div className="register-page-input-container">
                                 <Input
                                     label="Telefone"
-                                    value={utils.phoneMask(registerData.phone)}
-                                    onChange={(value) => setRegisterData({ ...registerData, phone: utils.removeMaskOfNumbers(value) })}
+                                    value={phoneMask(registerData.phone)}
+                                    onChange={(value) => setRegisterData({ ...registerData, phone: removeMaskOfNumbers(value) })}
                                     maxLength={15}
                                     invalidDataMessage={submitted ? invalidRegisterData.phone : undefined}
                                 />
