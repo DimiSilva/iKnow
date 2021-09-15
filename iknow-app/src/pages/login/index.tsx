@@ -3,9 +3,11 @@ import { Card, PageHeader, Input, Button, LinkButton } from '../../components'
 import './style.scss'
 import IComponentProps from './interfaces/i-component-props'
 import { useLogin } from '../../providers/login'
+import { useApp } from '../../providers/app'
 
-const Login: React.FC<IComponentProps> = ({ pageTitle, history }) => {
+const Login: React.FC<IComponentProps> = ({ pageTitle }) => {
     const { loginData, setLoginData, invalidLoginData, loadingsData, submitted, login } = useLogin()
+    const { navigateTo } = useApp()
 
     return (
         <div className="login-page-container">
@@ -43,7 +45,7 @@ const Login: React.FC<IComponentProps> = ({ pageTitle, history }) => {
                                 <LinkButton text="Recuperar Senha" onClick={() => {}} />
                             </div>
                             <div className="login-page-link-button-container">
-                                <LinkButton text="Cadastrar-se" onClick={() => history.push('/cadastro')} />
+                                <LinkButton text="Cadastrar-se" onClick={() => navigateTo('/cadastro')} />
                             </div>
                         </div>
                     </div>
@@ -61,6 +63,3 @@ export default Login
 
 // login
 // criar conta
-// notificação de erro
-// loadings
-// services

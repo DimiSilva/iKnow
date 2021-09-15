@@ -2,7 +2,6 @@ import { IonApp } from '@ionic/react'
 
 import { ToastProvider } from 'react-toast-notifications'
 import Router from './router'
-import Providers from './providers'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -23,9 +22,7 @@ import './app.scss'
 const App = () => (
     <IonApp className="app">
         <ToastProvider placement="top-center">
-            <Providers>
-                <Router />
-            </Providers>
+            <Router />
         </ToastProvider>
     </IonApp>
 )

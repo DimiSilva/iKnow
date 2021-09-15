@@ -4,9 +4,11 @@ import { Card, PageHeader, Input, Button, LinkButton } from '../../components'
 import './style.scss'
 import IComponentProps from './interfaces/i-component-props'
 import { useRegister } from '../../providers/register'
+import { useApp } from '../../providers/app'
 
-const Register: React.FC<IComponentProps> = ({ pageTitle, history }) => {
+const Register: React.FC<IComponentProps> = ({ pageTitle }) => {
     const { registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register } = useRegister()
+    const { navigateTo } = useApp()
 
     return (
         <div className="register-page-container">
@@ -58,7 +60,7 @@ const Register: React.FC<IComponentProps> = ({ pageTitle, history }) => {
                                 <Button text="Cadastrar" onClick={register} loading={loadingsData.submitting} />
                             </div>
                             <div className="register-page-link-button-container">
-                                <LinkButton text="Voltar" onClick={() => history.push('/login')} />
+                                <LinkButton text="Voltar" onClick={() => navigateTo('/login')} />
                             </div>
                         </div>
                     </div>

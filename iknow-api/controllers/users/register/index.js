@@ -13,12 +13,10 @@ const { User } = require('../../../models')
 const register = async (req, res, next) => {
     const { name, email, password, phone } = get(req, 'body', {})
 
-    console.log(password, email)
-
     const user = new User({ name, email, password, phone })
-    await user.save()
+    const registeredUser = await user.save()
 
-    res.status(200).send()
+    res.status(200).send({ id: registeredUser._id })
 }
 
 module.exports = asyncHandler(register)

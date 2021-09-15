@@ -26,13 +26,15 @@ const context: {
     loadingsData: typeof loadings,
     submitted: boolean,
     register: () => Promise<void>
+    navigateTo: (path: string) => void
 } = {
     registerData: register,
-    setRegisterData: (newRegisterData: typeof register) => {},
+    setRegisterData: (newRegisterData: typeof register) => undefined,
     invalidRegisterData: invalidRegister,
     loadingsData: loadings,
     submitted: false,
-    register: async () => {},
+    register: async () => undefined,
+    navigateTo: (path) => undefined,
 }
 
 export default { register, invalidRegister, context, loadings }

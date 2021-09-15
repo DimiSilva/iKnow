@@ -1,4 +1,4 @@
 export var exceptions: typeof import("./exceptions");
-export var removeMaskOfNumbers: typeof import("./remove-mask-of-numbers");
-export var phoneMask: typeof import("./phone-mask");
-export var emailValidate: typeof import("./email-validate");
+export var removeMaskOfNumbers: (numbersWithMask: any) => any;
+export var phoneMask: (phone: any) => any;
+export var emailValidate: (email: any) => boolean;

@@ -3,17 +3,31 @@ import { useToasts } from 'react-toast-notifications'
 import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
+import { useApp } from '../app'
 
 const LoginContext = createContext(dataModels.context)
 
 export const LoginProvider: React.FC = ({ children }) => {
     const { addToast } = useToasts()
+    const { navigateTo } = useApp()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [loginData, setLoginData] = useState(dataModels.login)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
     const [submitted, setSubmitted] = useState(false)
     const [invalidLoginData, setInvalidLoginData] = useState(dataModels.invalidLogin)
+    const [token, setToken] = useState('')
+
+    useEffect(() => {
+        const LSToken = localStorage.getItem('token')
+        if (LSToken) setToken(LSToken)
+    }, [])
+
+    useEffect(() => {
+        if (alreadyRanOnce) {
+            localStorage.setItem('token', token)
+        }
+    }, [token])
 
     useEffect(() => {
         if (alreadyRanOnce) {
@@ -38,11 +52,12 @@ export const LoginProvider: React.FC = ({ children }) => {
         if (Object.values(invalidLoginData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
         const res = await services.users.login(loginData, addToast)
+        if (res) setToken(res.token)
         setLoadingsData({ ...loadingsData, submitting: false })
     }
 
     return (
-        <LoginContext.Provider value={{ loginData, setLoginData, invalidLoginData, loadingsData, submitted, login }}>
+        <LoginContext.Provider value={{ loginData, setLoginData, invalidLoginData, loadingsData, submitted, login, token, navigateTo }}>
             {children}
         </LoginContext.Provider>
     )

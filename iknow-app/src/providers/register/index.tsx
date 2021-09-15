@@ -3,11 +3,13 @@ import { useToasts } from 'react-toast-notifications'
 import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
+import { useApp } from '../app'
 
 const RegisterContext = createContext(dataModels.context)
 
 export const RegisterProvider: React.FC = ({ children }) => {
     const { addToast } = useToasts()
+    const { navigateTo } = useApp()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [registerData, setRegisterData] = useState(dataModels.register)
@@ -52,12 +54,14 @@ export const RegisterProvider: React.FC = ({ children }) => {
         if (Object.values(invalidRegisterData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
         const res = await services.users.register(registerData, addToast)
-        console.log(res)
+        if (res) {
+            addToast('Cadastro realizado com sucesso', { appearance: 'success', autoDismiss: true })
+            navigateTo('/login')
+        }
         setLoadingsData({ ...loadingsData, submitting: false })
     }
-
     return (
-        <RegisterContext.Provider value={{ registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register }}>
+        <RegisterContext.Provider value={{ registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register, navigateTo }}>
             {children}
         </RegisterContext.Provider>
     )

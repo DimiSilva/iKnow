@@ -13,14 +13,18 @@ const context: {
     invalidLoginData: typeof invalidLogin,
     loadingsData: typeof loadings,
     submitted: boolean,
-    login: () => Promise<void>
-    } = {
-        loginData: login,
-        setLoginData: (newLoginData: typeof login) => {},
-        invalidLoginData: invalidLogin,
-        loadingsData: loadings,
-        submitted: false,
-        login: async () => {},
-    }
+    login: () => Promise<void>,
+    token: string
+    navigateTo: (path: string) => void
+} = {
+    loginData: login,
+    setLoginData: (newLoginData: typeof login) => {},
+    invalidLoginData: invalidLogin,
+    loadingsData: loadings,
+    submitted: false,
+    login: async () => {},
+    token: '',
+    navigateTo: (path) => undefined,
+}
 
 export default { login, invalidLogin, context, loadings }
