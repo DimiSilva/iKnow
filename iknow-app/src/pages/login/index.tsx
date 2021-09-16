@@ -5,15 +5,15 @@ import IComponentProps from './interfaces/i-component-props'
 import { useLogin } from '../../providers/login'
 import { useApp } from '../../providers/app'
 
-const Login: React.FC<IComponentProps> = ({ pageTitle }) => {
+const Login: React.FC<IComponentProps> = () => {
     const { loginData, setLoginData, invalidLoginData, loadingsData, submitted, login } = useLogin()
-    const { navigateTo } = useApp()
+    const { navigateTo, currentPageTitle } = useApp()
 
     return (
         <div className="login-page-container">
             <Card style={{ maxWidth: '600px' }}>
                 <div className="login-page-card-internal-container">
-                    <PageHeader title={pageTitle} />
+                    <PageHeader title={currentPageTitle} />
                     <div className="login-page-content-container">
                         <form className="login-page-form">
                             <div className="login-page-input-container">
@@ -41,9 +41,9 @@ const Login: React.FC<IComponentProps> = ({ pageTitle }) => {
                             <div className="login-page-button-container">
                                 <Button text="Entrar" onClick={login} />
                             </div>
-                            <div className="login-page-link-button-container">
+                            {/* <div className="login-page-link-button-container">
                                 <LinkButton text="Recuperar Senha" onClick={() => {}} />
-                            </div>
+                            </div> */}
                             <div className="login-page-link-button-container">
                                 <LinkButton text="Cadastrar-se" onClick={() => navigateTo('/cadastro')} />
                             </div>
@@ -56,7 +56,6 @@ const Login: React.FC<IComponentProps> = ({ pageTitle }) => {
 }
 
 Login.defaultProps = {
-    pageTitle: 'Página',
 }
 
 export default Login

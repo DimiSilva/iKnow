@@ -14,7 +14,6 @@ const context: {
     loadingsData: typeof loadings,
     submitted: boolean,
     login: () => Promise<void>,
-    token: string
     navigateTo: (path: string) => void
 } = {
     loginData: login,
@@ -23,7 +22,6 @@ const context: {
     loadingsData: loadings,
     submitted: false,
     login: async () => {},
-    token: '',
     navigateTo: (path) => undefined,
 }
 

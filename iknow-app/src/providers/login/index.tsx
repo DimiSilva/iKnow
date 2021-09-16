@@ -4,10 +4,12 @@ import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
 import { useApp } from '../app'
+import { useAuth } from '../auth'
 
 const LoginContext = createContext(dataModels.context)
 
 export const LoginProvider: React.FC = ({ children }) => {
+    const { setToken } = useAuth()
     const { addToast } = useToasts()
     const { navigateTo } = useApp()
 
@@ -16,18 +18,10 @@ export const LoginProvider: React.FC = ({ children }) => {
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
     const [submitted, setSubmitted] = useState(false)
     const [invalidLoginData, setInvalidLoginData] = useState(dataModels.invalidLogin)
-    const [token, setToken] = useState('')
 
     useEffect(() => {
-        const LSToken = localStorage.getItem('token')
-        if (LSToken) setToken(LSToken)
+        setAlreadyRanOnce(true)
     }, [])
-
-    useEffect(() => {
-        if (alreadyRanOnce) {
-            localStorage.setItem('token', token)
-        }
-    }, [token])
 
     useEffect(() => {
         if (alreadyRanOnce) {
@@ -43,10 +37,6 @@ export const LoginProvider: React.FC = ({ children }) => {
         }
     }, [loginData.password])
 
-    useEffect(() => {
-        setAlreadyRanOnce(true)
-    }, [])
-
     const login = async () => {
         setSubmitted(true)
         if (Object.values(invalidLoginData).some((message) => message !== undefined)) return
@@ -57,7 +47,7 @@ export const LoginProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <LoginContext.Provider value={{ loginData, setLoginData, invalidLoginData, loadingsData, submitted, login, token, navigateTo }}>
+        <LoginContext.Provider value={{ loginData, setLoginData, invalidLoginData, loadingsData, submitted, login, navigateTo }}>
             {children}
         </LoginContext.Provider>
     )

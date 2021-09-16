@@ -6,15 +6,15 @@ import IComponentProps from './interfaces/i-component-props'
 import { useRegister } from '../../providers/register'
 import { useApp } from '../../providers/app'
 
-const Register: React.FC<IComponentProps> = ({ pageTitle }) => {
+const Register: React.FC<IComponentProps> = () => {
     const { registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register } = useRegister()
-    const { navigateTo } = useApp()
+    const { navigateTo, currentPageTitle } = useApp()
 
     return (
         <div className="register-page-container">
             <Card style={{ maxWidth: '600px' }}>
                 <div className="register-page-card-internal-container">
-                    <PageHeader title={pageTitle} />
+                    <PageHeader title={currentPageTitle} />
                     <div className="register-page-content-container">
                         <form className="register-page-form">
                             <div className="register-page-input-container">
@@ -71,7 +71,6 @@ const Register: React.FC<IComponentProps> = ({ pageTitle }) => {
 }
 
 Register.defaultProps = {
-    pageTitle: 'Página',
 }
 
 export default Register

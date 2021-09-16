@@ -18,6 +18,10 @@ export const RegisterProvider: React.FC = ({ children }) => {
     const [invalidRegisterData, setInvalidRegisterData] = useState(dataModels.invalidRegister)
 
     useEffect(() => {
+        setAlreadyRanOnce(true)
+    }, [])
+
+    useEffect(() => {
         if (alreadyRanOnce) {
             if (!registerData.name) setInvalidRegisterData({ ...invalidRegisterData, name: 'É necessário preencher o nome' })
             else setInvalidRegisterData({ ...invalidRegisterData, name: undefined })
@@ -44,10 +48,6 @@ export const RegisterProvider: React.FC = ({ children }) => {
             else setInvalidRegisterData({ ...invalidRegisterData, password: undefined })
         }
     }, [registerData.password])
-
-    useEffect(() => {
-        setAlreadyRanOnce(true)
-    }, [])
 
     const register = async () => {
         setSubmitted(true)

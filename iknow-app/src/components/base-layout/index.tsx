@@ -1,37 +1,48 @@
-import {
-    IonIcon,
-    IonLabel,
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-} from '@ionic/react'
 import './style.scss'
 
-import { ellipse, square, triangle } from 'ionicons/icons'
 import React from 'react'
-import { PageHeader } from '../index'
+import { Link } from 'react-router-dom'
+import { PageHeader, Icons } from '../index'
 
 import IComponentProps from './interfaces/i-component-props'
+import { useApp } from '../../providers/app'
 
-const BaseLayout: React.FC<IComponentProps> = ({ children }) => (
-    <IonTabs>
-        <PageHeader />
-        {children}
-        <IonTabBar slot="bottom">
-            <IonTabButton tab="tab1" href="/tab1">
-                <IonIcon icon={triangle} />
-                <IonLabel>Tab 1</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-                <IonIcon icon={ellipse} />
-                <IonLabel>Tab 2</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab3" href="/tab3">
-                <IonIcon icon={square} />
-                <IonLabel>Tab 3</IonLabel>
-            </IonTabButton>
-        </IonTabBar>
-    </IonTabs>
-)
+const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
+    const { currentPageTitle, currentPathName } = useApp()
+
+    return (
+        active
+            ? (
+                <div className="base-layout-container">
+                    <div className="base-layout-content-container">
+                        <PageHeader title={currentPageTitle} />
+                        {children}
+                    </div>
+                    <div className="base-layout-tabs-container">
+                        <Link className={currentPathName === '/perfil' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/perfil">
+                            <Icons.Person />
+                        </Link>
+                        <Link className={currentPathName === '/missoes' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/missoes">
+                            <Icons.Book />
+                        </Link>
+                        <Link className={currentPathName === '/rede' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/rede">
+                            <Icons.World />
+                        </Link>
+                        <Link className={currentPathName === '/chat' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/chat">
+                            <Icons.Chat />
+                        </Link>
+                        <Link className={currentPathName === '/busca' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/busca">
+                            <Icons.PersonSearch />
+                        </Link>
+                    </div>
+                </div>
+            )
+            : <>{children}</>
+    )
+}
+
+BaseLayout.defaultProps = {
+    active: true,
+}
 
 export default BaseLayout

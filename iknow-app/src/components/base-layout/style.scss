@@ -1,0 +1,34 @@
+@import "../../theme/variables";
+
+.base-layout-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    .base-layout-content-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        background-color: $secondary-color;
+        border-bottom-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+        padding: 0 16px;
+    }
+    .base-layout-tabs-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 72px;
+        width: 100%;
+        .base-layout-tab {
+            display: flex;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .base-layout-tab-active {
+            @extend .base-layout-tab;
+            background-color: $quaternary-color;
+        }
+    }
+}
