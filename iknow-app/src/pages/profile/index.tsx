@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { phoneMask, removeMaskOfNumbers } from 'iknow-common/utils'
-import { Card, PageHeader, Input, Button, LinkButton } from '../../components'
+import { Card, PageHeader, Input, Button, LinkButton, Collapse } from '../../components'
 import './style.scss'
 import IComponentProps from './interfaces/i-component-props'
 import { useRegister } from '../../providers/register'
@@ -12,9 +12,7 @@ const Profile: React.FC<IComponentProps> = () => {
 
     return (
         <div className="profile-page-container">
-            <div className="profile-page-internal-container">
-                a
-            </div>
+            <Collapse title="Quem eu sou" info="eita">a</Collapse>
         </div>
     )
 }

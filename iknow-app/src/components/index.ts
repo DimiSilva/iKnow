@@ -6,5 +6,6 @@ import Input from './input'
 import Button from './button'
 import LinkButton from './link-button'
 import Icons from './icons'
+import Collapse from './collapse'
 
-export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton, Icons }
+export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton, Icons, Collapse }

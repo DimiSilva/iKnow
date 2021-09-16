@@ -1,0 +1,48 @@
+@import "../../theme/variables";
+
+.collapse {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 16px;
+    background-color: $primary-color;
+    .collapse-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 16px;
+        .collapse-header-title-container {
+            display: flex;
+            align-items: center;
+            color: $tertiary-color;
+            font-weight: 700;
+            .collapse-header-info-container {
+                padding: 0 0 0 16px;
+            }
+        }
+    }
+    .collapse-content-open {
+        display: flex;
+        padding: 8px 16px;
+        height: auto;
+    }
+    .collapse-content-closed {
+        display: flex;
+        height: 0;
+        overflow: none;
+    }
+    .collapse-open-close-button {
+        background-color: $quintenary-color;
+        height: 24px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .collapse-open-close-button-open {
+        @extend .collapse-open-close-button;
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+    .collapse-open-close-button-closed {
+        @extend .collapse-open-close-button;
+    }
+}
