@@ -9,9 +9,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [token, setToken] = useState('')
     const [tokenLoaded, setTokenLoaded] = useState(false)
 
-    useEffect(() => {
-        setAlreadyRanOnce(true)
-    }, [])
+    useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     useEffect(() => {
         const LSToken = localStorage.getItem('token')

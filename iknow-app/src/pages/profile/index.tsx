@@ -7,8 +7,7 @@ import { useRegister } from '../../providers/register'
 import { useApp } from '../../providers/app'
 
 const Profile: React.FC<IComponentProps> = () => {
-    const { registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register } = useRegister()
-    const { navigateTo } = useApp()
+    const appProvider = useApp()
 
     return (
         <div className="profile-page-container">

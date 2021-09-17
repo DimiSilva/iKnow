@@ -1,11 +1,11 @@
-const register: {name: string, email: string, phone: string, password: string} = {
+const formData: {name: string, email: string, phone: string, password: string} = {
     name: '',
     email: '',
     phone: '',
     password: '',
 }
 
-const invalidRegister: {
+const invalidFormData: {
     name: string | undefined,
     email: string | undefined,
     phone: string | undefined,
@@ -20,21 +20,19 @@ const invalidRegister: {
 const loadings: {submitting: boolean} = { submitting: false }
 
 const context: {
-    registerData: typeof register,
-    setRegisterData: (newLoginData: typeof register) => void,
-    invalidRegisterData: typeof invalidRegister,
+    formData: typeof formData,
+    setFormData: (newFormData: typeof formData) => void,
+    invalidFormData: typeof invalidFormData,
     loadingsData: typeof loadings,
     submitted: boolean,
     register: () => Promise<void>
-    navigateTo: (path: string) => void
 } = {
-    registerData: register,
-    setRegisterData: (newRegisterData: typeof register) => undefined,
-    invalidRegisterData: invalidRegister,
+    formData,
+    setFormData: (newFormData: typeof formData) => undefined,
+    invalidFormData,
     loadingsData: loadings,
     submitted: false,
     register: async () => undefined,
-    navigateTo: (path) => undefined,
 }
 
-export default { register, invalidRegister, context, loadings }
+export default { formData, invalidFormData, context, loadings }

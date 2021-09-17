@@ -13,9 +13,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const [currentPageTitle, setCurrentPageTitle] = useState('')
     const [currentPathName, setCurrentPathName] = useState('')
 
-    useEffect(() => {
-        setAlreadyRanOnce(true)
-    }, [])
+    useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     useEffect(() => {
         const pageTitle: string = enums.pagesNames[location.pathname] || ''

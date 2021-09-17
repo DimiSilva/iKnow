@@ -4,6 +4,7 @@ import { emailValidate } from 'iknow-common/utils'
 import dataModels from './data-models'
 import services from '../../services'
 import { useApp } from '../app'
+import dataValidators from './data-validators'
 
 const RegisterContext = createContext(dataModels.context)
 
@@ -12,48 +13,24 @@ export const RegisterProvider: React.FC = ({ children }) => {
     const { navigateTo } = useApp()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
-    const [registerData, setRegisterData] = useState(dataModels.register)
+    const [formData, setFormData] = useState(dataModels.formData)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
     const [submitted, setSubmitted] = useState(false)
-    const [invalidRegisterData, setInvalidRegisterData] = useState(dataModels.invalidRegister)
+    const [invalidFormData, setInvalidFormData] = useState(dataModels.invalidFormData)
 
-    useEffect(() => {
-        setAlreadyRanOnce(true)
-    }, [])
+    useEffect(() => { setAlreadyRanOnce(true) }, [])
 
-    useEffect(() => {
-        if (alreadyRanOnce) {
-            if (!registerData.name) setInvalidRegisterData({ ...invalidRegisterData, name: 'É necessário preencher o nome' })
-            else setInvalidRegisterData({ ...invalidRegisterData, name: undefined })
-        }
-    }, [registerData.name])
-
-    useEffect(() => {
-        if (alreadyRanOnce) {
-            if (!emailValidate(registerData.email)) setInvalidRegisterData({ ...invalidRegisterData, email: 'E-mail inválido' })
-            else setInvalidRegisterData({ ...invalidRegisterData, email: undefined })
-        }
-    }, [registerData.email])
-
-    useEffect(() => {
-        if (alreadyRanOnce) {
-            if (registerData.phone.length !== 11) setInvalidRegisterData({ ...invalidRegisterData, phone: 'Telefone inválido' })
-            else setInvalidRegisterData({ ...invalidRegisterData, phone: undefined })
-        }
-    }, [registerData.phone])
-
-    useEffect(() => {
-        if (alreadyRanOnce) {
-            if (registerData.password.length < 6) setInvalidRegisterData({ ...invalidRegisterData, password: 'A senha precisa ter 6 ou mais caracteres' })
-            else setInvalidRegisterData({ ...invalidRegisterData, password: undefined })
-        }
-    }, [registerData.password])
+    useEffect(dataValidators.all({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: true }), [])
+    useEffect(dataValidators.name({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.name])
+    useEffect(dataValidators.email({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.email])
+    useEffect(dataValidators.phone({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.phone])
+    useEffect(dataValidators.password({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.password])
 
     const register = async () => {
         setSubmitted(true)
-        if (Object.values(invalidRegisterData).some((message) => message !== undefined)) return
+        if (Object.values(invalidFormData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
-        const res = await services.users.register(registerData, addToast)
+        const res = await services.users.register(formData, addToast)
         if (res) {
             addToast('Cadastro realizado com sucesso', { appearance: 'success', autoDismiss: true })
             navigateTo('/login')
@@ -61,7 +38,7 @@ export const RegisterProvider: React.FC = ({ children }) => {
         setLoadingsData({ ...loadingsData, submitting: false })
     }
     return (
-        <RegisterContext.Provider value={{ registerData, setRegisterData, invalidRegisterData, loadingsData, submitted, register, navigateTo }}>
+        <RegisterContext.Provider value={{ formData, setFormData, invalidFormData, loadingsData, submitted, register }}>
             {children}
         </RegisterContext.Provider>
     )

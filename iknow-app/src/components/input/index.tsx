@@ -18,7 +18,7 @@ const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, t
                     {invalidDataMessage
                         ? (
                             <>
-                                <div input-header-label-icon-container data-tip data-for={`input-error-message-${label}`}>
+                                <div className="input-header-label-icon-container" data-tip data-for={`input-error-message-${label}`}>
                                     <Icons.Info
                                         width="13px"
                                         height="13px"
