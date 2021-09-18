@@ -5,8 +5,8 @@ import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
 
-const Button: React.FC<IComponentProps> = ({ children, title, style, info, action }) => {
-    const [open, setOpen] = useState(false)
+const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, action, emptyContentMessage, defaultState }) => {
+    const [open, setOpen] = useState(defaultState === 'open')
     return (
         <div className="collapse" style={style}>
             <div className="collapse-header">
@@ -14,7 +14,7 @@ const Button: React.FC<IComponentProps> = ({ children, title, style, info, actio
                     {title}
                     {info ? (
                         <>
-                            <div className="collapse-header-info-container" data-tip data-for={`input-error-message-${title}`}>
+                            <div className="collapse-header-title-container-info-container" data-tip data-for={`input-error-message-${title}`}>
                                 <Icons.Info height="20px" width="20px" />
                             </div>
                             <ReactTooltip id={`input-error-message-${title}`} type="info">
@@ -31,8 +31,10 @@ const Button: React.FC<IComponentProps> = ({ children, title, style, info, actio
                     ) : undefined}
                 </div>
             </div>
-            <div className={open ? 'collapse-content-open' : 'collapse-content-closed'}>
-                {children}
+            <div className={open ? 'collapse-content-container-open' : 'collapse-content-container-closed'}>
+                <div className="collapse-content">
+                    {children || (emptyContentMessage ? <p className="collapse-content-empty-message">{emptyContentMessage}</p> : '') }
+                </div>
             </div>
             <button
                 type="button"
@@ -45,6 +47,12 @@ const Button: React.FC<IComponentProps> = ({ children, title, style, info, actio
     )
 }
 
-Button.defaultProps = { title: '', style: {}, info: undefined, action: undefined }
+Collapse.defaultProps = { title: '',
+    style: {},
+    info: undefined,
+    action: undefined,
+    emptyContentMessage: undefined,
+    defaultState: 'closed',
+}
 
-export default Button
+export default Collapse

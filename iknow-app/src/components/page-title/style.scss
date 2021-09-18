@@ -1,34 +1,35 @@
 @import "../../theme/variables";
 
-.page-title-container {
+.page-title {
     display: inline-flex;
     flex-direction: column;
 
-    .page-title-text-container {
+    &-text-container {
+        display: inline-flex;
         h1 {
             color: $tertiary-color;
             font-weight: 900;
         }
     }
-    .page-title-decoration-container {
+    &-decoration-container {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        .page-title-line-container {
+        &-line-container {
             display: flex;
             justify-content: flex-end;
             padding: 1px 0;
-            .page-title-line-1 {
+            &-line-1 {
                 width: 100%;
                 height: 3px;
                 background: linear-gradient(to right, transparent, $tertiary-color);
             }
-            .page-title-line-2 {
+            &-line-2 {
                 width: 80%;
                 height: 2px;
                 background: linear-gradient(to right, transparent, $tertiary-color);
             }
-            .page-title-line-3 {
+            &-line-3 {
                 width: 60%;
                 height: 1px;
                 background: linear-gradient(to right, transparent, $tertiary-color);

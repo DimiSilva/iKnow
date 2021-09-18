@@ -37,8 +37,14 @@ export const RegisterProvider: React.FC = ({ children }) => {
         }
         setLoadingsData({ ...loadingsData, submitting: false })
     }
+
+    const clearForm = () => {
+        setFormData(dataModels.formData)
+        setSubmitted(false)
+    }
+
     return (
-        <RegisterContext.Provider value={{ formData, setFormData, invalidFormData, loadingsData, submitted, register }}>
+        <RegisterContext.Provider value={{ formData, setFormData, invalidFormData, loadingsData, submitted, register, clearForm }}>
             {children}
         </RegisterContext.Provider>
     )

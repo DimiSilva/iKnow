@@ -8,7 +8,9 @@ interface IComponentProps {
     action?: {
         icon: React.FC<IDefaultIconProps>,
         onClick: () => void
-    }
+    },
+    emptyContentMessage?: string,
+    defaultState?: 'open' | 'closed'
 }
 
 export default IComponentProps

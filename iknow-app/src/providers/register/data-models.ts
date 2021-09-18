@@ -25,7 +25,8 @@ const context: {
     invalidFormData: typeof invalidFormData,
     loadingsData: typeof loadings,
     submitted: boolean,
-    register: () => Promise<void>
+    register: () => Promise<void>,
+    clearForm: () => void
 } = {
     formData,
     setFormData: (newFormData: typeof formData) => undefined,
@@ -33,6 +34,7 @@ const context: {
     loadingsData: loadings,
     submitted: false,
     register: async () => undefined,
+    clearForm: () => undefined,
 }
 
 export default { formData, invalidFormData, context, loadings }

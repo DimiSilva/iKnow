@@ -1,0 +1,78 @@
+@import "../../theme/variables";
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+
+    .input-header-container {
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-weight: 700;
+            font-size: 10px;
+            opacity: 50%;
+        }
+    }
+    textarea {
+        height: 100%;
+        width: 100%;
+        background: none;
+        border: none;
+        resize: vertical;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.input-container-with-error {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    border: 1px solid $error-color;
+
+    .input-header-container {
+        display: flex;
+        justify-content: space-between;
+        height: 13px;
+
+        .input-header-label-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding-right: 8px;
+            }
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 10px;
+            opacity: 50%;
+        }
+    }
+    textarea {
+        height: 100%;
+        width: 100%;
+        background: none;
+        border: none;
+        resize: vertical;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

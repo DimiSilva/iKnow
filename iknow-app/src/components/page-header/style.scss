@@ -1,18 +1,14 @@
-.page-header-container {
+.page-header {
     display: flex;
+    flex-direction: row;
     width: 100%;
+    height: 43px;
+    justify-content: space-between;
 
-    .page-header-content-container {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-
-        .page-header-back-handler-container {
-            display: inline-flex;
-        }
-        .page-header-title-container {
-            display: inline-flex;
-        }
+    &-back-handler-container {
+        display: inline-flex;
+    }
+    &-title-container {
+        display: inline-flex;
     }
 }

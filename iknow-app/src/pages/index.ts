@@ -1,5 +1,6 @@
-import LoginPage from './login'
-import RegisterPage from './register'
-import ProfilePage from './profile'
+import Login from './login'
+import Register from './register'
+import MyProfile from './my-profile'
+import Common from './common'
 
-export { LoginPage, RegisterPage, ProfilePage }
+export default { Login, Register, MyProfile, Common }

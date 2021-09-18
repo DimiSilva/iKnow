@@ -8,30 +8,47 @@ import IComponentProps from './interfaces/i-component-props'
 import { useApp } from '../../providers/app'
 
 const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
-    const { currentPageTitle, currentPathName } = useApp()
+    const appProvider = useApp()
 
     return (
         active
             ? (
-                <div className="base-layout-container">
-                    <div className="base-layout-content-container">
-                        <PageHeader title={currentPageTitle} />
-                        {children}
+                <div className="base-layout">
+                    <div className="base-layout-main">
+                        <div className="base-layout-main-header-container">
+                            <PageHeader title={appProvider.currentPageTitle} backPath={appProvider.backPath} />
+                        </div>
+                        <div className="base-layout-main-content">{children}</div>
                     </div>
-                    <div className="base-layout-tabs-container">
-                        <Link className={currentPathName === '/perfil' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/perfil">
+                    <div className="base-layout-tabs">
+                        <Link
+                            className={appProvider.currentPathName === '/meu-perfil' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            to="/meu-perfil"
+                        >
                             <Icons.Person />
                         </Link>
-                        <Link className={currentPathName === '/missoes' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/missoes">
+                        <Link
+                            className={appProvider.currentPathName === '/missoes' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            to="/missoes"
+                        >
                             <Icons.Book />
                         </Link>
-                        <Link className={currentPathName === '/rede' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/rede">
+                        <Link
+                            className={appProvider.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            to="/rede"
+                        >
                             <Icons.World />
                         </Link>
-                        <Link className={currentPathName === '/chat' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/chat">
+                        <Link
+                            className={appProvider.currentPathName === '/chat' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            to="/chat"
+                        >
                             <Icons.Chat />
                         </Link>
-                        <Link className={currentPathName === '/busca' ? 'base-layout-tab-active' : 'base-layout-tab'} to="/busca">
+                        <Link
+                            className={appProvider.currentPathName === '/busca' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            to="/busca"
+                        >
                             <Icons.PersonSearch />
                         </Link>
                     </div>

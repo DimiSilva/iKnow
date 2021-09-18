@@ -1,4 +1,4 @@
-.login-page-container {
+.register-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,40 +6,40 @@
     height: 100%;
     padding: 32px;
 
-    .login-page-card-internal-container {
+    &-card-content {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 100%;
         padding: 16px;
 
-        .login-page-content-container {
+        &-internal {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 100%;
-            .login-page-form {
+            &-form {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                .login-page-input-container {
+                &-input-container {
                     display: flex;
                     padding: 0 0 8px 0;
                     width: 100%;
                 }
             }
-            .login-page-action-buttons-container {
+            &-action-buttons-container {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                .login-page-button-container {
+                &-button-container {
                     display: flex;
                     padding: 0 0 8px 0;
                     width: 100%;
                 }
-                .login-page-link-button-container {
+                &-link-button-container {
                     display: flex;
                     padding: 8px 0;
                     width: 100%;

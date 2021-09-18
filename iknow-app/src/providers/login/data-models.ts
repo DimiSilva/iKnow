@@ -14,13 +14,15 @@ const context: {
     loadingsData: typeof loadings,
     submitted: boolean,
     login: () => Promise<void>,
+    clearForm: () => void
 } = {
     formData,
-    setFormData: (newFormData: typeof formData) => {},
+    setFormData: (newFormData: typeof formData) => undefined,
     invalidFormData,
     loadingsData: loadings,
     submitted: false,
-    login: async () => {},
+    login: async () => undefined,
+    clearForm: () => undefined,
 }
 
 export default { formData, invalidFormData, context, loadings }

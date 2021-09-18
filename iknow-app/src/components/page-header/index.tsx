@@ -1,17 +1,22 @@
 import './style.scss'
 
 import React from 'react'
-import { PageTitle } from '../index'
+import { Icons, PageTitle } from '../index'
 import IComponentProps from './interfaces/i-component-props'
+import { useApp } from '../../providers/app'
 
-const PageHeader: React.FC<IComponentProps> = ({ style = {}, title, backPath }) => (
-    <header className="page-header-container" style={style}>
-        <div className="page-header-content-container">
-            <div className="page-header-back-handler-container">{backPath ? 'a' : ''}</div>
+const PageHeader: React.FC<IComponentProps> = ({ style = {}, title, backPath }) => {
+    const appProvider = useApp()
+
+    return (
+        <header className="page-header" style={style}>
+            <div className="page-header-back-handler-container">
+                {backPath ? <button type="button" onClick={() => appProvider.navigateTo(backPath)}><Icons.BackArrow /></button> : ''}
+            </div>
             <div className="page-header-title-container"><PageTitle title={title} /></div>
-        </div>
-    </header>
-)
+        </header>
+    )
+}
 
 PageHeader.defaultProps = { style: {}, title: 'Página', backPath: undefined }
 

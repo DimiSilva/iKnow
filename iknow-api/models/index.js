@@ -1,2 +1,8 @@
 module.exports.User = require('./user')
 module.exports.Mission = require('./mission')
+module.exports.Evaluation = require('./evaluation')
+module.exports.Acknowledgment = require('./acknowledgment')
+module.exports.Connection = require('./connection')
+module.exports.Achievement = require('./achievement')
+module.exports.UserAchievement = require('./user_achievement')
+module.exports.UserAcknowledgment = require('./user_acknowledgment')

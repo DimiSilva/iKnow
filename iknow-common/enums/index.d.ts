@@ -1,16 +1,15 @@
-export var errorsEnum: {
-    ALREADY_REGISTERED_USER: string;
-    INVALID_EMAIL_OR_PASSWORD: string;
-    WITHOUT_AUTHORIZATION: string;
-    INTERNAL_ERROR: string;
-};
+export var errorsEnum: typeof import("./errors");
 export var errorsMasksEnum: {
     [x: string]: string;
 };
-export var missionTypesEnum: {
-    LEARN: string;
-    TEACH: string;
-};
-export var missionSubjectsEnum: {
-    TECHNOLOGY: string;
+export var missionTypesEnum: typeof import("./mission-types");
+export var missionSubjectsEnum: typeof import("./mission-subjects");
+export var missionStatusEnum: typeof import("./mission-status");
+export var achievementKeys: typeof import("./achievement-keys");
+export var achievementTiers: {
+    WOOD: string;
+    BRONZE: string;
+    SILVER: string;
+    GOLD: string;
+    DIAMOND: string;
 };

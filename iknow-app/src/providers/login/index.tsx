@@ -31,8 +31,13 @@ export const LoginProvider: React.FC = ({ children }) => {
         setLoadingsData({ ...loadingsData, submitting: false })
     }
 
+    const clearForm = () => {
+        setFormData(dataModels.formData)
+        setSubmitted(false)
+    }
+
     return (
-        <LoginContext.Provider value={{ formData, setFormData, invalidFormData, loadingsData, submitted, login }}>
+        <LoginContext.Provider value={{ formData, setFormData, invalidFormData, loadingsData, submitted, login, clearForm }}>
             {children}
         </LoginContext.Provider>
     )
