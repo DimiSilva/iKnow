@@ -15,9 +15,9 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
                     {info ? (
                         <>
                             <div className="collapse-header-title-container-info-container" data-tip data-for={`input-error-message-${title}`}>
-                                <Icons.Info height="20px" width="20px" />
+                                <Icons.Info size="20px" />
                             </div>
-                            <ReactTooltip id={`input-error-message-${title}`} type="info">
+                            <ReactTooltip multiline id={`input-error-message-${title}`} type="info">
                                 {info}
                             </ReactTooltip>
                         </>
@@ -26,7 +26,7 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
                 <div className="collapse-header-action-button-container">
                     {action ? (
                         <button type="button" onClick={action.onClick}>
-                            <action.icon height="20px" width="20px" />
+                            <action.icon size="20px" />
                         </button>
                     ) : undefined}
                 </div>

@@ -20,12 +20,11 @@ const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value
                             <>
                                 <div className="input-header-label-icon-container" data-tip data-for={`input-error-message-${label}`}>
                                     <Icons.Info
-                                        width="13px"
-                                        height="13px"
+                                        size="13px"
                                         color="#cc0000"
                                     />
                                 </div>
-                                <ReactTooltip id={`input-error-message-${label}`} type="error">
+                                <ReactTooltip multiline id={`input-error-message-${label}`} type="error">
                                     {invalidDataMessage}
                                 </ReactTooltip>
                             </>

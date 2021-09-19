@@ -8,6 +8,6 @@ const schema = new mongoose.Schema(
     { timestamps: { currentTime: () => new Date().toISOString() } },
 )
 
-const Model = mongoose.model('UserAchievement', schema)
+const Model = mongoose.model('User_Achievement', schema)
 
 module.exports = Model

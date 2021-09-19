@@ -1,11 +1,13 @@
 const context: {
     token: string,
     setToken: (token: string) => void,
-    tokenLoaded: boolean
+    tokenLoaded: boolean,
+    logout: () => void
 } = {
     token: '',
     setToken: (token) => undefined,
     tokenLoaded: false,
+    logout: () => undefined,
 }
 
 export default { context }

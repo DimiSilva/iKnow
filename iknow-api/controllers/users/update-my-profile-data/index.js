@@ -1,4 +1,4 @@
-const { get } = require('lodash')
+const _ = require('lodash')
 const { Request, Response, NextFunction } = require('express')
 const asyncHandler = require('express-async-handler')
 
@@ -11,8 +11,9 @@ const { User } = require('../../../models')
  */
 
 const updateMyProfileData = async (req, res, next) => {
-    const { name, phone, whoIAm, whatDoIDo, myInterests } = req.body
-    const { userId } = req.userPayload
+    const { name, phone, whoIAm, whatDoIDo, myInterests } = _.get(req, 'body', {})
+    const { userId } = _.get(req, 'userPayload', {})
+
     const user = await User.findById(userId)
 
     if (name !== undefined) user.name = name

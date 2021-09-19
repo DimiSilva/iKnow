@@ -1,26 +1,26 @@
 /* eslint-disable max-len */
 import IDefaultIconProps from './interfaces/i-default-icon-props'
 
-const Info: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Info: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
     </svg>
 )
 
-Info.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Info.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const BackArrow: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const BackArrow: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
     </svg>
 )
 
-BackArrow.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+BackArrow.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Book: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Book: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <g><rect fill="none" height="24" width="24" /></g>
         <g>
             <g />
@@ -36,46 +36,46 @@ const Book: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
     </svg>
 )
 
-Book.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Book.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Assignment: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Assignment: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
     </svg>
 )
 
-Assignment.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Assignment.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Chat: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Chat: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
     </svg>
 )
 
-Chat.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Chat.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Edit: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Edit: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
     </svg>
 )
 
-Edit.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Edit.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const ExpandArrow: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const ExpandArrow: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
     </svg>
 )
 
-ExpandArrow.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+ExpandArrow.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Filter: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Filter: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <g>
             <path d="M0,0h24 M24,24H0" fill="none" />
             <path d="M4.25,5.61C6.27,8.2,10,13,10,13v6c0,0.55,0.45,1,1,1h2c0.55,0,1-0.45,1-1v-6c0,0,3.72-4.8,5.74-7.39 C20.25,4.95,19.78,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z" />
@@ -84,28 +84,28 @@ const Filter: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
     </svg>
 )
 
-Filter.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Filter.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Forward: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Forward: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0V0z" fill="none" />
         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
     </svg>
 )
 
-Forward.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Forward.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Person: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Person: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
     </svg>
 )
 
-Person.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Person.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const PersonSearch: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const PersonSearch: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <g><rect fill="none" height="24" width="24" /></g>
         <g>
             <g>
@@ -117,46 +117,46 @@ const PersonSearch: React.FC<IDefaultIconProps> = ({ height, width, color }) => 
     </svg>
 )
 
-PersonSearch.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+PersonSearch.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const School: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const School: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
     </svg>
 )
 
-School.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+School.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const Search: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const Search: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0V0z" fill="none" />
         <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
     </svg>
 )
 
-Search.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+Search.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const StarEmpty: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const StarEmpty: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
     </svg>
 )
 
-StarEmpty.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+StarEmpty.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const StarFull: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const StarFull: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
     </svg>
 )
 
-StarFull.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+StarFull.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const StarHalf: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const StarHalf: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <g>
             <rect fill="none" height="24" width="24" x="0" />
         </g>
@@ -170,16 +170,16 @@ const StarHalf: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
     </svg>
 )
 
-StarHalf.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+StarHalf.defaultProps = { size: '24px', color: '#FFFFFF' }
 
-const World: React.FC<IDefaultIconProps> = ({ height, width, color }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={color}>
+const World: React.FC<IDefaultIconProps> = ({ size, color }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 24 24" width={size} fill={color}>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
     </svg>
 )
 
-World.defaultProps = { height: '24px', width: '24px', color: '#FFFFFF' }
+World.defaultProps = { size: '24px', color: '#FFFFFF' }
 
 export default {
     Info,

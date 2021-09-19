@@ -15,7 +15,6 @@ export const MyProfileProvider: React.FC = ({ children }) => {
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
-    useEffect(() => { getMyProfileData() }, [])
 
     const getMyProfileData = async () => {
         setLoadingsData({ ...loadingsData, searching: true })
@@ -30,7 +29,7 @@ export const MyProfileProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <MyProfileContext.Provider value={{ myProfileData, loadingsData, updateData }}>
+        <MyProfileContext.Provider value={{ myProfileData, loadingsData, updateData, getMyProfileData }}>
             {children}
         </MyProfileContext.Provider>
     )

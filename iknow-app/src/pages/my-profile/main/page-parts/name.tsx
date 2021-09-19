@@ -25,7 +25,7 @@ const Name: React.FC = () => {
                         invalidFieldMessage: 'É necessário preencher o nome',
                     })}
                 >
-                    <Icons.Edit width="18px" height="18px" />
+                    <Icons.Edit size="18px" />
                 </button>
             </div>
         </div>

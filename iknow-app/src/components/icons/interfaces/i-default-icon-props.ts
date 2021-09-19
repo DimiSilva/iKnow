@@ -1,6 +1,5 @@
 interface IComponentProps {
-    height?: string,
-    width?: string,
+    size?: string | number,
     color?: string
 }
 

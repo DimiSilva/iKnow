@@ -1,8 +1,8 @@
-const { get } = require('lodash')
+const _ = require('lodash')
 const { Request, Response, NextFunction } = require('express')
 const asyncHandler = require('express-async-handler')
 
-const { User } = require('../../../models')
+const { User, Evaluation } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -11,8 +11,16 @@ const { User } = require('../../../models')
  */
 
 const getMyProfileData = async (req, res, next) => {
-    const { userId } = req.userPayload
+    const { userId } = _.get(req, 'userPayload', {})
+
     const user = await User.findById(userId)
+
+    const evaluations = await Evaluation.find({ user: userId })
+
+    const totalEvalutions = evaluations.length
+    const evaluationsTotal = evaluations.reduce((evaluationsSum, currentEvaluation) => evaluationsSum + currentEvaluation.value, 0)
+    const evaluationsMedia = evaluationsTotal / totalEvalutions
+
     res.status(200).send({
         id: user._id,
         name: user.name,
@@ -21,6 +29,8 @@ const getMyProfileData = async (req, res, next) => {
         whoIAm: user.whoIAm,
         whatDoIDo: user.whatDoIDo,
         myInterests: user.myInterests,
+        totalEvalutions,
+        evaluationsMedia,
     })
 }
 

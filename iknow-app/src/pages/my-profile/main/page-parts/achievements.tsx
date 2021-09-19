@@ -1,10 +1,8 @@
 import React from 'react'
-import { Collapse, Icons } from '../../../../components'
+import { Collapse } from '../../../../components'
 import { useMyProfile } from '../../../../providers/my-profile'
-import { useFieldEditing } from '../../../../providers/field-editing'
 
 const Achievements: React.FC = () => {
-    const fieldEditingProvider = useFieldEditing()
     const myProfileProvider = useMyProfile()
 
     return (

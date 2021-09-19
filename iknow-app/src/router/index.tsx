@@ -1,7 +1,3 @@
-import {
-    IonRouterOutlet,
-} from '@ionic/react'
-
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { BaseLayout } from '../components'

@@ -31,7 +31,7 @@
         ],
         "max-len": [
             "error",
-            120
+            180
         ],
         "no-underscore-dangle": 0
     }

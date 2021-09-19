@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
+import variables from '../../theme/variables'
 
 const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, type, invalidDataMessage }) => {
     const [remainingCharacters, setRemainingCharacter] = useState(maxLength || '')
@@ -20,12 +21,11 @@ const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, t
                             <>
                                 <div className="input-header-label-icon-container" data-tip data-for={`input-error-message-${label}`}>
                                     <Icons.Info
-                                        width="13px"
-                                        height="13px"
-                                        color="#cc0000"
+                                        size="13px"
+                                        color={variables.errorColor}
                                     />
                                 </div>
-                                <ReactTooltip id={`input-error-message-${label}`} type="error">
+                                <ReactTooltip multiline id={`input-error-message-${label}`} type="error">
                                     {invalidDataMessage}
                                 </ReactTooltip>
                             </>

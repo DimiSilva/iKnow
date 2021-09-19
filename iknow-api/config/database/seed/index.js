@@ -1,9 +1,9 @@
 const achievementsSeed = require('./achievements')
-const acknowledgmentsSeed = require('./acknowledgments')
+const acknowledgementsSeed = require('./acknowledgements')
 
 const seed = async () => {
     await achievementsSeed()
-    await acknowledgmentsSeed()
+    await acknowledgementsSeed()
 }
 
 module.exports = seed

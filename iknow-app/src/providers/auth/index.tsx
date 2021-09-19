@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useHistory } from 'react-router'
 import dataModels from './data-models'
 
 const AuthContext = createContext(dataModels.context)
@@ -21,8 +20,12 @@ export const AuthProvider: React.FC = ({ children }) => {
         if (alreadyRanOnce) localStorage.setItem('token', token)
     }, [token])
 
+    const logout = () => {
+        setToken('')
+    }
+
     return (
-        <AuthContext.Provider value={{ token, setToken, tokenLoaded }}>
+        <AuthContext.Provider value={{ token, setToken, tokenLoaded, logout }}>
             {children}
         </AuthContext.Provider>
     )
