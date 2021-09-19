@@ -10,8 +10,8 @@ const validator = fv.compile({
     type: { type: 'string', enum: Object.values(missionTypesEnum), optional: true },
     subject: { type: 'string', enum: Object.values(missionSubjectsEnum), optional: true },
     status: { type: 'string', enum: Object.values(missionStatusEnum), optional: true },
-    page: { type: 'number', default: 1 },
-    perPage: { type: 'number', default: 10 },
+    page: { type: 'number', convert: true, default: 1 },
+    perPage: { type: 'number', convert: true, default: 10 },
     notBringMine: { type: 'boolean', convert: true, default: false },
 })
 

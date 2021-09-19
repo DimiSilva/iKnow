@@ -14,12 +14,15 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.173",
     "@types/node": "^12.19.15",
     "@types/react": "^16.14.3",
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "iknow-common": "link:../iknow-common",
     "ionicons": "^5.4.0",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -42,8 +45,7 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4",
-    "iknow-common": "link:../iknow-common"
+    "workbox-streams": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
