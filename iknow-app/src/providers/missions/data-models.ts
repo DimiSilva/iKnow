@@ -1,3 +1,5 @@
+import React from 'react'
+
 const missions: Array<{
     _id: string,
     title: string,
@@ -22,7 +24,7 @@ const paginationData: {
     totalPages: 0,
 }
 
-const filtersData: {
+const filtersFormData: {
     search?: string,
     type?: string,
     subject?: string
@@ -35,11 +37,15 @@ const filtersData: {
 const context: {
     missions: typeof missions,
     loadingsData: typeof loadings,
-    getMissions: () => void
+    getMissions: () => void,
+    filtersFormData: typeof filtersFormData,
+    setFiltersFormData: React.Dispatch<React.SetStateAction<typeof filtersFormData>>
 } = {
     missions,
     loadingsData: loadings,
     getMissions: () => undefined,
+    filtersFormData,
+    setFiltersFormData: () => undefined,
 }
 
-export default { missions, context, loadings, paginationData, filtersData }
+export default { missions, context, loadings, paginationData, filtersFormData }

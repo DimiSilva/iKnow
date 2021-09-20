@@ -1,3 +1,4 @@
 import Main from './main'
+import Filters from './filters'
 
-export default { Main }
+export default { Main, Filters }

@@ -9,5 +9,6 @@ import Icons from './icons'
 import Collapse from './collapse'
 import PageLoading from './page-loading'
 import TextArea from './text-area'
+import Dropdown from './dropdown'
 
-export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton, Icons, Collapse, PageLoading, TextArea }
+export { BaseLayout, Card, PageHeader, PageTitle, Input, Button, LinkButton, Icons, Collapse, PageLoading, TextArea, Dropdown }

@@ -3,6 +3,7 @@ const pagesNames: {[key: string]: string | undefined} = {
     '/cadastro': 'Cadastro',
     '/meu-perfil': 'Perfil',
     '/missoes': 'Missões',
+    '/missoes/filtros': 'Filtrar Missões',
     '/rede': 'Rede',
     '/chat': 'Chat',
     '/busca': 'Busca',

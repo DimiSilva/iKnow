@@ -9,7 +9,7 @@ const WhoIAm: React.FC = () => {
     return (
         <div className="missions-page-missions-list">
             {missionsProvider.missions.map((mission) => (
-                <div className="missions-page-missions-list-collapse-container">
+                <div key={mission._id} className="missions-page-missions-list-collapse-container">
                     <Collapse
                         title={mission.title}
                     // action={{

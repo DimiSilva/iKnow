@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Icons } from '../../../../components'
 import { useMyProfile } from '../../../../providers/my-profile'
+import { useApp } from '../../../../providers/app'
 
 const HeaderActionsButtons: React.FC = () => {
-    const myProfileProvider = useMyProfile()
+    const appProvider = useApp()
 
     return (
         <div className="missions-page-header-actions-buttons-container">
@@ -11,7 +12,13 @@ const HeaderActionsButtons: React.FC = () => {
                 <Button onClick={() => {}} text="Criar missão" />
             </div>
             <div className="missions-page-header-actions-buttons-container-button-container">
-                <button className="missions-page-header-actions-buttons-container-button-container-filter-button" type="button"><Icons.Filter /></button>
+                <button
+                    onClick={() => appProvider.navigateTo('/missoes/filtros')}
+                    className="missions-page-header-actions-buttons-container-button-container-filter-button"
+                    type="button"
+                >
+                    <Icons.Filter />
+                </button>
             </div>
         </div>
     )

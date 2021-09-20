@@ -15,7 +15,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [missions, setMissions] = useState(dataModels.missions)
     const [paginationData, setPaginationData] = useState(dataModels.paginationData)
-    const [filtersData, setFilters] = useState(dataModels.filtersData)
+    const [filtersFormData, setFiltersFormData] = useState(dataModels.filtersFormData)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
@@ -27,7 +27,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
             status: missionStatusEnum.IDLE,
             page: paginationData.page,
             perPage: paginationData.perPage,
-            ...filtersData,
+            ...filtersFormData,
         }, _.isNil),
         toastsProvider.addToast)
         if (res) setMissions(res.data)
@@ -35,7 +35,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <MissionsContext.Provider value={{ missions, loadingsData, getMissions }}>
+        <MissionsContext.Provider value={{ missions, loadingsData, getMissions, filtersFormData, setFiltersFormData }}>
             {children}
         </MissionsContext.Provider>
     )

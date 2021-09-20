@@ -1,0 +1,72 @@
+@import "../../theme/variables";
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: 45px;
+    width: 100%;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-weight: 700;
+            font-size: 10px;
+            opacity: 50%;
+        }
+    }
+    input {
+        height: 100%;
+        background: none;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.dropdown-with-error {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: 45px;
+    width: 100%;
+    border: 1px solid $error-color;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        height: 13px;
+
+        &-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding-right: 8px;
+            }
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 10px;
+            opacity: 50%;
+        }
+    }
+    input {
+        height: 100%;
+        background: none;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
