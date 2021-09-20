@@ -1,6 +1,6 @@
 import { missionTypesEnum } from 'iknow-common/enums'
 import React, { useState } from 'react'
-import { Collapse, Icons, Input, Dropdown } from '../../../../components'
+import { Input, Dropdown } from '../../../../components'
 
 import { useMissions } from '../../../../providers/missions'
 

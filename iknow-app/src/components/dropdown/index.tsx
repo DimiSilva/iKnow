@@ -63,6 +63,7 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
             }}
             isSearchable
             onInputChange={(e) => onInputChange(e)}
+            placeholder=""
         />
     </div>
 )
