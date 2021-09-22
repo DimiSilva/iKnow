@@ -12,13 +12,12 @@ const { Mission } = require('../../../models')
  */
 
 const getMine = async (req, res, next) => {
-    const { search, type, subject, status, page, perPage } = _.get(req, 'body', {})
+    const { search, category, status, page, perPage } = _.get(req, 'body', {})
     const { userId } = _.get(req, 'userPayload', {})
 
     const query = {
         ...(search ? { title: { $regex: search, $options: 'i' } } : {}),
-        ...(type ? { type } : {}),
-        ...(subject ? { subject } : {}),
+        ...(category ? { category } : {}),
         ...(status ? { status } : { status: { $ne: missionStatusEnum.CANCELED } }),
         owner: userId,
     }

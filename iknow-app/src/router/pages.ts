@@ -12,6 +12,7 @@ const loggedPages: Array<page> = [
     { path: '/editando', exact: true, component: Pages.Common.FieldEditing },
     { path: '/missoes', exact: true, component: Pages.Missions.Main },
     { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters },
+    { path: '/missoes/cadastro', exact: true, component: Pages.Missions.Create },
 ]
 
 export { loginPages, loggedPages }

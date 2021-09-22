@@ -9,7 +9,7 @@ const HeaderActionsButtons: React.FC = () => {
     return (
         <div className="missions-page-header-actions-buttons-container">
             <div className="missions-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} text="Criar missão" />
+                <Button onClick={() => appProvider.navigateTo('/missoes/cadastro')} text="Criar missão" />
             </div>
             <div className="missions-page-header-actions-buttons-container-button-container">
                 <button

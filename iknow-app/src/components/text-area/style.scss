@@ -1,6 +1,6 @@
 @import "../../theme/variables";
 
-.input-container {
+.text-area {
     display: flex;
     flex-direction: column;
     background: $primary-color;
@@ -10,7 +10,7 @@
     max-height: 400px;
     width: 100%;
 
-    .input-header-container {
+    .text-area-header {
         display: flex;
         justify-content: space-between;
         p {
@@ -32,7 +32,7 @@
     }
 }
 
-.input-container-with-error {
+.text-area-with-error {
     display: flex;
     flex-direction: column;
     background: $primary-color;
@@ -43,12 +43,12 @@
     width: 100%;
     border: 1px solid $error-color;
 
-    .input-header-container {
+    .text-area-header {
         display: flex;
         justify-content: space-between;
         height: 13px;
 
-        .input-header-label-container {
+        .text-area-header-label {
             display: flex;
             justify-content: center;
             align-items: center;

@@ -7,7 +7,7 @@ const serviceEndpoint = 'missions'
 
 const create: (
     token: string,
-    data: { title: string, type: string, subject: string, description: string },
+    data: { title: string, category: string, description: string },
     addToast: AddToast
 ) => Promise<any> = (
     token,
@@ -89,7 +89,7 @@ const complete: (
 
 const getAll: (
     token: string,
-    data: { search?: string, type?: string, subject?: string, status?: string, page?: number, perPage?: number, notBringMine?: boolean},
+    data: { search?: string, category?: string, status?: string, page?: number, perPage?: number, notBringMine?: boolean},
     addToast: AddToast
 ) => Promise<any> = (
     token,
@@ -105,7 +105,7 @@ const getAll: (
 
 const getMine: (
     token: string,
-    data: { search?: string, type?: string, subject?: string, status?: string, page?: number, perPage?: number},
+    data: { search?: string, category?: string, status?: string, page?: number, perPage?: number},
     addToast: AddToast
 ) => Promise<any> = (
     token,

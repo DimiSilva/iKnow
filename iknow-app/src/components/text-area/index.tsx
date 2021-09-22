@@ -9,22 +9,22 @@ const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value
     const [remainingCharacters, setRemainingCharacter] = useState(maxLength || '')
 
     return (
-        <div className={invalidDataMessage ? 'input-container-with-error' : 'input-container'}>
-            <div className="input-header-container">
-                <div className="input-header-label-container">
+        <div className={invalidDataMessage ? 'text-area-with-error' : 'text-area'}>
+            <div className="text-area-header">
+                <div className="text-area-header-label">
                     <p>
                         {label}
                     </p>
                     {invalidDataMessage
                         ? (
                             <>
-                                <div className="input-header-label-icon-container" data-tip data-for={`input-error-message-${label}`}>
+                                <div className="text-area-header-label-icon" data-tip data-for={`text-area-error-message-${label}`}>
                                     <Icons.Info
                                         size="13px"
                                         color="#cc0000"
                                     />
                                 </div>
-                                <ReactTooltip multiline id={`input-error-message-${label}`} type="error">
+                                <ReactTooltip multiline id={`text-area-error-message-${label}`} type="error">
                                     {invalidDataMessage}
                                 </ReactTooltip>
                             </>

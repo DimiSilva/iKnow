@@ -11,10 +11,10 @@ const { Mission } = require('../../../models')
  */
 
 const create = async (req, res, next) => {
-    const { title, type, subject, description } = _.get(req, 'body', {})
+    const { title, category, description } = _.get(req, 'body', {})
     const { userId } = _.get(req, 'userPayload', {})
 
-    const mission = new Mission({ title, type, subject, description, owner: userId })
+    const mission = new Mission({ title, category, description, owner: userId })
     await mission.save()
 
     res.status(200).send({})

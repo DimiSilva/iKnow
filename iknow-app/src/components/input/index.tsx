@@ -30,7 +30,6 @@ const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, t
                                 </ReactTooltip>
                             </>
                         ) : ''}
-
                 </div>
                 <p>
                     {remainingCharacters}

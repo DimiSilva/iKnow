@@ -9,15 +9,19 @@ import variables from '../../theme/variables'
 
 const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInputChange, value, inputValue, invalidDataMessage }) => (
     <div className={invalidDataMessage ? 'dropdown-with-error' : 'dropdown'}>
-        <div className="dropdown-header">
-            <div className="dropdown-header-label">
+        <div className={invalidDataMessage ? 'dropdown-with-error-header' : 'dropdown-header'}>
+            <div className={invalidDataMessage ? 'dropdown-with-error-header-label' : 'dropdown-header-label'}>
                 <p>
                     {label}
                 </p>
                 {invalidDataMessage
                     ? (
                         <>
-                            <div className="dropdown-header-label-icon-container" data-tip data-for={`input-error-message-${label}`}>
+                            <div
+                                className={invalidDataMessage ? 'dropdown-with-error-header-label-icon-container' : 'dropdown-header-label-icon-container'}
+                                data-tip
+                                data-for={`input-error-message-${label}`}
+                            >
                                 <Icons.Info
                                     size="13px"
                                     color={variables.errorColor}
