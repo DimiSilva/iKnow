@@ -4,7 +4,7 @@ interface IDataValidatorParams {
     formData: typeof dataModels.createFormData,
     invalidFormData: typeof dataModels.invalidCreateFormData,
     setInvalidFormData: (invalidFormData: typeof dataModels.invalidCreateFormData) => void,
-    shouldRunValidation: boolean
+    shouldRunValidation: boolean,
 }
 
 export default IDataValidatorParams

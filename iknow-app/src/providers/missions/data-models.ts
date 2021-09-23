@@ -62,7 +62,9 @@ const context: {
     setInvalidCreateFormData:React.Dispatch<React.SetStateAction<typeof invalidCreateFormData>>,
     createSubmitted: boolean,
     create: () => Promise<any>,
-    clearCreateFormData: () => void
+    clearCreateFormData: () => void,
+    getNextPage: () => void,
+    clearMissions: () => void,
 } = {
     missions,
     loadingsData: loadings,
@@ -77,7 +79,8 @@ const context: {
     createSubmitted: false,
     create: async () => undefined,
     clearCreateFormData: () => undefined,
-
+    getNextPage: () => undefined,
+    clearMissions: () => undefined,
 }
 
 export default { missions, context, loadings, paginationData, filtersFormData, createFormData, invalidCreateFormData }

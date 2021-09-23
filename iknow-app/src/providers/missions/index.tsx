@@ -47,17 +47,26 @@ export const MissionsProvider: React.FC = ({ children }) => {
     }),
     [createFormData.category])
 
-    const getMissions = async () => {
+    const getNextPage = () => {
+        if (paginationData.page < paginationData.totalPages) getMissions({ ...paginationData, page: paginationData.page + 1 })
+    }
+
+    const getMissions = async (paginationDataAsParam?: typeof dataModels.paginationData) => {
         setLoadingsData({ ...loadingsData, searching: true })
         const res = await services.missions.getAll(authProvider.token, _.omitBy({
             notBringMine: true,
             status: missionStatusEnum.IDLE,
-            page: paginationData.page,
-            perPage: paginationData.perPage,
+            page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
+            perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
             ...filtersFormData,
         }, _.isNil),
         toastsProvider.addToast)
-        if (res) setMissions(res.data)
+        if (res) {
+            const newMissionsSet = [...missions, ...res.data]
+            const uniqueMissionsIds = Array.from(new Set(newMissionsSet.map((newMission) => newMission._id)))
+            setMissions(uniqueMissionsIds.map((id) => newMissionsSet.find((newMission) => newMission._id === id)))
+            setPaginationData({ ...(paginationDataAsParam || paginationData), total: res.total, totalPages: res.totalPages })
+        }
         setLoadingsData({ ...loadingsData, searching: false })
     }
 
@@ -82,6 +91,11 @@ export const MissionsProvider: React.FC = ({ children }) => {
         setCreateSubmitted(false)
     }
 
+    const clearMissions = () => {
+        setPaginationData(dataModels.paginationData)
+        setMissions([])
+    }
+
     return (
         <MissionsContext.Provider value={{ missions,
             loadingsData,
@@ -96,6 +110,8 @@ export const MissionsProvider: React.FC = ({ children }) => {
             createSubmitted,
             create,
             clearCreateFormData,
+            getNextPage,
+            clearMissions,
         }}
         >
             {children}

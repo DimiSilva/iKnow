@@ -8,15 +8,16 @@ import './style.scss'
 const Missions: React.FC<IComponentProps> = () => {
     const missionsProvider = useMissions()
 
-    useEffect(missionsProvider.getMissions, [])
+    useEffect(() => {
+        missionsProvider.getMissions()
+        return missionsProvider.clearMissions
+    }, [])
 
     return (
-        !missionsProvider.loadingsData.searching ? (
-            <div className="missions-page">
-                <pageParts.HeaderActionsButtons />
-                <pageParts.MissionsList />
-            </div>
-        ) : <PageLoading />
+        <div className="missions-page">
+            <pageParts.HeaderActionsButtons />
+            <pageParts.MissionsList />
+        </div>
     )
 }
 

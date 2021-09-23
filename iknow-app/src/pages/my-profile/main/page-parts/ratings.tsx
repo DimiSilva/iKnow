@@ -23,7 +23,7 @@ const Ratings: React.FC = () => {
                 {renderStars()}
             </div>
             <div className="profile-page-ratings-container-evaluation-container">
-                {myProfileProvider.myProfileData.evaluationsMedia.toFixed(1)}
+                {(myProfileProvider.myProfileData.evaluationsMedia || 0).toFixed(1)}
             </div>
             <div className="profile-page-ratings-container-quantity-container">
                 (
