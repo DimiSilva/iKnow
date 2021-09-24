@@ -3,7 +3,7 @@ import { Collapse, InfiniteScroll } from '../../../../components'
 
 import { useMissions } from '../../../../providers/missions'
 
-const WhoIAm: React.FC = () => {
+const MissionsList: React.FC = () => {
     const missionsProvider = useMissions()
 
     return (
@@ -27,4 +27,4 @@ const WhoIAm: React.FC = () => {
     )
 }
 
-export default WhoIAm
+export default MissionsList

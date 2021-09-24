@@ -9,9 +9,9 @@ import dataValidators from './data-validators'
 import { useApp } from '../app'
 import common from '../../common'
 
-const MissionsContext = createContext(dataModels.context)
+const MyMissionsContext = createContext(dataModels.context)
 
-export const MissionsProvider: React.FC = ({ children }) => {
+export const MyMissionsProvider: React.FC = ({ children }) => {
     const appProvider = useApp()
     const authProvider = useAuth()
     const toastsProvider = useToasts()
@@ -54,9 +54,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
 
     const getMissions = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData({ ...loadingsData, searching: true })
-        const res = await services.missions.getAll(authProvider.token, _.omitBy({
-            notBringMine: true,
-            status: missionStatusEnum.IDLE,
+        const res = await services.missions.getMine(authProvider.token, _.omitBy({
             page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
             ...filtersFormData,
@@ -98,7 +96,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <MissionsContext.Provider value={{ missions,
+        <MyMissionsContext.Provider value={{ missions,
             loadingsData,
             getMissions,
             filtersFormData,
@@ -116,8 +114,8 @@ export const MissionsProvider: React.FC = ({ children }) => {
         }}
         >
             {children}
-        </MissionsContext.Provider>
+        </MyMissionsContext.Provider>
     )
 }
 
-export const useMissions = () => useContext(MissionsContext)
+export const useMyMissions = () => useContext(MyMissionsContext)

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from '../../../../components'
-import { useMyProfile } from '../../../../providers/my-profile'
+import { useApp } from '../../../../providers/app'
 
 const HeaderActionsButtons: React.FC = () => {
-    const myProfileProvider = useMyProfile()
+    const appProvider = useApp()
 
     return (
         <div className="profile-page-header-actions-buttons-container">
             <div className="profile-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} text="Minhas Missões" />
+                <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes')} text="Minhas Missões" />
             </div>
             <div className="profile-page-header-actions-buttons-container-button-container">
                 <Button onClick={() => {}} text="Missões em Andamento" />

@@ -4,6 +4,7 @@ import { RegisterProvider } from './register'
 import { MyProfileProvider } from './my-profile'
 import { FieldEditingProvider } from './field-editing'
 import { MissionsProvider } from './missions'
+import { MyMissionsProvider } from './my-missions'
 
 const Providers: React.FC = ({ children }) => (
     <AppProvider>
@@ -11,9 +12,11 @@ const Providers: React.FC = ({ children }) => (
             <LoginProvider>
                 <RegisterProvider>
                     <MyProfileProvider>
-                        <MissionsProvider>
-                            {children}
-                        </MissionsProvider>
+                        <MyMissionsProvider>
+                            <MissionsProvider>
+                                {children}
+                            </MissionsProvider>
+                        </MyMissionsProvider>
                     </MyProfileProvider>
                 </RegisterProvider>
             </LoginProvider>
