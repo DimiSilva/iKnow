@@ -10,12 +10,6 @@ const constructRoutes = (token: string) => {
         </Route>
     ))
 
-    routes.push(
-        <Route key="*">
-            <Redirect to={pages[0].path} />
-        </Route>,
-    )
-
     return routes
 }
 

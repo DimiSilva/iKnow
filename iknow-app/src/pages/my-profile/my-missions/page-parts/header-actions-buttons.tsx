@@ -8,11 +8,11 @@ const HeaderActionsButtons: React.FC = () => {
     return (
         <div className="my-missions-page-header-actions-buttons-container">
             <div className="my-missions-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes/cadastro')} text="Criar missão" />
+                <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes/cadastro', true)} text="Criar missão" />
             </div>
             <div className="my-missions-page-header-actions-buttons-container-button-container">
                 <button
-                    onClick={() => appProvider.navigateTo('/meu-perfil/missoes/filtros')}
+                    onClick={() => appProvider.navigateTo('/meu-perfil/missoes/filtros', true)}
                     className="my-missions-page-header-actions-buttons-container-button-container-filter-button"
                     type="button"
                 >

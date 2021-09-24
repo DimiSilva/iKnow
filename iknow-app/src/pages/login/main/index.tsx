@@ -47,7 +47,7 @@ const Login: React.FC<IComponentProps> = () => {
                                 <LinkButton text="Recuperar Senha" onClick={() => {}} />
                             </div> */}
                             <div className="login-page-card-content-internal-action-buttons-container-link-button-container">
-                                <LinkButton text="Cadastrar-se" onClick={() => appProvider.navigateTo('/cadastro')} />
+                                <LinkButton text="Cadastrar-se" onClick={() => appProvider.navigateTo('/cadastro', true)} />
                             </div>
                         </div>
                     </div>

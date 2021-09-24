@@ -24,6 +24,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
     const [invalidCreateFormData, setInvalidCreateFormData] = useState(dataModels.invalidCreateFormData)
     const [createSubmitted, setCreateSubmitted] = useState(false)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
+    const [missionInVisualization, setMissionInVisualization] = useState(common.dataModels.mission)
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
@@ -87,32 +88,62 @@ export const MissionsProvider: React.FC = ({ children }) => {
         setLoadingsData({ ...loadingsData, createSubmitting: false })
     }
 
-    const clearCreateFormData = () => {
-        setCreateFormData(dataModels.createFormData)
-        setCreateSubmitted(false)
+    const view = async (mission: typeof common.dataModels.mission, dontNavigate?: boolean) => {
+        setLoadingsData({ ...loadingsData, searching: true })
+        if (!dontNavigate) appProvider.navigateTo('/missoes/visualizacao', true)
+        const res = await services.missions.getOne(authProvider.token, mission._id, toastsProvider.addToast)
+        if (res) setMissionInVisualization(res)
+        setLoadingsData({ ...loadingsData, searching: false })
     }
 
-    const clearMissions = () => {
+    const giveUp = async () => {
+        setLoadingsData({ ...loadingsData, givingUp: true })
+        const res = await services.missions.giveUp(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
+        if (res) {
+            toastsProvider.addToast('Você desistiu da missão', { appearance: 'success', autoDismiss: true })
+            view(missionInVisualization, true)
+        }
+        setLoadingsData({ ...loadingsData, givingUp: false })
+    }
+
+    const accept = async () => {
+        setLoadingsData({ ...loadingsData, accepting: true })
+        const res = await services.missions.accept(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
+        if (res) {
+            toastsProvider.addToast('Você aceitou a missão', { appearance: 'success', autoDismiss: true })
+            view(missionInVisualization, true)
+        }
+        setLoadingsData({ ...loadingsData, accepting: false })
+    }
+
+    const clear = () => {
+        setFiltersFormData(dataModels.filtersFormData)
+        setCreateFormData(dataModels.createFormData)
+        setCreateSubmitted(false)
         setPaginationData(common.dataModels.paginationData)
         setMissions([])
     }
 
     return (
-        <MissionsContext.Provider value={{ missions,
+        <MissionsContext.Provider value={{
+            missions,
             loadingsData,
             getMissions,
             filtersFormData,
             setFiltersFormData,
             clearFiltersForm,
+            clear,
             createFormData,
             setCreateFormData,
             invalidCreateFormData,
             setInvalidCreateFormData,
             createSubmitted,
             create,
-            clearCreateFormData,
             getNextPage,
-            clearMissions,
+            missionInVisualization,
+            view,
+            giveUp,
+            accept,
         }}
         >
             {children}

@@ -31,7 +31,8 @@
     &-content-container-open {
         display: flex;
         padding: 8px 16px;
-        height: auto;
+        max-height: 200px;
+        overflow: hidden;
         .collapse-content {
             display: flex;
             justify-content: center;
@@ -45,10 +46,11 @@
     }
     &-content-container-closed {
         display: flex;
-        height: 0;
-        overflow: none;
+        max-height: 0;
+        padding: 0 16px;
+        overflow: hidden;
         .collapse-content {
-            display: none;
+            // display: none;
         }
     }
     &-open-close-button {

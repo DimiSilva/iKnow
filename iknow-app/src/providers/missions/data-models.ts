@@ -1,15 +1,19 @@
 import React from 'react'
+import common from '../../common'
 
-const missions: Array<{
-    _id: string,
-    title: string,
-    category: string,
-    description: string,
-    status: string,
-    owner: { name: string, _id: string }
-}> = []
+const missions: Array<typeof common.dataModels.mission> = []
 
-const loadings: {searching: boolean, createSubmitting: boolean} = { searching: false, createSubmitting: false }
+const loadings: {
+    searching: boolean,
+    createSubmitting: boolean
+    givingUp: boolean
+    accepting: boolean,
+} = {
+    searching: false,
+    createSubmitting: false,
+    givingUp: false,
+    accepting: false,
+}
 
 const filtersFormData: {
     search?: string,
@@ -43,6 +47,7 @@ const context: {
     getMissions: () => void,
     filtersFormData: typeof filtersFormData,
     setFiltersFormData: React.Dispatch<React.SetStateAction<typeof filtersFormData>>,
+    clear: () => void,
     clearFiltersForm: () => void,
     createFormData: typeof createFormData,
     setCreateFormData: React.Dispatch<React.SetStateAction<typeof createFormData>>,
@@ -50,15 +55,18 @@ const context: {
     setInvalidCreateFormData:React.Dispatch<React.SetStateAction<typeof invalidCreateFormData>>,
     createSubmitted: boolean,
     create: () => Promise<any>,
-    clearCreateFormData: () => void,
     getNextPage: () => void,
-    clearMissions: () => void,
+    view: (mission: typeof common.dataModels.mission, dontNavigate?: boolean) => Promise<void>,
+    missionInVisualization: typeof common.dataModels.mission
+    giveUp: () => Promise<void>,
+    accept: () => Promise<void>,
 } = {
     missions,
     loadingsData: loadings,
     getMissions: () => undefined,
     filtersFormData,
     setFiltersFormData: () => undefined,
+    clear: () => undefined,
     clearFiltersForm: () => undefined,
     createFormData,
     setCreateFormData: () => undefined,
@@ -66,9 +74,12 @@ const context: {
     setInvalidCreateFormData: () => undefined,
     createSubmitted: false,
     create: async () => undefined,
-    clearCreateFormData: () => undefined,
     getNextPage: () => undefined,
-    clearMissions: () => undefined,
+    view: async (mission) => undefined,
+    missionInVisualization: common.dataModels.mission,
+    giveUp: async () => undefined,
+    accept: async () => undefined,
+
 }
 
 export default { missions, context, loadings, filtersFormData, createFormData, invalidCreateFormData }

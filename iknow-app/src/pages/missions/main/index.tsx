@@ -10,7 +10,7 @@ const Missions: React.FC<IComponentProps> = () => {
 
     useEffect(() => {
         missionsProvider.getMissions()
-        return missionsProvider.clearMissions
+        return missionsProvider.clear
     }, [])
 
     return (

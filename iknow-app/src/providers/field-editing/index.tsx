@@ -42,7 +42,7 @@ export const FieldEditingProvider: React.FC = ({ children }) => {
     const call: typeof dataModels.context.call = (newFieldContext) => {
         setFieldContext(newFieldContext)
         if (newFieldContext.initialValue) setFormData({ field: newFieldContext.initialValue })
-        appProvider.navigateTo('/editando')
+        appProvider.navigateTo('/editando', true)
     }
 
     const quit = () => {

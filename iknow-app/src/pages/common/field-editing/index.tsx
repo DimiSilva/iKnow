@@ -13,7 +13,6 @@ const FieldEditing: React.FC<IComponentProps> = () => {
     useEffect(() => {
         setTimeout(() => {
             appProvider.setCurrentPageTitle(fieldEditingProvider.fieldContext.pageTitle)
-            appProvider.setBackPath(fieldEditingProvider.fieldContext.backPath)
         }, 10)
         return fieldEditingProvider.quit
     }, [])

@@ -11,6 +11,7 @@ import PageLoading from './page-loading'
 import TextArea from './text-area'
 import Dropdown from './dropdown'
 import InfiniteScroll from './infinte-scroll'
+import LabelText from './label-text'
 
 export {
     BaseLayout,
@@ -26,4 +27,5 @@ export {
     TextArea,
     Dropdown,
     InfiniteScroll,
+    LabelText,
 }

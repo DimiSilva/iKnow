@@ -20,18 +20,24 @@ export const AppProvider: React.FC = ({ children }) => {
         const pageTitle: string = enums.pagesNames[locationProvider.pathname] || ''
         setCurrentPageTitle(pageTitle)
         setCurrentPathName(locationProvider.pathname)
-        setBackPath(undefined)
-    }, [locationProvider.pathname])
+    }, [])
 
-    const navigateTo = (path: string) => historyProvider.push(path)
+    const navigateTo = (path: string, shouldSetBackPath?: boolean) => {
+        historyProvider.push(path)
+        if (shouldSetBackPath) setBackPath(locationProvider.pathname)
+        else setBackPath(undefined)
+        const pageTitle: string = enums.pagesNames[path] || ''
+        setCurrentPageTitle(pageTitle)
+        setCurrentPathName(path)
+    }
 
     return (
-        <AppContext.Provider value={{ navigateTo,
+        <AppContext.Provider value={{
+            navigateTo,
             currentPageTitle,
             currentPathName,
             setCurrentPageTitle,
             backPath,
-            setBackPath: (backPath) => setBackPath(backPath),
         }}
         >
             {children}

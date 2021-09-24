@@ -35,6 +35,11 @@ const setupRoutes = (app) => {
         [middlewares.authentication, middlewares.requestBodyValidator(validators.unbind)],
         missionsController.unbind,
     )
+    app.put(
+        `${endpoint}/give-up/:missionId`,
+        [middlewares.authentication, middlewares.requestBodyValidator(validators.giveUp)],
+        missionsController.giveUp,
+    )
     app.get(
         `${endpoint}`,
         [middlewares.authentication, middlewares.requestBodyValidator(validators.get)],
@@ -44,6 +49,11 @@ const setupRoutes = (app) => {
         `${endpoint}/my`,
         [middlewares.authentication, middlewares.requestBodyValidator(validators.getMine)],
         missionsController.getMine,
+    )
+    app.get(
+        `${endpoint}/:missionId`,
+        [middlewares.authentication, middlewares.requestBodyValidator(validators.getOne)],
+        missionsController.getOne,
     )
 }
 

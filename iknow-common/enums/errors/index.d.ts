@@ -13,4 +13,5 @@ export const MISSION_NOT_IN_PROGRESS: string;
 export const CANNOT_CANCEL_ANOTHER_USER_MISSION: string;
 export const ALREADY_CANCELED_MISSION: string;
 export const CANNOT_UNBIND_ANOTHER_USER_MISSION: string;
+export const YOU_NOT_IN_THIS_MISSION: string;
 

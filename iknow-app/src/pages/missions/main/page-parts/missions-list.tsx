@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Collapse, InfiniteScroll, LinkButton } from '../../../../components'
+import { Collapse, Icons, InfiniteScroll, LinkButton } from '../../../../components'
+import { useApp } from '../../../../providers/app'
 
 import { useMissions } from '../../../../providers/missions'
 
@@ -17,6 +18,7 @@ const MissionsList: React.FC = () => {
                     <div key={mission._id} className="missions-page-missions-list-collapse-container">
                         <Collapse
                             title={mission.title}
+                            action={{ icon: Icons.Forward, onClick: () => missionsProvider.view(mission) }}
                         >
                             <div className="missions-page-missions-list-collapse-container-content-container">
                                 <div className="missions-page-missions-list-collapse-container-content-container-header">

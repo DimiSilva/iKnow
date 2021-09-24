@@ -10,8 +10,6 @@ const MissionsFilters: React.FC<IComponentProps> = () => {
     const missionsProvider = useMissions()
     const appProvider = useApp()
 
-    useEffect(() => { appProvider.setBackPath('/missoes') }, [])
-
     return (
         !missionsProvider.loadingsData.searching ? (
             <div className="missions-filters-page">

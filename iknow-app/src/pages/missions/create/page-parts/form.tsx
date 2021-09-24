@@ -4,7 +4,7 @@ import { Input, Dropdown, TextArea } from '../../../../components'
 
 import { useMissions } from '../../../../providers/missions'
 
-const WhoIAm: React.FC = () => {
+const Form: React.FC = () => {
     const missionsProvider = useMissions()
     const [subjectInputValue, setSubjectInputValue] = useState('')
 
@@ -47,4 +47,4 @@ const WhoIAm: React.FC = () => {
     )
 }
 
-export default WhoIAm
+export default Form

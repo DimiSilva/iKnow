@@ -10,4 +10,21 @@ const paginationData: {
     totalPages: 0,
 }
 
-export default { paginationData }
+const mission: {
+    _id: string,
+    title: string,
+    category: string,
+    description: string,
+    status: string,
+    owner: { name: string, _id: string }
+    acceptedBy?: { name: string, _id: string }
+} = {
+    _id: '',
+    title: '',
+    category: '',
+    description: '',
+    status: '',
+    owner: { name: '', _id: '' },
+}
+
+export default { paginationData, mission }

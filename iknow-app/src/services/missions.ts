@@ -53,6 +53,22 @@ const unbind: (
     addToast,
 )
 
+const giveUp: (
+    token: string,
+    missionId: string,
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    missionId,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/give-up/${missionId}`,
+    'PUT',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const cancel: (
     token: string,
     missionId: string,
@@ -103,6 +119,22 @@ const getAll: (
     addToast,
 )
 
+const getOne: (
+    token: string,
+    id: string,
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    id,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/${id}`,
+    'GET',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const getMine: (
     token: string,
     data: { search?: string, category?: string, status?: string, page?: number, perPage?: number},
@@ -119,4 +151,4 @@ const getMine: (
     addToast,
 )
 
-export default { create, accept, cancel, complete, getAll, getMine }
+export default { create, accept, cancel, complete, getAll, getMine, getOne, unbind, giveUp }

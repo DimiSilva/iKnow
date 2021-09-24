@@ -8,6 +8,7 @@ const pagesNames: {[key: string]: string | undefined} = {
     '/missoes': 'Missões',
     '/missoes/filtros': 'Filtrar Missões',
     '/missoes/cadastro': 'Criar Missão',
+    '/missoes/visualizacao': 'Missão',
     '/rede': 'Rede',
     '/chat': 'Chat',
     '/busca': 'Busca',

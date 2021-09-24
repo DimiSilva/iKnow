@@ -1,7 +1,6 @@
 import './style.scss'
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { PageHeader, Icons } from '../index'
 
 import IComponentProps from './interfaces/i-component-props'
@@ -21,36 +20,44 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                         <div className="base-layout-main-content">{children}</div>
                     </div>
                     <div className="base-layout-tabs">
-                        <Link
+                        <button
                             className={appProvider.currentPathName === '/meu-perfil' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            to="/meu-perfil"
+                            type="button"
+                            onClick={() => appProvider.navigateTo('/meu-perfil')}
                         >
                             <Icons.Person />
-                        </Link>
-                        <Link
+                        </button>
+                        <button
                             className={appProvider.currentPathName === '/missoes' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            to="/missoes"
+                            type="button"
+                            onClick={() => appProvider.navigateTo('/missoes')}
                         >
                             <Icons.Book />
-                        </Link>
-                        <Link
+                        </button>
+                        <button
                             className={appProvider.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            to="/rede"
+                            type="button"
+                            onClick={() => appProvider.navigateTo('/rede')}
+                            disabled
                         >
                             <Icons.World />
-                        </Link>
-                        <Link
+                        </button>
+                        <button
                             className={appProvider.currentPathName === '/chat' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            to="/chat"
+                            type="button"
+                            onClick={() => appProvider.navigateTo('/chat')}
+                            disabled
                         >
                             <Icons.Chat />
-                        </Link>
-                        <Link
+                        </button>
+                        <button
                             className={appProvider.currentPathName === '/busca' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            to="/busca"
+                            type="button"
+                            onClick={() => appProvider.navigateTo('/busca')}
+                            disabled
                         >
                             <Icons.PersonSearch />
-                        </Link>
+                        </button>
                     </div>
                 </div>
             )
