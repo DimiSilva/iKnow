@@ -1,4 +1,4 @@
-const myProfileData: {
+const profileData: {
     name: string,
     phone: string,
     email: string,
@@ -21,15 +21,13 @@ const myProfileData: {
 const loadings: {searching: boolean} = { searching: false }
 
 const context: {
-    myProfileData: typeof myProfileData,
+    profileData: typeof profileData,
     loadingsData: typeof loadings,
-    updateData: (updatedData: object) => Promise<any>,
-    getMyProfileData: () => void
+    call: (userId: string) => void
 } = {
-    myProfileData,
+    profileData,
     loadingsData: loadings,
-    updateData: async (updatedData) => undefined,
-    getMyProfileData: () => undefined,
+    call: (userId) => undefined,
 }
 
-export default { myProfileData, context, loadings }
+export default { profileData, context, loadings }

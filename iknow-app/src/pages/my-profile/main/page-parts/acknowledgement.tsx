@@ -4,7 +4,7 @@ import { useMyProfile } from '../../../../providers/my-profile'
 import { useFieldEditing } from '../../../../providers/field-editing'
 
 const Acknowledgement: React.FC = () => (
-    <div className="profile-page-collapse-container">
+    <div className="my-profile-page-collapse-container">
         <Collapse
             title="Reconhecimento"
             info={`\

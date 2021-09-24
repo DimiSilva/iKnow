@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Collapse, Icons, InfiniteScroll, LinkButton } from '../../../../components'
-import { useApp } from '../../../../providers/app'
 
 import { useMissions } from '../../../../providers/missions'
+import { useProfile } from '../../../../providers/profile'
 
 const MissionsList: React.FC = () => {
     const missionsProvider = useMissions()
+    const profileProvider = useProfile()
 
     return (
         <div className="missions-page-missions-list">
@@ -23,7 +24,7 @@ const MissionsList: React.FC = () => {
                             <div className="missions-page-missions-list-collapse-container-content-container">
                                 <div className="missions-page-missions-list-collapse-container-content-container-header">
                                     <span>Criado Por: </span>
-                                    <LinkButton text={mission.owner.name} onClick={() => {}} />
+                                    <LinkButton text={mission.owner.name} onClick={() => profileProvider.call(mission.owner._id)} />
                                 </div>
                                 <div className="missions-page-missions-list-collapse-container-content-container-content">
                                     {mission.description}

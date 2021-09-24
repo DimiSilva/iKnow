@@ -8,7 +8,7 @@ const MyInterests: React.FC = () => {
     const myProfileProvider = useMyProfile()
 
     return (
-        <div className="profile-page-collapse-container">
+        <div className="my-profile-page-collapse-container">
             <Collapse
                 title="Meus Interesses"
                 info={`\
@@ -28,7 +28,7 @@ const MyInterests: React.FC = () => {
                     }),
                 }}
             >
-                <div className="profile-page-collapse-container-content">{myProfileProvider.myProfileData.myInterests}</div>
+                <div className="my-profile-page-collapse-container-content">{myProfileProvider.myProfileData.myInterests}</div>
             </Collapse>
         </div>
     )

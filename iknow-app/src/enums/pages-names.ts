@@ -5,6 +5,7 @@ const pagesNames: {[key: string]: string | undefined} = {
     '/meu-perfil/missoes': 'Minhas Missões',
     '/meu-perfil/missoes/filtros': 'Filtrar Missões',
     '/meu-perfil/missoes/cadastro': 'Criar Missão',
+    '/perfil': 'Perfil',
     '/missoes': 'Missões',
     '/missoes/filtros': 'Filtrar Missões',
     '/missoes/cadastro': 'Criar Missão',

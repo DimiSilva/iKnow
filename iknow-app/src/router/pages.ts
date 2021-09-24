@@ -13,6 +13,7 @@ const loggedPages: Array<page> = [
     { path: '/meu-perfil/missoes', exact: true, component: Pages.MyProfile.MyMissions },
     { path: '/meu-perfil/missoes/filtros', exact: true, component: Pages.MyProfile.MyMissionsFilters },
     { path: '/meu-perfil/missoes/cadastro', exact: true, component: Pages.MyProfile.MyMissionsCreate },
+    { path: '/perfil', exact: true, component: Pages.Profile.Main },
     { path: '/missoes', exact: true, component: Pages.Missions.Main },
     { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters },
     { path: '/missoes/cadastro', exact: true, component: Pages.Missions.Create },

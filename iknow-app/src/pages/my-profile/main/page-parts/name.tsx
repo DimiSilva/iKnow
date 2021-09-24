@@ -8,9 +8,9 @@ const Name: React.FC = () => {
     const myProfileProvider = useMyProfile()
 
     return (
-        <div className="profile-page-name-container">
-            <div className="profile-page-name-container-text-container">{myProfileProvider.myProfileData.name}</div>
-            <div className="profile-page-name-container-action-container">
+        <div className="my-profile-page-name-container">
+            <div className="my-profile-page-name-container-text-container">{myProfileProvider.myProfileData.name}</div>
+            <div className="my-profile-page-name-container-action-container">
                 <button
                     type="button"
                     onClick={() => fieldEditingProvider.call({

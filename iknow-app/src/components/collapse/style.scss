@@ -34,7 +34,7 @@
         max-height: 200px;
         overflow: hidden;
         .collapse-content {
-            display: flex;
+            display: flex; 
             justify-content: center;
             align-items: center;
             width: 100%;
@@ -50,7 +50,14 @@
         padding: 0 16px;
         overflow: hidden;
         .collapse-content {
-            // display: none;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .collapse-content-empty-message {
+            text-align: center;
+            opacity: 0.5;
         }
     }
     &-open-close-button {

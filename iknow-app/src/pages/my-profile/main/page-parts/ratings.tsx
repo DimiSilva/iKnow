@@ -18,25 +18,25 @@ const Ratings: React.FC = () => {
     }
 
     return (
-        <div className="profile-page-ratings-container">
-            <div className="profile-page-ratings-container-stars-container">
+        <div className="my-profile-page-ratings-container">
+            <div className="my-profile-page-ratings-container-stars-container">
                 {renderStars()}
             </div>
-            <div className="profile-page-ratings-container-evaluation-container">
+            <div className="my-profile-page-ratings-container-evaluation-container">
                 {(myProfileProvider.myProfileData.evaluationsMedia || 0).toFixed(1)}
             </div>
-            <div className="profile-page-ratings-container-quantity-container">
+            <div className="my-profile-page-ratings-container-quantity-container">
                 (
                 {myProfileProvider.myProfileData.totalEvalutions}
                 )
             </div>
-            <div className="profile-page-ratings-container-info-container">
-                <div className="profile-page-ratings-container-info-container-icon-container" data-tip data-for="profile-page-ratings-info">
+            <div className="my-profile-page-ratings-container-info-container">
+                <div className="my-profile-page-ratings-container-info-container-icon-container" data-tip data-for="my-profile-page-ratings-info">
                     <Icons.Info
                         size="20px"
                     />
                 </div>
-                <ReactTooltip multiline id="profile-page-ratings-info" type="info">
+                <ReactTooltip multiline id="my-profile-page-ratings-info" type="info">
                     Aqui você pode ver sua avaliação e quantas vezes você foi avaliado, para aumentar a avaliação, é preciso completar missões
                 </ReactTooltip>
             </div>

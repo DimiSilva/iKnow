@@ -6,14 +6,14 @@ const HeaderActionsButtons: React.FC = () => {
     const appProvider = useApp()
 
     return (
-        <div className="profile-page-header-actions-buttons-container">
-            <div className="profile-page-header-actions-buttons-container-button-container">
+        <div className="my-profile-page-header-actions-buttons-container">
+            <div className="my-profile-page-header-actions-buttons-container-button-container">
                 <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes', true)} text="Minhas Missões" />
             </div>
-            <div className="profile-page-header-actions-buttons-container-button-container">
+            <div className="my-profile-page-header-actions-buttons-container-button-container">
                 <Button onClick={() => {}} text="Missões em Andamento" />
             </div>
-            <div className="profile-page-header-actions-buttons-container-button-container">
+            <div className="my-profile-page-header-actions-buttons-container-button-container">
                 <Button onClick={() => {}} text="Histórico de Missões" />
             </div>
         </div>

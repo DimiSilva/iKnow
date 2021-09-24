@@ -4,12 +4,14 @@ import dataModels from './data-models'
 import services from '../../services'
 import { useAuth } from '../auth'
 import dataValidators from './data-validators'
+import { useApp } from '../app'
 
 const LoginContext = createContext(dataModels.context)
 
 export const LoginProvider: React.FC = ({ children }) => {
-    const { setToken } = useAuth()
-    const { addToast } = useToasts()
+    const authProvider = useAuth()
+    const toastsProvider = useToasts()
+    const appProvider = useApp()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [formData, setFormData] = useState(dataModels.formData)
@@ -26,8 +28,9 @@ export const LoginProvider: React.FC = ({ children }) => {
         setSubmitted(true)
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
         setLoadingsData({ ...loadingsData, submitting: true })
-        const res = await services.users.login(formData, addToast)
-        if (res) setToken(res.token)
+        const res = await services.users.login(formData, toastsProvider.addToast)
+        if (res) authProvider.setToken(res.token)
+        appProvider.navigateTo('/meu-perfil')
         setLoadingsData({ ...loadingsData, submitting: false })
     }
 

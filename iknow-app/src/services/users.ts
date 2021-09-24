@@ -46,6 +46,22 @@ const getMyProfileData: (
     addToast,
 )
 
+const getProfileData: (
+    token: string,
+    userId: string,
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    userId,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/profile-data/${userId}`,
+    'GET',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const updateMyProfileData: (
     token: string,
     data: { name?: string, phone?: string, whoIAm?: string, whatDoIDo?: string, myInterests?: string },
@@ -62,4 +78,4 @@ const updateMyProfileData: (
     addToast,
 )
 
-export default { login, register, getMyProfileData, updateMyProfileData }
+export default { login, register, getMyProfileData, getProfileData, updateMyProfileData }

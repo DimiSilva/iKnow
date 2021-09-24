@@ -8,7 +8,7 @@ const WhoIAm: React.FC = () => {
     const myProfileProvider = useMyProfile()
 
     return (
-        <div className="profile-page-collapse-container">
+        <div className="my-profile-page-collapse-container">
             <Collapse
                 title="Quem eu Sou"
                 info={`\
@@ -28,7 +28,7 @@ const WhoIAm: React.FC = () => {
                     }),
                 }}
             >
-                <div className="profile-page-collapse-container-content">{myProfileProvider.myProfileData.whoIAm}</div>
+                <div className="my-profile-page-collapse-container-content">{myProfileProvider.myProfileData.whoIAm}</div>
             </Collapse>
         </div>
     )

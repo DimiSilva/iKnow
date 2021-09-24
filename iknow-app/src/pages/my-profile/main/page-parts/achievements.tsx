@@ -6,7 +6,7 @@ const Achievements: React.FC = () => {
     const myProfileProvider = useMyProfile()
 
     return (
-        <div className="profile-page-collapse-container">
+        <div className="my-profile-page-collapse-container">
             <Collapse
                 title="Conquistas"
                 info={`\
