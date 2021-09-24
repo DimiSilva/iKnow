@@ -22,7 +22,7 @@ const getMine = async (req, res, next) => {
         owner: userId,
     }
 
-    const missions = await Mission.find(query)
+    const missions = await Mission.find(query).populate('owner', { name: 1, _id: 1 })
         .skip(page * perPage - perPage)
         .limit(perPage)
 

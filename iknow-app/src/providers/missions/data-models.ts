@@ -6,7 +6,7 @@ const missions: Array<{
     category: string,
     description: string,
     status: string,
-    owner: string
+    owner: { name: string, _id: string }
 }> = []
 
 const loadings: {searching: boolean, createSubmitting: boolean} = { searching: false, createSubmitting: false }

@@ -22,7 +22,7 @@ const get = async (req, res, next) => {
         ...(notBringMine ? { owner: { $ne: userId } } : {}),
     }
 
-    const missions = await Mission.find(query)
+    const missions = await Mission.find(query).populate('owner', { name: 1, _id: 1 })
         .skip((page * perPage) - perPage)
         .limit(perPage)
 

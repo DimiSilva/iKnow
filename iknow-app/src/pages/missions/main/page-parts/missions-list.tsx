@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Collapse, InfiniteScroll } from '../../../../components'
+import { Collapse, InfiniteScroll, LinkButton } from '../../../../components'
 
 import { useMissions } from '../../../../providers/missions'
 
@@ -18,7 +18,15 @@ const MissionsList: React.FC = () => {
                         <Collapse
                             title={mission.title}
                         >
-                            <div className="missions-page-missions-list-collapse-container-content-container">{mission.description}</div>
+                            <div className="missions-page-missions-list-collapse-container-content-container">
+                                <div className="missions-page-missions-list-collapse-container-content-container-header">
+                                    <span>Criado Por: </span>
+                                    <LinkButton text={mission.owner.name} onClick={() => {}} />
+                                </div>
+                                <div className="missions-page-missions-list-collapse-container-content-container-content">
+                                    {mission.description}
+                                </div>
+                            </div>
                         </Collapse>
                     </div>
                 ))}
