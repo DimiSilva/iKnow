@@ -1,23 +1,23 @@
 import Pages from '../pages'
 
-interface page { path: string, exact: boolean, component: React.FC<any> }
+interface page { path: string, exact: boolean, component: React.FC<any>, pageTitle: string }
 
 const loginPages: Array<page> = [
-    { path: '/login', exact: true, component: Pages.Login.Main },
-    { path: '/cadastro', exact: true, component: Pages.Register.Main },
+    { path: '/login', exact: true, component: Pages.Login.Main, pageTitle: 'Login' },
+    { path: '/cadastro', exact: true, component: Pages.Register.Main, pageTitle: 'Cadastro' },
 ]
 
 const loggedPages: Array<page> = [
-    { path: '/editando', exact: true, component: Pages.Common.FieldEditing },
-    { path: '/meu-perfil', exact: true, component: Pages.MyProfile.Main },
-    { path: '/meu-perfil/missoes', exact: true, component: Pages.MyProfile.MyMissions },
-    { path: '/meu-perfil/missoes/filtros', exact: true, component: Pages.MyProfile.MyMissionsFilters },
-    { path: '/meu-perfil/missoes/cadastro', exact: true, component: Pages.MyProfile.MyMissionsCreate },
-    { path: '/perfil', exact: true, component: Pages.Profile.Main },
-    { path: '/missoes', exact: true, component: Pages.Missions.Main },
-    { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters },
-    { path: '/missoes/cadastro', exact: true, component: Pages.Missions.Create },
-    { path: '/missoes/visualizacao', exact: true, component: Pages.Missions.View },
+    { path: '/meu-perfil', exact: true, component: Pages.MyProfile.Main, pageTitle: 'Perfil' },
+    { path: '/meu-perfil/missoes', exact: true, component: Pages.MyProfile.MyMissions, pageTitle: 'Minhas Missões' },
+    { path: '/meu-perfil/missoes/filtros', exact: true, component: Pages.MyProfile.MyMissionsFilters, pageTitle: 'Filtrar Missões' },
+    { path: '/meu-perfil/missoes/cadastro', exact: true, component: Pages.MyProfile.MyMissionsCreate, pageTitle: 'Criar Missão' },
+    { path: '/perfil', exact: true, component: Pages.Profile.Main, pageTitle: 'Perfil' },
+    { path: '/missoes', exact: true, component: Pages.Missions.Main, pageTitle: 'Missões' },
+    { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters, pageTitle: 'Filtrar Missões' },
+    { path: '/missoes/cadastro', exact: true, component: Pages.Missions.Create, pageTitle: 'Criar Missão' },
+    { path: '/missoes/visualizacao', exact: true, component: Pages.Missions.View, pageTitle: 'Missão' },
+    { path: '/editando', exact: true, component: Pages.Common.FieldEditing, pageTitle: 'Editando' },
 ]
 
 export { loginPages, loggedPages }
