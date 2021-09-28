@@ -6,9 +6,13 @@
     align-items: center;
     background-color: $primary-color;
     width: 100%;
+    min-width: 80px;
     height: 40px;
     border-radius: 6px;
     color: $tertiary-color;
     font-weight: 700;
     padding: 8px;
+    &:disabled{
+        opacity: 0.7;
+    }
 }

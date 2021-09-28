@@ -17,10 +17,10 @@ export const MyProfileProvider: React.FC = ({ children }) => {
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     const getMyProfileData = async () => {
-        setLoadingsData({ ...loadingsData, searching: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
         const res = await services.users.getMyProfileData(authProvider.token, toastsProvider.addToast)
         if (res) setMyProfileData(res)
-        setLoadingsData({ ...loadingsData, searching: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const updateData = async (updatedData: object) => {

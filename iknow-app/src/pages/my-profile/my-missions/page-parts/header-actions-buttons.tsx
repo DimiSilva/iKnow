@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Button, Icons } from '../../../../components'
 import { useApp } from '../../../../providers/app'
+import variables from '../../../../theme/variables'
 
 const HeaderActionsButtons: React.FC = () => {
     const appProvider = useApp()
@@ -16,7 +17,9 @@ const HeaderActionsButtons: React.FC = () => {
                     className="my-missions-page-header-actions-buttons-container-button-container-filter-button"
                     type="button"
                 >
-                    <Icons.Filter />
+                    <Icons.Filter
+                        color={variables.iconsColor}
+                    />
                 </button>
             </div>
         </div>

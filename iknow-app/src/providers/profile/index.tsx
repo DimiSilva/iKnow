@@ -19,14 +19,14 @@ export const ProfileProvider: React.FC = ({ children }) => {
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     const getProfileData = async (userId: string) => {
-        setLoadingsData({ ...loadingsData, searching: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
         const res = await services.users.getProfileData(authProvider.token, userId, toastsProvider.addToast)
         if (res) setProfileData(res)
-        setLoadingsData({ ...loadingsData, searching: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const call = (userId: string) => {
-        appProvider.navigateTo('/perfil')
+        appProvider.navigateTo('/perfil', true)
         getProfileData(userId)
     }
 

@@ -34,6 +34,7 @@ const Ratings: React.FC = () => {
                 <div className="my-profile-page-ratings-container-info-container-icon-container" data-tip data-for="my-profile-page-ratings-info">
                     <Icons.Info
                         size="20px"
+                        color={variables.iconsColor}
                     />
                 </div>
                 <ReactTooltip multiline id="my-profile-page-ratings-info" type="info">

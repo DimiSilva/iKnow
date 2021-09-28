@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
+import variables from '../../theme/variables'
 
 const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, invalidDataMessage }) => {
     const [remainingCharacters, setRemainingCharacter] = useState(maxLength || '')
@@ -21,7 +22,7 @@ const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value
                                 <div className="text-area-header-label-icon" data-tip data-for={`text-area-error-message-${label}`}>
                                     <Icons.Info
                                         size="13px"
-                                        color="#cc0000"
+                                        color={variables.errorColor}
                                     />
                                 </div>
                                 <ReactTooltip multiline id={`text-area-error-message-${label}`} type="error">

@@ -27,11 +27,11 @@ export const FieldEditingProvider: React.FC = ({ children }) => {
     const save = async () => {
         setSubmitted(true)
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
-        setLoadingsData({ ...loadingsData, submitting: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
         await fieldContext.onSave({ [fieldContext.fieldKey]: formData.field })
         if (fieldContext.successMessage) toastsProvider.addToast(fieldContext.successMessage, { autoDismiss: true, appearance: 'success' })
-        setLoadingsData({ ...loadingsData, submitting: false })
         appProvider.navigateTo(fieldContext.backPath)
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 
     const clearForm = () => {

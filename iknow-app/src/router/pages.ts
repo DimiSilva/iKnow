@@ -12,6 +12,7 @@ const loggedPages: Array<page> = [
     { path: '/meu-perfil/missoes', exact: true, component: Pages.MyProfile.MyMissions, pageTitle: 'Minhas Missões' },
     { path: '/meu-perfil/missoes/filtros', exact: true, component: Pages.MyProfile.MyMissionsFilters, pageTitle: 'Filtrar Missões' },
     { path: '/meu-perfil/missoes/cadastro', exact: true, component: Pages.MyProfile.MyMissionsCreate, pageTitle: 'Criar Missão' },
+    { path: '/meu-perfil/missoes/visualizacao', exact: true, component: Pages.MyProfile.MyMissionsView, pageTitle: 'Missão' },
     { path: '/perfil', exact: true, component: Pages.Profile.Main, pageTitle: 'Perfil' },
     { path: '/missoes', exact: true, component: Pages.Missions.Main, pageTitle: 'Missões' },
     { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters, pageTitle: 'Filtrar Missões' },

@@ -29,13 +29,13 @@ export const RegisterProvider: React.FC = ({ children }) => {
     const register = async () => {
         setSubmitted(true)
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
-        setLoadingsData({ ...loadingsData, submitting: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
         const res = await services.users.register(formData, addToast)
         if (res) {
             addToast('Cadastro realizado com sucesso', { appearance: 'success', autoDismiss: true })
             navigateTo('/login')
         }
-        setLoadingsData({ ...loadingsData, submitting: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 
     const clearForm = () => {

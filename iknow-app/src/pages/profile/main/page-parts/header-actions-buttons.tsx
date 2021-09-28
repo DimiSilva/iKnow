@@ -8,10 +8,10 @@ const HeaderActionsButtons: React.FC = () => {
     return (
         <div className="profile-page-header-actions-buttons-container">
             <div className="profile-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} text="Chat" />
+                <Button disabled onClick={() => {}} text="Chat" />
             </div>
             <div className="profile-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} text="Vincular" />
+                <Button disabled onClick={() => {}} text="Vincular" />
             </div>
         </div>
     )

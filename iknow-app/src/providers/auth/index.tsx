@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useApp } from '../app'
 import dataModels from './data-models'
 
 const AuthContext = createContext(dataModels.context)

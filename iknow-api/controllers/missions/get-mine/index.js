@@ -18,7 +18,7 @@ const getMine = async (req, res, next) => {
     const query = {
         ...(search ? { title: { $regex: search, $options: 'i' } } : {}),
         ...(category ? { category } : {}),
-        ...(status ? { status } : { status: { $ne: missionStatusEnum.CANCELED } }),
+        ...(status ? { status } : {}),
         owner: userId,
     }
 

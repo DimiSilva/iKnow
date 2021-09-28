@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
+import variables from '../../theme/variables'
 
 const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, action, emptyContentMessage, defaultState }) => {
     const [open, setOpen] = useState(defaultState === 'open')
@@ -15,7 +16,7 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
                     {info ? (
                         <>
                             <div className="collapse-header-title-container-info-container" data-tip data-for={`input-error-message-${title}`}>
-                                <Icons.Info size="20px" />
+                                <Icons.Info size="20px" color={variables.iconsColor} />
                             </div>
                             <ReactTooltip multiline id={`input-error-message-${title}`} type="info">
                                 {info}
@@ -26,7 +27,7 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
                 <div className="collapse-header-action-button-container">
                     {action ? (
                         <button type="button" onClick={action.onClick}>
-                            <action.icon size="20px" />
+                            <action.icon size="20px" color={variables.iconsColor} />
                         </button>
                     ) : undefined}
                 </div>
@@ -41,7 +42,7 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
                 className={open ? 'collapse-open-close-button-open' : 'collapse-open-close-button-closed'}
                 onClick={() => setOpen(!open)}
             >
-                <Icons.ExpandArrow />
+                <Icons.ExpandArrow color={variables.iconsColor} />
             </button>
         </div>
     )

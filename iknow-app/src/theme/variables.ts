@@ -7,6 +7,7 @@ const quintenaryColor = '#221e22'
 const errorColor = '#cc0000'
 const successColor = '#00b800'
 
+const iconsColor = '#ffffff'
 const textColor = '#ffffff'
 
 export default {
@@ -17,5 +18,6 @@ export default {
     quintenaryColor,
     errorColor,
     successColor,
+    iconsColor,
     textColor,
 }

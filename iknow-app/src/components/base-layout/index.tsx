@@ -5,6 +5,7 @@ import { PageHeader, Icons } from '../index'
 
 import IComponentProps from './interfaces/i-component-props'
 import { useApp } from '../../providers/app'
+import variables from '../../theme/variables'
 
 const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
     const appProvider = useApp()
@@ -25,14 +26,14 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             type="button"
                             onClick={() => appProvider.navigateTo('/meu-perfil')}
                         >
-                            <Icons.Person />
+                            <Icons.Person color={variables.iconsColor} />
                         </button>
                         <button
                             className={appProvider.currentPathName === '/missoes' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
                             onClick={() => appProvider.navigateTo('/missoes')}
                         >
-                            <Icons.Book />
+                            <Icons.Book color={variables.iconsColor} />
                         </button>
                         <button
                             className={appProvider.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
@@ -40,7 +41,7 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             onClick={() => appProvider.navigateTo('/rede')}
                             disabled
                         >
-                            <Icons.World />
+                            <Icons.World color={variables.iconsColor} />
                         </button>
                         <button
                             className={appProvider.currentPathName === '/chat' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
@@ -48,7 +49,7 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             onClick={() => appProvider.navigateTo('/chat')}
                             disabled
                         >
-                            <Icons.Chat />
+                            <Icons.Chat color={variables.iconsColor} />
                         </button>
                         <button
                             className={appProvider.currentPathName === '/busca' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
@@ -56,7 +57,7 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             onClick={() => appProvider.navigateTo('/busca')}
                             disabled
                         >
-                            <Icons.PersonSearch />
+                            <Icons.PersonSearch color={variables.iconsColor} />
                         </button>
                     </div>
                 </div>

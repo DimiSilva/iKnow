@@ -27,11 +27,11 @@ export const LoginProvider: React.FC = ({ children }) => {
     const login = async () => {
         setSubmitted(true)
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
-        setLoadingsData({ ...loadingsData, submitting: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
         const res = await services.users.login(formData, toastsProvider.addToast)
         if (res) authProvider.setToken(res.token)
         appProvider.navigateTo('/meu-perfil')
-        setLoadingsData({ ...loadingsData, submitting: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 
     const clearForm = () => {

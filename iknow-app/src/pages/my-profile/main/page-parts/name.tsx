@@ -2,6 +2,7 @@ import React from 'react'
 import { Icons } from '../../../../components'
 import { useMyProfile } from '../../../../providers/my-profile'
 import { useFieldEditing } from '../../../../providers/field-editing'
+import variables from '../../../../theme/variables'
 
 const Name: React.FC = () => {
     const fieldEditingProvider = useFieldEditing()
@@ -25,7 +26,10 @@ const Name: React.FC = () => {
                         invalidFieldMessage: 'É necessário preencher o nome',
                     })}
                 >
-                    <Icons.Edit size="18px" />
+                    <Icons.Edit
+                        size="18px"
+                        color={variables.iconsColor}
+                    />
                 </button>
             </div>
         </div>

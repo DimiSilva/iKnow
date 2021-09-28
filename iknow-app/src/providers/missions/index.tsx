@@ -54,7 +54,7 @@ export const MissionsProvider: React.FC = ({ children }) => {
     }
 
     const getMissions = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
-        setLoadingsData({ ...loadingsData, searching: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
         const res = await services.missions.getAll(authProvider.token, _.omitBy({
             notBringMine: true,
             status: missionStatusEnum.IDLE,
@@ -63,13 +63,15 @@ export const MissionsProvider: React.FC = ({ children }) => {
             ...filtersFormData,
         }, _.isNil),
         toastsProvider.addToast)
-        if (res) {
-            const newMissionsSet = [...missions, ...res.data]
-            const uniqueMissionsIds = Array.from(new Set(newMissionsSet.map((newMission) => newMission._id)))
-            setMissions(uniqueMissionsIds.map((id) => newMissionsSet.find((newMission) => newMission._id === id)))
-            setPaginationData({ ...(paginationDataAsParam || paginationData), total: res.total, totalPages: res.totalPages })
-        }
-        setLoadingsData({ ...loadingsData, searching: false })
+        setLoadingsData((loadingsData) => {
+            if (res) {
+                const newMissionsSet = [...missions, ...res.data]
+                const uniqueMissionsIds = Array.from(new Set(newMissionsSet.map((newMission) => newMission._id)))
+                setMissions(uniqueMissionsIds.map((id) => newMissionsSet.find((newMission) => newMission._id === id)))
+                setPaginationData({ ...(paginationDataAsParam || paginationData), total: res.total, totalPages: res.totalPages })
+            }
+            return ({ ...loadingsData, searching: false })
+        })
     }
 
     const clearFiltersForm = () => {
@@ -79,41 +81,41 @@ export const MissionsProvider: React.FC = ({ children }) => {
     const create = async () => {
         setCreateSubmitted(true)
         if (Object.values(invalidCreateFormData).some((message) => message !== undefined)) return
-        setLoadingsData({ ...loadingsData, createSubmitting: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, createSubmitting: true }))
         const res = await services.missions.create(authProvider.token, createFormData, toastsProvider.addToast)
         if (res) {
             toastsProvider.addToast('Missão criada com sucesso', { appearance: 'success', autoDismiss: true })
             appProvider.navigateTo('/missoes')
         }
-        setLoadingsData({ ...loadingsData, createSubmitting: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, createSubmitting: false }))
     }
 
     const view = async (mission: typeof common.dataModels.mission, dontNavigate?: boolean) => {
-        setLoadingsData({ ...loadingsData, searching: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
         if (!dontNavigate) appProvider.navigateTo('/missoes/visualizacao', true)
         const res = await services.missions.getOne(authProvider.token, mission._id, toastsProvider.addToast)
         if (res) setMissionInVisualization(res)
-        setLoadingsData({ ...loadingsData, searching: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const giveUp = async () => {
-        setLoadingsData({ ...loadingsData, givingUp: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, givingUp: true }))
         const res = await services.missions.giveUp(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
         if (res) {
             toastsProvider.addToast('Você desistiu da missão', { appearance: 'success', autoDismiss: true })
             view(missionInVisualization, true)
         }
-        setLoadingsData({ ...loadingsData, givingUp: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, givingUp: false }))
     }
 
     const accept = async () => {
-        setLoadingsData({ ...loadingsData, accepting: true })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, accepting: true }))
         const res = await services.missions.accept(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
         if (res) {
             toastsProvider.addToast('Você aceitou a missão', { appearance: 'success', autoDismiss: true })
             view(missionInVisualization, true)
         }
-        setLoadingsData({ ...loadingsData, accepting: false })
+        setLoadingsData((loadingsData) => ({ ...loadingsData, accepting: false }))
     }
 
     const clear = () => {

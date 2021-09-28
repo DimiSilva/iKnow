@@ -1,28 +1,25 @@
 import React, { useEffect } from 'react'
 import { PageLoading } from '../../../components'
-import { useApp } from '../../../providers/app'
-import { useMissions } from '../../../providers/missions'
 import { useMyMissions } from '../../../providers/my-missions'
 import IComponentProps from './interfaces/i-component-props'
 import pageParts from './page-parts'
 import './style.scss'
 
-const MissionsCreate: React.FC<IComponentProps> = () => {
+const MyMissionView: React.FC<IComponentProps> = () => {
     const myMissionsProvider = useMyMissions()
 
     useEffect(myMissionsProvider.clear, [])
 
     return (
         !myMissionsProvider.loadingsData.searching ? (
-            <div className="my-missions-create-page">
-                <pageParts.Form />
+            <div className="my-mission-view-page">
+                <pageParts.Data />
                 <pageParts.FooterActionsButtons />
             </div>
         ) : <PageLoading />
     )
 }
 
-MissionsCreate.defaultProps = {
-}
+MyMissionView.defaultProps = {}
 
-export default MissionsCreate
+export default MyMissionView
