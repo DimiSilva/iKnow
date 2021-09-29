@@ -1,14 +1,7 @@
 import React from 'react'
 import common from '../../common'
 
-const missions: Array<{
-    _id: string,
-    title: string,
-    category: string,
-    description: string,
-    status: string,
-    owner: { name: string, _id: string }
-}> = []
+const missions: Array<typeof common.dataModels.mission> = []
 
 const loadings: {
     searching: boolean,
@@ -20,14 +13,6 @@ const loadings: {
     createSubmitting: false,
     unbinding: false,
     cancelling: false,
-}
-
-const filtersFormData: {
-    search?: string,
-    category?: string
-} = {
-    search: undefined,
-    category: undefined,
 }
 
 const createFormData: {
@@ -52,8 +37,8 @@ const context: {
     missions: typeof missions,
     loadingsData: typeof loadings,
     getMissions: () => void,
-    filtersFormData: typeof filtersFormData,
-    setFiltersFormData: React.Dispatch<React.SetStateAction<typeof filtersFormData>>,
+    filtersFormData: typeof common.dataModels.missionsFiltersFormData,
+    setFiltersFormData: React.Dispatch<React.SetStateAction<typeof common.dataModels.missionsFiltersFormData>>,
     clearFiltersForm: () => void,
     clear: () => void,
     createFormData: typeof createFormData,
@@ -71,7 +56,7 @@ const context: {
     missions,
     loadingsData: loadings,
     getMissions: () => undefined,
-    filtersFormData,
+    filtersFormData: common.dataModels.missionsFiltersFormData,
     setFiltersFormData: () => undefined,
     clear: () => undefined,
     clearFiltersForm: () => undefined,
@@ -88,4 +73,4 @@ const context: {
     cancel: async () => undefined,
 }
 
-export default { missions, context, loadings, filtersFormData, createFormData, invalidCreateFormData }
+export default { missions, context, loadings, createFormData, invalidCreateFormData }

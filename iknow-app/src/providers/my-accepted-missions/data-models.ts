@@ -5,32 +5,10 @@ const missions: Array<typeof common.dataModels.mission> = []
 
 const loadings: {
     searching: boolean,
-    createSubmitting: boolean
     givingUp: boolean
-    accepting: boolean,
 } = {
     searching: false,
-    createSubmitting: false,
     givingUp: false,
-    accepting: false,
-}
-
-const createFormData: {
-    title: string,
-    category: string,
-    description: string,
-} = {
-    title: '',
-    category: '',
-    description: '',
-}
-
-const invalidCreateFormData: {
-    title: string | undefined,
-    category: string | undefined,
-} = {
-    title: undefined,
-    category: undefined,
 }
 
 const context: {
@@ -41,17 +19,10 @@ const context: {
     setFiltersFormData: React.Dispatch<React.SetStateAction<typeof common.dataModels.missionsFiltersFormData>>,
     clear: () => void,
     clearFiltersForm: () => void,
-    createFormData: typeof createFormData,
-    setCreateFormData: React.Dispatch<React.SetStateAction<typeof createFormData>>,
-    invalidCreateFormData: typeof invalidCreateFormData,
-    setInvalidCreateFormData:React.Dispatch<React.SetStateAction<typeof invalidCreateFormData>>,
-    createSubmitted: boolean,
-    create: () => Promise<any>,
     getNextPage: () => void,
     view: (mission: typeof common.dataModels.mission, dontNavigate?: boolean) => Promise<void>,
     missionInVisualization: typeof common.dataModels.mission
     giveUp: () => Promise<void>,
-    accept: () => Promise<void>,
 } = {
     missions,
     loadingsData: loadings,
@@ -60,18 +31,11 @@ const context: {
     setFiltersFormData: () => undefined,
     clear: () => undefined,
     clearFiltersForm: () => undefined,
-    createFormData,
-    setCreateFormData: () => undefined,
-    invalidCreateFormData,
-    setInvalidCreateFormData: () => undefined,
-    createSubmitted: false,
-    create: async () => undefined,
     getNextPage: () => undefined,
     view: async (mission) => undefined,
     missionInVisualization: common.dataModels.mission,
     giveUp: async () => undefined,
-    accept: async () => undefined,
 
 }
 
-export default { missions, context, loadings, createFormData, invalidCreateFormData }
+export default { missions, context, loadings }

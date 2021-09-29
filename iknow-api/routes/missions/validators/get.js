@@ -12,6 +12,7 @@ const validator = fv.compile({
     page: { type: 'number', convert: true, default: 1 },
     perPage: { type: 'number', convert: true, default: 10 },
     notBringMine: { type: 'boolean', convert: true, default: false },
+    bringMyAccepts: { type: 'boolean', convert: true, default: false },
 })
 
 module.exports = validator

@@ -5,7 +5,7 @@ const paginationData: {
     totalPages: number
 } = {
     page: 1,
-    perPage: 10,
+    perPage: 20,
     total: 0,
     totalPages: 0,
 }
@@ -27,4 +27,14 @@ const mission: {
     owner: { name: '', _id: '' },
 }
 
-export default { paginationData, mission }
+const missionsFiltersFormData: {
+    search?: string,
+    category?: string
+    status?: string
+} = {
+    search: undefined,
+    category: undefined,
+    status: undefined,
+}
+
+export default { paginationData, mission, missionsFiltersFormData }

@@ -1,5 +1,5 @@
 interface IComponentProps {
-    onScrollEnd: Function,
+    onScrollEnd: () => void,
     loading?: boolean,
     emptyMessage: string
 }

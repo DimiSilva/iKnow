@@ -23,6 +23,7 @@ const HeaderActionsButtons: React.FC = () => {
                     <Button
                         onClick={() => {}}
                         text="Chat"
+                        disabled
                         loading={false}
                     />
                 </div>

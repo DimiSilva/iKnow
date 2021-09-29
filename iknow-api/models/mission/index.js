@@ -14,6 +14,8 @@ const schema = new mongoose.Schema(
     { timestamps: { currentTime: () => new Date().toISOString() } },
 )
 
+schema.index({ createdAt: -1 })
+
 const Model = mongoose.model('Mission', schema)
 
 module.exports = Model

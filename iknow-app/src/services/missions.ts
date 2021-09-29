@@ -105,7 +105,14 @@ const complete: (
 
 const getAll: (
     token: string,
-    data: { search?: string, category?: string, status?: string, page?: number, perPage?: number, notBringMine?: boolean},
+    data: { search?: string,
+        category?: string,
+        status?: string,
+        page?: number,
+        perPage?: number,
+        notBringMine?: boolean,
+        bringMyAccepts?: boolean
+    },
     addToast: AddToast
 ) => Promise<any> = (
     token,

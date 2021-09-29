@@ -11,10 +11,7 @@ const HeaderActionsButtons: React.FC = () => {
                 <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes', true)} text="Minhas Missões" />
             </div>
             <div className="my-profile-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} disabled text="Missões em Andamento" />
-            </div>
-            <div className="my-profile-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => {}} disabled text="Histórico de Missões" />
+                <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes-aceitas', true)} text="Missões Aceitas" />
             </div>
         </div>
     )

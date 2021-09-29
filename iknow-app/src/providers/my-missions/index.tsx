@@ -18,7 +18,7 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [missions, setMissions] = useState(dataModels.missions)
     const [paginationData, setPaginationData] = useState(common.dataModels.paginationData)
-    const [filtersFormData, setFiltersFormData] = useState(dataModels.filtersFormData)
+    const [filtersFormData, setFiltersFormData] = useState(common.dataModels.missionsFiltersFormData)
     const [createFormData, setCreateFormData] = useState(dataModels.createFormData)
     const [invalidCreateFormData, setInvalidCreateFormData] = useState(dataModels.invalidCreateFormData)
     const [createSubmitted, setCreateSubmitted] = useState(false)
@@ -67,7 +67,7 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
-    const clearFiltersForm = () => setFiltersFormData(dataModels.filtersFormData)
+    const clearFiltersForm = () => setFiltersFormData(common.dataModels.missionsFiltersFormData)
 
     const create = async () => {
         setCreateSubmitted(true)
@@ -110,7 +110,7 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
     }
 
     const clear = () => {
-        setFiltersFormData(dataModels.filtersFormData)
+        setFiltersFormData(common.dataModels.missionsFiltersFormData)
         setCreateFormData(dataModels.createFormData)
         setCreateSubmitted(false)
         setPaginationData(common.dataModels.paginationData)

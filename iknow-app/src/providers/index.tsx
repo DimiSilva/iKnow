@@ -6,6 +6,7 @@ import { ProfileProvider } from './profile'
 import { FieldEditingProvider } from './field-editing'
 import { MissionsProvider } from './missions'
 import { MyMissionsProvider } from './my-missions'
+import { MyAcceptedMissionsProvider } from './my-accepted-missions'
 
 const Providers: React.FC = ({ children }) => (
     <AppProvider>
@@ -16,7 +17,9 @@ const Providers: React.FC = ({ children }) => (
                         <ProfileProvider>
                             <MyMissionsProvider>
                                 <MissionsProvider>
-                                    {children}
+                                    <MyAcceptedMissionsProvider>
+                                        {children}
+                                    </MyAcceptedMissionsProvider>
                                 </MissionsProvider>
                             </MyMissionsProvider>
                         </ProfileProvider>

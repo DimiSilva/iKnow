@@ -1,6 +1,7 @@
 import './style.scss'
 
 import React from 'react'
+import { missionStatusMasksEnum } from 'iknow-common/enums'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons, InfiniteScroll, Collapse, LinkButton } from '../index'
 
@@ -19,8 +20,14 @@ const MissionsList: React.FC<IComponentProps> = ({ onScrollEnd, onAuthorClick, l
                     >
                         <div className="missions-list-collapse-container-content-container">
                             <div className="missions-list-collapse-container-content-container-header">
-                                <span>Criado Por: </span>
-                                <LinkButton text={mission.owner.name} onClick={() => onAuthorClick(mission.owner._id)} />
+                                <div className="missions-list-collapse-container-content-container-header-created-by-container">
+                                    <span>Criado Por: </span>
+                                    <LinkButton text={mission.owner.name} onClick={() => onAuthorClick(mission.owner._id)} />
+                                </div>
+                                <div className="missions-list-collapse-container-content-container-header-status-container">
+                                    <span>Status: </span>
+                                    {missionStatusMasksEnum[mission.status]}
+                                </div>
                             </div>
                             <div className="missions-list-collapse-container-content-container-content">
                                 {mission.description}

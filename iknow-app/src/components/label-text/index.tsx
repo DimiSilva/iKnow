@@ -1,22 +1,20 @@
 import './style.scss'
 
-import React, { useState } from 'react'
-import ReactTooltip from 'react-tooltip'
+import React from 'react'
 import IComponentProps from './interfaces/i-component-props'
-import { Icons } from '../index'
-import variables from '../../theme/variables'
+import { LinkButton } from '../index'
 
-const LabelText: React.FC<IComponentProps> = ({ label, text }) => (
+const LabelText: React.FC<IComponentProps> = ({ label, text, onTextClick }) => (
     <div className="label-text">
         <div className="label-text-label-container">
             <h3>{label}</h3>
         </div>
         <div className="label-text-text-container">
-            <p>{text}</p>
+            { onTextClick ? <LinkButton style={{ fontSize: '16px' }} text={text} onClick={onTextClick} /> : <p>{text}</p>}
         </div>
     </div>
 )
 
-LabelText.defaultProps = { }
+LabelText.defaultProps = { onTextClick: undefined }
 
 export default LabelText

@@ -12,7 +12,7 @@ const { Mission } = require('../../../models')
  */
 
 const get = async (req, res, next) => {
-    const { search, category, status, page, perPage, notBringMine } = _.get(req, 'body', {})
+    const { search, category, status, page, perPage, notBringMine, bringMyAccepts } = _.get(req, 'body', {})
     const { userId } = _.get(req, 'userPayload', {})
 
     const query = {
@@ -20,9 +20,12 @@ const get = async (req, res, next) => {
         ...(category ? { category } : {}),
         ...(status ? { status } : { status: { $ne: missionStatusEnum.CANCELED } }),
         ...(notBringMine ? { owner: { $ne: userId } } : {}),
+        ...(bringMyAccepts ? { acceptedBy: userId } : {}),
     }
 
-    const missions = await Mission.find(query).populate('owner', { name: 1, _id: 1 })
+    const missions = await Mission.find(query)
+        .sort({ createdAt: -1 })
+        .populate('owner', { name: 1, _id: 1 })
         .skip((page * perPage) - perPage)
         .limit(perPage)
 
