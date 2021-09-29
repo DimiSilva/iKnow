@@ -40,6 +40,18 @@
         }
     }
 
+    &-notification-of-completed {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        padding: 16px 0 0 0;
+        p {
+            font-size: 18px;
+            color: $success-color;
+            font-weight: 900;
+        }
+    }
+    
     &-notification-of-canceled {
         display: flex;
         width: 100%;
@@ -47,7 +59,7 @@
         padding: 16px 0 0 0;
         p {
             font-size: 18px;
-            color: $tertiary-color;
+            color: $error-color;
             font-weight: 900;
         }
     }

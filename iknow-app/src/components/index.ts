@@ -13,6 +13,7 @@ import Dropdown from './dropdown'
 import InfiniteScroll from './infinte-scroll'
 import LabelText from './label-text'
 import MissionsList from './missions-list'
+import Acknowledgement from './acknowledgement'
 
 export {
     BaseLayout,
@@ -30,4 +31,5 @@ export {
     InfiniteScroll,
     LabelText,
     MissionsList,
+    Acknowledgement,
 }

@@ -24,6 +24,8 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
     const [createSubmitted, setCreateSubmitted] = useState(false)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
     const [missionInVisualization, setMissionInVisualization] = useState(common.dataModels.mission)
+    const [evaluation, setEvaluation] = useState<undefined|number>()
+    const [acknowledgement, setAcknowledgement] = useState<undefined|typeof common.dataModels.acknowledgement>()
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
@@ -89,6 +91,19 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
+    const complete = async () => {
+        setLoadingsData((loadingsData) => ({ ...loadingsData, completing: true }))
+        const res = await services.missions.complete(authProvider.token,
+            missionInVisualization._id,
+            { acknowledgement: (acknowledgement || {})._id, evaluation },
+            toastsProvider.addToast)
+        if (res) {
+            toastsProvider.addToast('Você finalizou da missão', { appearance: 'success', autoDismiss: true })
+            view(missionInVisualization)
+        }
+        setLoadingsData((loadingsData) => ({ ...loadingsData, completing: false }))
+    }
+
     const unbind = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, unbinding: true }))
         const res = await services.missions.unbind(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
@@ -114,29 +129,37 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
         setCreateFormData(dataModels.createFormData)
         setCreateSubmitted(false)
         setPaginationData(common.dataModels.paginationData)
+        setEvaluation(undefined)
+        setAcknowledgement(undefined)
         setMissions([])
     }
 
     return (
-        <MyMissionsContext.Provider value={{ missions,
-            loadingsData,
-            getMissions,
-            filtersFormData,
-            setFiltersFormData,
-            clearFiltersForm,
-            clear,
-            createFormData,
-            setCreateFormData,
-            invalidCreateFormData,
-            setInvalidCreateFormData,
-            createSubmitted,
-            create,
-            getNextPage,
-            missionInVisualization,
-            view,
-            unbind,
-            cancel,
-        }}
+        <MyMissionsContext.Provider
+            value={{ missions,
+                loadingsData,
+                getMissions,
+                filtersFormData,
+                setFiltersFormData,
+                clearFiltersForm,
+                clear,
+                createFormData,
+                setCreateFormData,
+                invalidCreateFormData,
+                setInvalidCreateFormData,
+                createSubmitted,
+                create,
+                getNextPage,
+                missionInVisualization,
+                view,
+                unbind,
+                cancel,
+                complete,
+                evaluation,
+                setEvaluation,
+                acknowledgement,
+                setAcknowledgement,
+            }}
         >
             {children}
         </MyMissionsContext.Provider>

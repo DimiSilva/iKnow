@@ -27,6 +27,34 @@ const mission: {
     owner: { name: '', _id: '' },
 }
 
+const acknowledgement: {
+    _id: string,
+    title: string,
+    type: string,
+    description: string,
+} = {
+    _id: '',
+    title: '',
+    type: '',
+    description: '',
+}
+
+const achievement: {
+    _id: string,
+    title: string,
+    description: string,
+    key: string,
+    requiredQuantity:number,
+    tier: string,
+} = {
+    _id: '',
+    title: '',
+    description: '',
+    key: '',
+    requiredQuantity: 0,
+    tier: '',
+}
+
 const missionsFiltersFormData: {
     search?: string,
     category?: string
@@ -37,4 +65,4 @@ const missionsFiltersFormData: {
     status: undefined,
 }
 
-export default { paginationData, mission, missionsFiltersFormData }
+export default { paginationData, mission, acknowledgement, achievement, missionsFiltersFormData }

@@ -7,23 +7,26 @@ import { FieldEditingProvider } from './field-editing'
 import { MissionsProvider } from './missions'
 import { MyMissionsProvider } from './my-missions'
 import { MyAcceptedMissionsProvider } from './my-accepted-missions'
+import { GamificationProvider } from './gamification'
 
 const Providers: React.FC = ({ children }) => (
     <AppProvider>
         <FieldEditingProvider>
             <LoginProvider>
                 <RegisterProvider>
-                    <MyProfileProvider>
-                        <ProfileProvider>
-                            <MyMissionsProvider>
-                                <MissionsProvider>
-                                    <MyAcceptedMissionsProvider>
-                                        {children}
-                                    </MyAcceptedMissionsProvider>
-                                </MissionsProvider>
-                            </MyMissionsProvider>
-                        </ProfileProvider>
-                    </MyProfileProvider>
+                    <GamificationProvider>
+                        <MyProfileProvider>
+                            <ProfileProvider>
+                                <MyMissionsProvider>
+                                    <MissionsProvider>
+                                        <MyAcceptedMissionsProvider>
+                                            {children}
+                                        </MyAcceptedMissionsProvider>
+                                    </MissionsProvider>
+                                </MyMissionsProvider>
+                            </ProfileProvider>
+                        </MyProfileProvider>
+                    </GamificationProvider>
                 </RegisterProvider>
             </LoginProvider>
         </FieldEditingProvider>

@@ -7,12 +7,14 @@ const loadings: {
     searching: boolean,
     createSubmitting: boolean,
     unbinding: boolean,
-    cancelling: boolean
+    cancelling: boolean,
+    completing: boolean
 } = {
     searching: false,
     createSubmitting: false,
     unbinding: false,
     cancelling: false,
+    completing: false,
 }
 
 const createFormData: {
@@ -52,6 +54,11 @@ const context: {
     missionInVisualization: typeof common.dataModels.mission
     unbind: () => Promise<void>,
     cancel: () => Promise<void>,
+    complete: () => Promise<void>,
+    evaluation: undefined | number,
+    setEvaluation: React.Dispatch<React.SetStateAction<undefined|number>>,
+    acknowledgement: undefined | typeof common.dataModels.acknowledgement,
+    setAcknowledgement: React.Dispatch<React.SetStateAction<undefined|typeof common.dataModels.acknowledgement>>,
 } = {
     missions,
     loadingsData: loadings,
@@ -71,6 +78,11 @@ const context: {
     missionInVisualization: common.dataModels.mission,
     unbind: async () => undefined,
     cancel: async () => undefined,
+    complete: async () => undefined,
+    evaluation: undefined,
+    setEvaluation: () => undefined,
+    acknowledgement: undefined,
+    setAcknowledgement: () => undefined,
 }
 
 export default { missions, context, loadings, createFormData, invalidCreateFormData }
