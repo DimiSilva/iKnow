@@ -83,9 +83,9 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, createSubmitting: false }))
     }
 
-    const view = async (mission: typeof common.dataModels.mission, dontNavigate?: boolean) => {
+    const view = async (mission: typeof common.dataModels.mission, dontNavigate?: boolean, dontGoBack?: boolean) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        if (!dontNavigate) appProvider.navigateTo('/meu-perfil/missoes/visualizacao', true)
+        if (!dontNavigate) appProvider.navigateTo('/meu-perfil/missoes/visualizacao', !dontGoBack)
         const res = await services.missions.getOne(authProvider.token, mission._id, toastsProvider.addToast)
         if (res) setMissionInVisualization(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
@@ -99,7 +99,7 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
             toastsProvider.addToast)
         if (res) {
             toastsProvider.addToast('Você finalizou da missão', { appearance: 'success', autoDismiss: true })
-            view(missionInVisualization)
+            view(missionInVisualization, false, true)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, completing: false }))
     }

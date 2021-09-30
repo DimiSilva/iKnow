@@ -65,4 +65,35 @@ const missionsFiltersFormData: {
     status: undefined,
 }
 
-export default { paginationData, mission, acknowledgement, achievement, missionsFiltersFormData }
+const profileData: {
+    name: string,
+    phone: string,
+    email: string,
+    whoIAm: string,
+    whatDoIDo: string,
+    myInterests: string,
+    totalEvalutions: number,
+    evaluationsMedia: number,
+    acknowledgements: Array<{
+        user: string
+        mission: string
+        acknowledgement: typeof acknowledgement
+    }>,
+    achievements: Array<{
+        user: string
+        achievement: typeof achievement
+    }>
+} = {
+    name: '',
+    phone: '',
+    email: '',
+    whoIAm: '',
+    whatDoIDo: '',
+    myInterests: '',
+    totalEvalutions: 0,
+    evaluationsMedia: 0,
+    acknowledgements: [],
+    achievements: [],
+}
+
+export default { paginationData, mission, acknowledgement, achievement, missionsFiltersFormData, profileData }

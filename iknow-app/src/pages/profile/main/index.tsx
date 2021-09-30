@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { PageLoading } from '../../../components'
+import { PageLoading, ProfileAcknowledgements } from '../../../components'
 import { useProfile } from '../../../providers/profile'
 import IComponentProps from './interfaces/i-component-props'
 import pageParts from './page-parts'
@@ -15,7 +15,10 @@ const MyProfile: React.FC<IComponentProps> = () => {
                 <pageParts.Ratings />
                 <pageParts.HeaderActionsButtons />
                 <pageParts.Achievements />
-                <pageParts.Acknowledgement />
+                <ProfileAcknowledgements acknowledgements={profileProvider
+                    .profileData
+                    .acknowledgements.map((userAcknowledgement) => userAcknowledgement.acknowledgement)}
+                />
                 <pageParts.WhoIAm />
                 <pageParts.WhatDoIDo />
                 <pageParts.MyInterests />

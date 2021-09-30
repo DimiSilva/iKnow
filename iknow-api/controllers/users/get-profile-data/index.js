@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 
 const { NotFoundException } = require('iknow-common/utils/exceptions')
 const { errorsEnum } = require('iknow-common/enums')
-const { User, Evaluation } = require('../../../models')
+const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -24,6 +24,9 @@ const getProfileData = async (req, res, next) => {
     const evaluationsTotal = evaluations.reduce((evaluationsSum, currentEvaluation) => evaluationsSum + currentEvaluation.value, 0)
     const evaluationsMedia = evaluationsTotal / totalEvalutions
 
+    const acknowledgements = await UserAcknowledgement.find({ user: userId }).populate('acknowledgement')
+    const achievements = await UserAchievement.find({ user: userId }).populate('achievement')
+
     res.status(200).send({
         id: user._id,
         name: user.name,
@@ -34,6 +37,8 @@ const getProfileData = async (req, res, next) => {
         myInterests: user.myInterests,
         totalEvalutions,
         evaluationsMedia,
+        achievements,
+        acknowledgements,
     })
 }
 

@@ -1,35 +1,17 @@
-const myProfileData: {
-    name: string,
-    phone: string,
-    email: string,
-    whoIAm: string,
-    whatDoIDo: string,
-    myInterests: string,
-    totalEvalutions: number,
-    evaluationsMedia: number
-} = {
-    name: '',
-    phone: '',
-    email: '',
-    whoIAm: '',
-    whatDoIDo: '',
-    myInterests: '',
-    totalEvalutions: 0,
-    evaluationsMedia: 0,
-}
+import common from '../../common'
 
 const loadings: {searching: boolean} = { searching: false }
 
 const context: {
-    myProfileData: typeof myProfileData,
+    myProfileData: typeof common.dataModels.profileData,
     loadingsData: typeof loadings,
     updateData: (updatedData: object) => Promise<any>,
     getMyProfileData: () => void
 } = {
-    myProfileData,
+    myProfileData: common.dataModels.profileData,
     loadingsData: loadings,
     updateData: async (updatedData) => undefined,
     getMyProfileData: () => undefined,
 }
 
-export default { myProfileData, context, loadings }
+export default { context, loadings }

@@ -11,6 +11,6 @@ const schema = new mongoose.Schema(
     { timestamps: { currentTime: () => new Date().toISOString() } },
 )
 
-const Model = mongoose.model('Acknowledgment', schema)
+const Model = mongoose.model('Acknowledgement', schema)
 
 module.exports = Model

@@ -2,7 +2,7 @@ const _ = require('lodash')
 const { Request, Response, NextFunction } = require('express')
 const asyncHandler = require('express-async-handler')
 
-const { User, Evaluation } = require('../../../models')
+const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -21,6 +21,9 @@ const getMyProfileData = async (req, res, next) => {
     const evaluationsTotal = evaluations.reduce((evaluationsSum, currentEvaluation) => evaluationsSum + currentEvaluation.value, 0)
     const evaluationsMedia = evaluationsTotal / totalEvalutions
 
+    const acknowledgements = await UserAcknowledgement.find({ user: userId }).populate('acknowledgement')
+    const achievements = await UserAchievement.find({ user: userId }).populate('achievement')
+
     res.status(200).send({
         id: user._id,
         name: user.name,
@@ -31,6 +34,8 @@ const getMyProfileData = async (req, res, next) => {
         myInterests: user.myInterests,
         totalEvalutions,
         evaluationsMedia,
+        achievements,
+        acknowledgements,
     })
 }
 

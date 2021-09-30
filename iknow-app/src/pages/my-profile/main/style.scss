@@ -76,6 +76,8 @@
         }
     }
 
+  
+
     &-footer-actions-buttons-container {
         display: flex;
         width: 100%;
@@ -93,6 +95,46 @@
         &-content {
             display: flex;
             width: 100%;
+        }
+
+        &-acknowledgements { 
+            display: flex;
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+    
+            & > div { 
+                position: relative;
+                display: flex;
+                width: auto;
+                padding-right: 16px;
+
+                .my-profile-page-collapse-container-acknowledgements-item-quantity {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    right: 4px;
+                    bottom: 4px;
+                    background-color: $quaternary-color;
+                    color: black;
+                    opacity: 0.5;
+                    font-size: 12px; 
+                    padding: 2px;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 100% ;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+    
+            &::-webkit-scrollbar {
+                display: none; 
+            }
         }
     }
 }

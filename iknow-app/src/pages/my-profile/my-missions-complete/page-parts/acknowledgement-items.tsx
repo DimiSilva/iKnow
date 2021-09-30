@@ -28,7 +28,7 @@ const AcknowledgementItems: React.FC = () => {
                 : (
                     <div className="my-mission-complete-page-acknowledgement-items">
                         {gamificationProvider.acknowledgements.map((acknowledgement) => (
-                            <div>
+                            <div key={acknowledgement._id}>
                                 <Acknowledgement
                                     type={acknowledgement.type}
                                     description={acknowledgement.description}
@@ -39,7 +39,6 @@ const AcknowledgementItems: React.FC = () => {
                         ))}
                     </div>
                 )}
-
         </div>
     )
 }

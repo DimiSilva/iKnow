@@ -3,6 +3,7 @@ import { useToasts } from 'react-toast-notifications'
 import dataModels from './data-models'
 import services from '../../services'
 import { useAuth } from '../auth'
+import common from '../../common'
 
 const MyProfileContext = createContext(dataModels.context)
 
@@ -11,7 +12,7 @@ export const MyProfileProvider: React.FC = ({ children }) => {
     const toastsProvider = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
-    const [myProfileData, setMyProfileData] = useState(dataModels.myProfileData)
+    const [myProfileData, setMyProfileData] = useState(common.dataModels.profileData)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
