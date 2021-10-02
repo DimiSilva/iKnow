@@ -2,7 +2,9 @@ const _ = require('lodash')
 const { Request, Response, NextFunction } = require('express')
 const asyncHandler = require('express-async-handler')
 
-const { Mission } = require('iknow-backend-common/models')
+const messaging = require('iknow-backend-common/messaging')
+const iknowCommon = require('iknow-common')
+const { Mission } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -16,6 +18,8 @@ const create = async (req, res, next) => {
 
     const mission = new Mission({ title, category, description, owner: userId })
     await mission.save()
+
+    messaging.sendToQueue(iknowCommon.enums.messagingQueues.CREATED_MISSION, { userId })
 
     res.status(200).send({})
 }

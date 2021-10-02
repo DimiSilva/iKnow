@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 
 const { NotFoundException } = require('iknow-common/utils/exceptions')
 const { errorsEnum } = require('iknow-common/enums')
-const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('iknow-backend-common/models')
+const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('../../../models')
 
 /**
  * @param {Request} req

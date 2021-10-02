@@ -1,4 +1,4 @@
-const { Achievement } = require('iknow-backend-common/models')
+const { Achievement } = require('../../../../models')
 const achievementsList = require('./achievements-list')
 
 const seedAchievemenets = async () => {

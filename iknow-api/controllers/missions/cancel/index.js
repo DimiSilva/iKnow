@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const { NotFoundException, ForbiddenException } = require('iknow-common/utils/exceptions')
 const { errorsEnum, missionStatusEnum } = require('iknow-common/enums')
 
-const { Mission } = require('iknow-backend-common/models')
+const { Mission } = require('../../../models')
 
 /**
  * @param {Request} req

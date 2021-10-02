@@ -1,1 +1,2 @@
-module.exports.models = require('./models')
+module.exports.setupModels = require('./setup-models')
+module.exports.messaging = require('./messaging')

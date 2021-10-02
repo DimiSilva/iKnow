@@ -16,6 +16,11 @@ const setupRoutes = (app) => {
         usersController.login,
     )
     app.post(
+        `${endpoint}/login-signal`,
+        [middlewares.authentication],
+        usersController.loginSignal,
+    )
+    app.post(
         `${endpoint}/register`,
         [middlewares.requestBodyValidator(validators.register)],
         usersController.register,

@@ -1,11 +1,11 @@
 {
   "name": "iknow-common",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "",
   "main": "index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "new-publish": "npx tsc && npm publish"
   },
   "keywords": [],
   "author": "Edmilson Nelson da Silva Junior",

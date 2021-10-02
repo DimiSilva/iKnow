@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Edmilson Nelson da Silva Junior",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -17,8 +17,8 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "fastest-validator": "^1.11.1",
-    "iknow-backend-common": "^1.1.0",
-    "iknow-common": "^1.0.0",
+    "iknow-backend-common": "^1.3.5",
+    "iknow-common": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.0.4",

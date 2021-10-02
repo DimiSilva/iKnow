@@ -1,15 +1,36 @@
 version: "3.8"
 services:
-  rabbitmq:
+  iknow-rabbitmq:
     image: rabbitmq:3.9.7-management-alpine
+    hostname: iknow-rabbitmq
     container_name: 'iknow-rabbitmq'
     ports:
         - 5673:5672
         - 15673:15672
     volumes:
         - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
         - iknow
+
+  iknow-messaging-consumers:
+    container_name: iknow-messaging-consumers
+    hostname: iknow-messaging-consumers
+    build:
+      context: ./iknow-messaging-consumers
+      dockerfile: Dockerfile
+    volumes:
+      - ./iknow-messaging-consumers/:/usr/src/app/
+      - /usr/src/app/node_modules
+    environment:
+      MESSAGING_SERVICE_CONNECTION_URL: "amqp://host.docker.internal:5673"
+      MONGO_CONNECTION_URL: "mongodb+srv://master:NqSFg1V9cKwnITBT@dev.8gcal.mongodb.net/iKnow?retryWrites=true&w=majority"
+    restart: unless-stopped
+    depends_on:
+      - iknow-rabbitmq
+    networks:
+      - iknow
+      
   iknow-api:
     container_name: iknow-api
     hostname: iknow-api
@@ -27,10 +48,14 @@ services:
       MONGO_CONNECTION_URL: "mongodb+srv://master:NqSFg1V9cKwnITBT@dev.8gcal.mongodb.net/iKnow?retryWrites=true&w=majority"
       PASSWORD_HASH_SALT_ROUNDS: 10
       AUTHENTICATION_SECRET: "8RcFZHrtUv9nXt0j7IWWg2A04Bo1CrqyoGnIIyO0j7xcHpod6INtzp5BtUmv5dgydyU02f_hkrgGMOqcrYfweL4_Bu_VpNAdA-2bPUdYUFFFQmTSAhhLwRjrGJVGTimOFLrbdvceijDyaQ2r6uKJF1yH3oR60xGAnxotaTqgK9s"
+      MESSAGING_SERVICE_CONNECTION_URL: "amqp://host.docker.internal:5673"
+    depends_on:
+      - iknow-rabbitmq
+      - iknow-achievements-worker
     networks:
       - iknow
-    depends_on:
-      - rabbitmq
+
 networks:
   iknow:
+    name: 'iknow'
     driver: bridge

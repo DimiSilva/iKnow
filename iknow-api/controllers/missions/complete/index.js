@@ -4,7 +4,9 @@ const asyncHandler = require('express-async-handler')
 const { NotFoundException, ForbiddenException } = require('iknow-common/utils/exceptions')
 const { errorsEnum, missionStatusEnum } = require('iknow-common/enums')
 
-const { Mission, Evaluation, UserAcknowledgement } = require('iknow-backend-common/models')
+const messaging = require('iknow-backend-common/messaging')
+const iknowCommon = require('iknow-common')
+const { Mission, Evaluation, UserAcknowledgement } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -33,11 +35,14 @@ const complete = async (req, res, next) => {
     }
 
     if (acknowledgement) {
+        messaging.sendToQueue(iknowCommon.enums.messagingQueues.SEND_ACKNOWLEDGEMENT, { userId })
+        messaging.sendToQueue(iknowCommon.enums.messagingQueues.RECEIVED_ACKNOWLEDGEMENT, { userId: mission.acceptedBy })
         const userAcknowledgement = new UserAcknowledgement({ user: mission.acceptedBy, mission: mission._id, acknowledgement })
         await userAcknowledgement.save({ session })
     }
 
     await session.commitTransaction()
+    messaging.sendToQueue(iknowCommon.enums.messagingQueues.CONCLUDED_MISSION, { userId })
     session.endSession()
 
     res.status(200).send({})

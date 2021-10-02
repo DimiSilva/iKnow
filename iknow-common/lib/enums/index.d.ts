@@ -62,3 +62,22 @@ export var acknowledgementTypes: {
     SUPPORTIVE: string;
     WISE: string;
 };
+export var messagingQueues: {
+    CREATED_MISSION: string;
+    CONCLUDED_MISSION: string;
+    MESSAGES: string;
+    LOGIN: string;
+    RECEIVED_ACKNOWLEDGEMENT: string;
+    SEND_ACKNOWLEDGEMENT: string;
+    CONTACT: string;
+};
+export var dbModels: {
+    ACHIEVEMENT: string;
+    ACKNOWLEDGEMENT: string;
+    CONNECTION: string;
+    EVALUATION: string;
+    MISSION: string;
+    USER: string;
+    USER_ACHIEVEMENT: string;
+    USER_ACKNOWLEDGEMENT: string;
+};

@@ -21,7 +21,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.17",
-    "iknow-common": "link:../iknow-common",
+    "iknow-common": "^1.1.0",
     "ionicons": "^5.4.0",
     "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
