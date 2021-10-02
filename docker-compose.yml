@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.7-management-alpine
+    container_name: 'iknow-rabbitmq'
+    ports:
+        - 5673:5672
+        - 15673:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq
+    networks:
+        - iknow
+  iknow-api:
+    container_name: iknow-api
+    hostname: iknow-api
+    build:
+      context: ./iknow-api
+      dockerfile: Dockerfile
+    ports:
+     - 3000:3000
+    volumes:
+      - ./iknow-api/:/usr/src/app/
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      MONGO_CONNECTION_URL: "mongodb+srv://master:NqSFg1V9cKwnITBT@dev.8gcal.mongodb.net/iKnow?retryWrites=true&w=majority"
+      PASSWORD_HASH_SALT_ROUNDS: 10
+      AUTHENTICATION_SECRET: "8RcFZHrtUv9nXt0j7IWWg2A04Bo1CrqyoGnIIyO0j7xcHpod6INtzp5BtUmv5dgydyU02f_hkrgGMOqcrYfweL4_Bu_VpNAdA-2bPUdYUFFFQmTSAhhLwRjrGJVGTimOFLrbdvceijDyaQ2r6uKJF1yH3oR60xGAnxotaTqgK9s"
+    networks:
+      - iknow
+    depends_on:
+      - rabbitmq
+networks:
+  iknow:
+    driver: bridge

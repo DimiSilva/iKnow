@@ -2,8 +2,7 @@ const _ = require('lodash')
 const { Request, Response, NextFunction } = require('express')
 const asyncHandler = require('express-async-handler')
 
-const { missionStatusEnum } = require('iknow-common/enums')
-const { Mission } = require('../../../models')
+const { Mission } = require('iknow-backend-common/models')
 
 /**
  * @param {Request} req

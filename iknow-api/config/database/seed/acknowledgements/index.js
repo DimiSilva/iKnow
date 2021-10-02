@@ -1,4 +1,4 @@
-const { Acknowledgement } = require('../../../../models')
+const { Acknowledgement } = require('iknow-backend-common/models')
 const acknowledgementsList = require('./acknowledgements-list')
 
 const seedAchievements = async () => {

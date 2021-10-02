@@ -1,7 +1,4 @@
-const bcrypt = require('bcrypt')
 const FastestValidator = require('fastest-validator')
-const { errorsEnum } = require('iknow-common/enums')
-const { User } = require('../../../models')
 
 const fv = new FastestValidator({
     useNewCustomCheckerFunction: true,

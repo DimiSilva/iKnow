@@ -7,7 +7,7 @@ const { sign } = require('jsonwebtoken')
 const { UnauthorizedException } = require('iknow-common/utils/exceptions')
 const { errorsEnum } = require('iknow-common/enums')
 
-const { User } = require('../../../models')
+const { User } = require('iknow-backend-common/models')
 
 /**
  * @param {Request} req
