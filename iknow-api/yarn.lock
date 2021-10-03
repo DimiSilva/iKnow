@@ -1060,24 +1060,24 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-iknow-backend-common@^1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/iknow-backend-common/-/iknow-backend-common-1.3.5.tgz#9df8f457dc7c28ae278fea6b51ee194a83deb34e"
-  integrity sha512-tMU8T6wRVAe3Vv8SlkvcCta4TW0a9uZZfIcd95ZSerS3HMk87vzTB6tDF6dHULjpC55CypSSy8l4cUlMgfhq9A==
+iknow-backend-common@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/iknow-backend-common/-/iknow-backend-common-1.4.0.tgz#0b3c79db0b1b4f2b2230411b880029d00c3c8bd7"
+  integrity sha512-F12/xRGgccaOeD91/6j83D0kQGneUv/RwMhKad9/zeqotD6/G13XCyjzxfC+hoN998V5nmVgSTl9fOK8NeYiIw==
   dependencies:
     amqplib "^0.8.0"
     iknow-common "^1.2.2"
     mongoose "^6.0.8"
 
-iknow-common@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.1.tgz#47198c0170a0b829c4f5394b7a24298ec33e7ed4"
-  integrity sha512-MtchksHlMXvA8U/R/M3hCfru/jnHZg6b/4Ug5QF7raI6D0uyOPNfHLJpmkVIeMR9G49QPMY2BaTebwtxcgBhcA==
-
 iknow-common@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.2.tgz#fe6191de134f0d0baab215184a6389a27d0c76fb"
   integrity sha512-mJWWrgVC1PXNL860EnbeGa69vbC5YK9HfOY5wt2+/s7+5epv0QJ1RK91lGgAmjy72Glu3Aj+lhfzDGPI3EDQXQ==
+
+iknow-common@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.4.tgz#134882718584033ac2bbb96e4c9b4b0e39e06236"
+  integrity sha512-paKsVMI3tALUfjLz9Te10o8NTobnGlbu7wgd1dHbsduSuL4viHfocmAylN6SEytMOa0cH+Nr2i58HDyz4qTRvQ==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"

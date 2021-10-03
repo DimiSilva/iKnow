@@ -15,69 +15,21 @@ export var errorsEnum: {
     ALREADY_CANCELED_MISSION: string;
     CANNOT_UNBIND_ANOTHER_USER_MISSION: string;
     YOU_NOT_IN_THIS_MISSION: string;
+    ALREADY_ADDED_USER: string;
 };
 export var errorsMasksEnum: {
     [x: string]: string;
 };
-export var missionCategoriesEnum: {
-    TECHNOLOGY: string;
-    LANGUAGES: string;
-    MUSIC: string;
-    MATH: string;
-    OTHERS: string;
-};
+export var missionCategoriesEnum: typeof import("./mission-categories");
 export var missionCategoriesMasksEnum: {
     [x: string]: string;
 };
-export var missionStatusEnum: {
-    IDLE: string;
-    IN_PROGRESS: string;
-    COMPLETED: string;
-    CANCELED: string;
-};
+export var missionStatusEnum: typeof import("./mission-status");
 export var missionStatusMasksEnum: {
     [x: string]: string;
 };
-export var achievementKeys: {
-    CONCLUDED_MISSION: string;
-    CREATED_MISSION: string;
-    MESSAGES: string;
-    LOGIN: string;
-    RECEIVED_ACKNOWLEDGEMENT: string;
-    SEND_ACKNOWLEDGEMENT: string;
-    CONTACT: string;
-};
-export var achievementTiers: {
-    WOOD: string;
-    BRONZE: string;
-    SILVER: string;
-    GOLD: string;
-    DIAMOND: string;
-};
-export var acknowledgementTypes: {
-    CHARISMATIC: string;
-    EFFICIENT: string;
-    GOOD_MASTER: string;
-    PATIENT: string;
-    SUPPORTIVE: string;
-    WISE: string;
-};
-export var messagingQueues: {
-    CREATED_MISSION: string;
-    CONCLUDED_MISSION: string;
-    MESSAGES: string;
-    LOGIN: string;
-    RECEIVED_ACKNOWLEDGEMENT: string;
-    SEND_ACKNOWLEDGEMENT: string;
-    CONTACT: string;
-};
-export var dbModels: {
-    ACHIEVEMENT: string;
-    ACKNOWLEDGEMENT: string;
-    CONNECTION: string;
-    EVALUATION: string;
-    MISSION: string;
-    USER: string;
-    USER_ACHIEVEMENT: string;
-    USER_ACKNOWLEDGEMENT: string;
-};
+export var achievementKeys: typeof import("./achievement-keys");
+export var achievementTiers: typeof import("./achievement-tiers");
+export var acknowledgementTypes: typeof import("./acknowledgement-types");
+export var messagingQueues: typeof import("./messaging-queues");
+export var dbModels: typeof import("./db-models");

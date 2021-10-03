@@ -25,6 +25,16 @@ const setupRoutes = (app) => {
         [middlewares.requestBodyValidator(validators.register)],
         usersController.register,
     )
+    app.post(
+        `${endpoint}/add-contact`,
+        [middlewares.requestBodyValidator(validators.addContact)],
+        usersController.addContact,
+    )
+    app.post(
+        `${endpoint}/remove-contact`,
+        [middlewares.requestBodyValidator(validators.removeContact)],
+        usersController.removeContact,
+    )
     app.get(
         `${endpoint}/profile-data/:userId`,
         [middlewares.authentication, middlewares.requestBodyValidator(validators.getProfileData)],

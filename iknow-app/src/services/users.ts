@@ -109,4 +109,36 @@ const updateMyProfileData: (
     addToast,
 )
 
-export default { login, loginSignal, register, getMyProfileData, getProfileData, get, updateMyProfileData }
+const addContact: (
+    token: string,
+    data: { userId: string },
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    data,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/add-contact`,
+    'PUT',
+    data,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
+const removeContact: (
+    token: string,
+    data: { userId: string },
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    data,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/remove-contact`,
+    'PUT',
+    data,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
+export default { login, loginSignal, register, getMyProfileData, getProfileData, get, updateMyProfileData, addContact, removeContact }
