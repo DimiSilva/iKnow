@@ -39,7 +39,6 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             className={appProvider.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
                             onClick={() => appProvider.navigateTo('/rede')}
-                            disabled
                         >
                             <Icons.World color={variables.iconsColor} />
                         </button>

@@ -35,6 +35,11 @@ const setupRoutes = (app) => {
         [middlewares.authentication],
         usersController.getMyProfileData,
     )
+    app.get(
+        `${endpoint}`,
+        [middlewares.authentication, middlewares.requestBodyValidator(validators.get)],
+        usersController.get,
+    )
     app.put(
         `${endpoint}/my-profile-data`,
         [middlewares.authentication, middlewares.requestBodyValidator(validators.updateMyProfileData)],

@@ -55,6 +55,16 @@ const achievement: {
     tier: '',
 }
 
+const user: {
+    _id: string,
+    name: string,
+    whoIAm: string,
+} = {
+    _id: '',
+    name: '',
+    whoIAm: '',
+}
+
 const missionsFiltersFormData: {
     search?: string,
     category?: string
@@ -96,4 +106,4 @@ const profileData: {
     achievements: [],
 }
 
-export default { paginationData, mission, acknowledgement, achievement, missionsFiltersFormData, profileData }
+export default { paginationData, mission, acknowledgement, achievement, user, missionsFiltersFormData, profileData }

@@ -1,3 +1,4 @@
+import { constructQueryString } from 'iknow-common/utils'
 import { AddToast } from 'react-toast-notifications'
 import utils from '../utils'
 
@@ -76,6 +77,22 @@ const getProfileData: (
     addToast,
 )
 
+const get: (
+    token: string,
+    data: {search?: string},
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    data,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}${constructQueryString(data)}`,
+    'GET',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const updateMyProfileData: (
     token: string,
     data: { name?: string, phone?: string, whoIAm?: string, whatDoIDo?: string, myInterests?: string },
@@ -92,4 +109,4 @@ const updateMyProfileData: (
     addToast,
 )
 
-export default { login, loginSignal, register, getMyProfileData, getProfileData, updateMyProfileData }
+export default { login, loginSignal, register, getMyProfileData, getProfileData, get, updateMyProfileData }

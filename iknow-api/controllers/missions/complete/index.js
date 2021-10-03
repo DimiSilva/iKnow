@@ -42,7 +42,7 @@ const complete = async (req, res, next) => {
     }
 
     await session.commitTransaction()
-    messaging.sendToQueue(iknowCommon.enums.messagingQueues.CONCLUDED_MISSION, { userId })
+    messaging.sendToQueue(iknowCommon.enums.messagingQueues.CONCLUDED_MISSION, { userId: mission.acceptedBy })
     session.endSession()
 
     res.status(200).send({})

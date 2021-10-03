@@ -13,6 +13,7 @@ import Dropdown from './dropdown'
 import InfiniteScroll from './infinte-scroll'
 import LabelText from './label-text'
 import MissionsList from './missions-list'
+import NetworkList from './network-list'
 import Acknowledgement from './acknowledgement'
 import Achievement from './achievement'
 import ProfileAcknowledgements from './profile-acknowledgements'
@@ -35,6 +36,7 @@ export {
     InfiniteScroll,
     LabelText,
     MissionsList,
+    NetworkList,
     Acknowledgement,
     Achievement,
     ProfileAcknowledgements,

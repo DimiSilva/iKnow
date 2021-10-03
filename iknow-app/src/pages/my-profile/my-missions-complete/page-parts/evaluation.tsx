@@ -20,6 +20,7 @@ const Evaluation: React.FC = () => {
                     () => myMissionsProvider.setEvaluation(myMissionsProvider.evaluation === position ? undefined : position)
                 }
                 type="button"
+                key={position}
             >
                 <Icon size="30px" color={variables.quaternaryColor} />
             </button>

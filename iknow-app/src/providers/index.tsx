@@ -8,6 +8,7 @@ import { MissionsProvider } from './missions'
 import { MyMissionsProvider } from './my-missions'
 import { MyAcceptedMissionsProvider } from './my-accepted-missions'
 import { GamificationProvider } from './gamification'
+import { NetworkProvider } from './network'
 
 const Providers: React.FC = ({ children }) => (
     <AppProvider>
@@ -20,7 +21,9 @@ const Providers: React.FC = ({ children }) => (
                                 <MyMissionsProvider>
                                     <MissionsProvider>
                                         <MyAcceptedMissionsProvider>
-                                            {children}
+                                            <NetworkProvider>
+                                                {children}
+                                            </NetworkProvider>
                                         </MyAcceptedMissionsProvider>
                                     </MissionsProvider>
                                 </MyMissionsProvider>

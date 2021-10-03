@@ -17,11 +17,13 @@ const loggedPages: Array<page> = [
     { path: '/meu-perfil/missoes-aceitas', exact: true, component: Pages.MyProfile.MyAcceptedMissions, pageTitle: 'Missões Aceitas' },
     { path: '/meu-perfil/missoes-aceitas/filtros', exact: true, component: Pages.MyProfile.MyAcceptedMissionsFilters, pageTitle: 'Filtrar Missões' },
     { path: '/meu-perfil/missoes-aceitas/visualizacao', exact: true, component: Pages.MyProfile.MyAcceptedMissionsView, pageTitle: 'Missão' },
-    { path: '/perfil', exact: true, component: Pages.Profile.Main, pageTitle: 'Perfil' },
     { path: '/missoes', exact: true, component: Pages.Missions.Main, pageTitle: 'Missões' },
     { path: '/missoes/filtros', exact: true, component: Pages.Missions.Filters, pageTitle: 'Filtrar Missões' },
     { path: '/missoes/cadastro', exact: true, component: Pages.Missions.Create, pageTitle: 'Criar Missão' },
     { path: '/missoes/visualizacao', exact: true, component: Pages.Missions.View, pageTitle: 'Missão' },
+    { path: '/rede', exact: true, component: Pages.Network.Main, pageTitle: 'Rede' },
+    { path: '/rede/filtros', exact: true, component: Pages.Network.Filters, pageTitle: 'Filtrar Usuários' },
+    { path: '/perfil', exact: true, component: Pages.Profile.Main, pageTitle: 'Perfil' },
     { path: '/editando', exact: true, component: Pages.Common.FieldEditing, pageTitle: 'Editando' },
 ]
 
