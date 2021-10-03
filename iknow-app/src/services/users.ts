@@ -63,14 +63,14 @@ const getMyProfileData: (
 
 const getProfileData: (
     token: string,
-    userId: string,
+    data: { userId: string, checkIfIsConnected?: boolean },
     addToast: AddToast
 ) => Promise<any> = (
     token,
-    userId,
+    data,
     addToast,
 ) => utils.httpRequest(
-    `${baseApiUrl}/${serviceEndpoint}/profile-data/${userId}`,
+    `${baseApiUrl}/${serviceEndpoint}/profile-data/${data.userId}${constructQueryString({ checkIfIsConnected: data.checkIfIsConnected })}`,
     'GET',
     undefined,
     { Authorization: `Bearer ${token}` },
@@ -118,9 +118,9 @@ const addContact: (
     data,
     addToast,
 ) => utils.httpRequest(
-    `${baseApiUrl}/${serviceEndpoint}/add-contact`,
-    'PUT',
-    data,
+    `${baseApiUrl}/${serviceEndpoint}/add-contact/${data.userId}`,
+    'POST',
+    undefined,
     { Authorization: `Bearer ${token}` },
     addToast,
 )
@@ -134,9 +134,9 @@ const removeContact: (
     data,
     addToast,
 ) => utils.httpRequest(
-    `${baseApiUrl}/${serviceEndpoint}/remove-contact`,
-    'PUT',
-    data,
+    `${baseApiUrl}/${serviceEndpoint}/remove-contact/${data.userId}`,
+    'POST',
+    undefined,
     { Authorization: `Bearer ${token}` },
     addToast,
 )

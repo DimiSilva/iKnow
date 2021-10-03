@@ -11,8 +11,9 @@
     border-radius: 6px;
     color: $tertiary-color;
     font-weight: 700;
-    padding: 8px;
+    padding: 8px; 
     &:disabled{
         opacity: 0.7;
     }
+    box-shadow: 0px 4px 2px $shadow-color;
 }

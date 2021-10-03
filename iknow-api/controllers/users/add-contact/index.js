@@ -21,10 +21,8 @@ const addContact = async (req, res, next) => {
 
     const alreadyExistentConnection = await Connection.findOne({
         $or: [
-            { $or: [
-                { remitter },
-                { recipient },
-            ] },
+            { remitter },
+            { recipient },
         ],
     })
     if (alreadyExistentConnection) throw new ConflictException(errorsEnum.ALREADY_ADDED_USER)

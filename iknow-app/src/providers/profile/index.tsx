@@ -21,7 +21,8 @@ export const ProfileProvider: React.FC = ({ children }) => {
 
     const getProfileData = async (userId: string) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.getProfileData(authProvider.token, userId, toastsProvider.addToast)
+        const res = await services.users.getProfileData(authProvider.token, { userId, checkIfIsConnected: true }, toastsProvider.addToast)
+        console.log(res)
         if (res) setProfileData(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
@@ -31,8 +32,28 @@ export const ProfileProvider: React.FC = ({ children }) => {
         getProfileData(userId)
     }
 
+    const addContact = async () => {
+        setLoadingsData((loadingsData) => ({ ...loadingsData, addingContact: true }))
+        const res = await services.users.addContact(authProvider.token, { userId: profileData.id }, toastsProvider.addToast)
+        if (res) {
+            toastsProvider.addToast('Você adicionou o contato com sucesso', { appearance: 'success', autoDismiss: true })
+            call(profileData.id)
+        }
+        setLoadingsData((loadingsData) => ({ ...loadingsData, addingContact: false }))
+    }
+
+    const removeContact = async () => {
+        setLoadingsData((loadingsData) => ({ ...loadingsData, removingContact: true }))
+        const res = await services.users.removeContact(authProvider.token, { userId: profileData.id }, toastsProvider.addToast)
+        if (res) {
+            toastsProvider.addToast('Você removeu o contato com sucesso', { appearance: 'success', autoDismiss: true })
+            call(profileData.id)
+        }
+        setLoadingsData((loadingsData) => ({ ...loadingsData, removingContact: false }))
+    }
+
     return (
-        <ProfileContext.Provider value={{ profileData, loadingsData, call }}>
+        <ProfileContext.Provider value={{ profileData, loadingsData, call, addContact, removeContact }}>
             {children}
         </ProfileContext.Provider>
     )

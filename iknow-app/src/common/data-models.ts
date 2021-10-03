@@ -76,6 +76,7 @@ const missionsFiltersFormData: {
 }
 
 const profileData: {
+    id: string,
     name: string,
     phone: string,
     email: string,
@@ -93,7 +94,9 @@ const profileData: {
         user: string
         achievement: typeof achievement
     }>
+    isConnected?: boolean
 } = {
+    id: '',
     name: '',
     phone: '',
     email: '',

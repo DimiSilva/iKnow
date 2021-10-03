@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 
 const { NotFoundException } = require('iknow-common/utils/exceptions')
 const { errorsEnum } = require('iknow-common/enums')
-const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('../../../models')
+const { User, Evaluation, UserAcknowledgement, UserAchievement, Connection } = require('../../../models')
 
 /**
  * @param {Request} req
@@ -13,7 +13,8 @@ const { User, Evaluation, UserAcknowledgement, UserAchievement } = require('../.
  */
 
 const getProfileData = async (req, res, next) => {
-    const { userId } = _.get(req, 'body', {})
+    const { userId, checkIfIsConnected } = _.get(req, 'body', {})
+    const { userId: requestUserId } = _.get(req, 'userPayload', {})
 
     const user = await User.findById(userId)
     if (!user) throw new NotFoundException(errorsEnum.NOT_FOUND)
@@ -27,6 +28,8 @@ const getProfileData = async (req, res, next) => {
     const acknowledgements = await UserAcknowledgement.find({ user: userId }).populate('acknowledgement')
     const achievements = await UserAchievement.find({ user: userId }).populate('achievement')
 
+    const isConnected = await (checkIfIsConnected ? Connection.findOne({ remitter: requestUserId, recipient: userId }) : false)
+
     res.status(200).send({
         id: user._id,
         name: user.name,
@@ -39,6 +42,7 @@ const getProfileData = async (req, res, next) => {
         evaluationsMedia,
         achievements,
         acknowledgements,
+        ...(checkIfIsConnected ? { isConnected } : {}),
     })
 }
 
