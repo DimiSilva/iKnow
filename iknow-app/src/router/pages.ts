@@ -23,6 +23,8 @@ const loggedPages: Array<page> = [
     { path: '/missoes/visualizacao', exact: true, component: Pages.Missions.View, pageTitle: 'Missão' },
     { path: '/rede', exact: true, component: Pages.Network.Main, pageTitle: 'Rede' },
     { path: '/rede/filtros', exact: true, component: Pages.Network.Filters, pageTitle: 'Filtrar Usuários' },
+    { path: '/buscar-contatos', exact: true, component: Pages.SearchContacts.Main, pageTitle: 'Buscar Usuário' },
+    { path: '/buscar-contatos/filtros', exact: true, component: Pages.SearchContacts.Filters, pageTitle: 'Filtrar Usuários' },
     { path: '/perfil', exact: true, component: Pages.Profile.Main, pageTitle: 'Perfil' },
     { path: '/editando', exact: true, component: Pages.Common.FieldEditing, pageTitle: 'Editando' },
 ]

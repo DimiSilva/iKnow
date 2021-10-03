@@ -22,7 +22,6 @@ export const ProfileProvider: React.FC = ({ children }) => {
     const getProfileData = async (userId: string) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
         const res = await services.users.getProfileData(authProvider.token, { userId, checkIfIsConnected: true }, toastsProvider.addToast)
-        console.log(res)
         if (res) setProfileData(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }

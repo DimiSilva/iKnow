@@ -6,9 +6,9 @@ import services from '../../services'
 import { useAuth } from '../auth'
 import dataModels from './data-models'
 
-const NetworkContext = createContext(dataModels.context)
+const SearchContactsContext = createContext(dataModels.context)
 
-export const NetworkProvider: React.FC = ({ children }) => {
+export const SearchContactsProvider: React.FC = ({ children }) => {
     const authProvider = useAuth()
     const toastsProvider = useToasts()
 
@@ -26,10 +26,11 @@ export const NetworkProvider: React.FC = ({ children }) => {
 
     const getUsers = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.getContacts(authProvider.token, _.omitBy({
+        const res = await services.users.get(authProvider.token, _.omitBy({
             page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
             ...filtersFormData,
+            dontBringMyContacts: true,
         }, _.isNil),
         toastsProvider.addToast)
         setLoadingsData((loadingsData) => {
@@ -54,7 +55,7 @@ export const NetworkProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <NetworkContext.Provider value={{
+        <SearchContactsContext.Provider value={{
             users,
             loadingsData,
             getUsers,
@@ -66,8 +67,8 @@ export const NetworkProvider: React.FC = ({ children }) => {
         }}
         >
             {children}
-        </NetworkContext.Provider>
+        </SearchContactsContext.Provider>
     )
 }
 
-export const useNetwork = () => useContext(NetworkContext)
+export const useSearchContacts = () => useContext(SearchContactsContext)

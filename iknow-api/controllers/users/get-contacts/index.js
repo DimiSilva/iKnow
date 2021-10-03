@@ -10,11 +10,11 @@ const { User, Connection } = require('../../../models')
  * @param {NextFunction} next
  */
 
-const get = async (req, res, next) => {
-    const { search, page, perPage, dontBringMyContacts } = _.get(req, 'body', {})
+const getContacts = async (req, res, next) => {
+    const { search, page, perPage } = _.get(req, 'body', {})
     const { userId } = _.get(req, 'userPayload', {})
 
-    const myConnections = dontBringMyContacts ? await Connection.find({ remitter: userId }) : []
+    const connections = await Connection.find({ remitter: userId })
 
     const query = {
         ...(search ? {
@@ -25,7 +25,7 @@ const get = async (req, res, next) => {
         } : {}),
         $and: [
             { _id: { $ne: userId } },
-            (dontBringMyContacts ? { _id: { $nin: myConnections.map((connection) => connection.recipient) } } : {}),
+            { _id: { $in: connections.map((connection) => connection.recipient) } },
         ],
     }
 
@@ -45,4 +45,4 @@ const get = async (req, res, next) => {
     })
 }
 
-module.exports = asyncHandler(get)
+module.exports = asyncHandler(getContacts)

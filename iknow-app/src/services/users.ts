@@ -93,6 +93,22 @@ const get: (
     addToast,
 )
 
+const getContacts: (
+    token: string,
+    data: {search?: string},
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    data,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/contacts${constructQueryString(data)}`,
+    'GET',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const updateMyProfileData: (
     token: string,
     data: { name?: string, phone?: string, whoIAm?: string, whatDoIDo?: string, myInterests?: string },
@@ -141,4 +157,4 @@ const removeContact: (
     addToast,
 )
 
-export default { login, loginSignal, register, getMyProfileData, getProfileData, get, updateMyProfileData, addContact, removeContact }
+export default { login, loginSignal, register, getMyProfileData, getProfileData, get, getContacts, updateMyProfileData, addContact, removeContact }
