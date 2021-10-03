@@ -6522,10 +6522,10 @@ ignore@^5.1.4:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
   integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
 
-iknow-common@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.1.0.tgz#f6158dda1febe25de623085ab99541d8d90e3ae1"
-  integrity sha512-rjHiu0xx04Sp/p1sETG5tuZAMi+XtNgjtv6xjbYzQ2qrP7kyqMBQ3sdHk4PujyoVnWkHuzL0VD1r602AotsRRQ==
+iknow-common@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.3.tgz#97a72719a3a19666fccc44e1efc2ad5b201ca72e"
+  integrity sha512-yB3Ffu72/uvrCL9IEX6O92s228EkO5aP9SsAhs8NASVqD4mjkA/xMAh4J2QEEpBT8TOfzGKa7lUlJmhGol8tzQ==
 
 immer@8.0.1:
   version "8.0.1"

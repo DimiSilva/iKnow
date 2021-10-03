@@ -4,7 +4,7 @@ const tertiaryColor = '#ee5622'
 const quaternaryColor = '#eca72c'
 const quintenaryColor = '#221e22'
 
-const errorColor = '#cc0000'
+const errorColor = '#B00020'
 const successColor = '#00b800'
 
 const iconsColor = '#ffffff'

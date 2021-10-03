@@ -18,6 +18,20 @@ const login: (
     addToast,
 )
 
+const loginSignal: (
+    token: string,
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/login-signal`,
+    'POST',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
 const register: (
     data: {name: string, email: string, phone: string, password: string},
     addToast: AddToast
@@ -78,4 +92,4 @@ const updateMyProfileData: (
     addToast,
 )
 
-export default { login, register, getMyProfileData, getProfileData, updateMyProfileData }
+export default { login, loginSignal, register, getMyProfileData, getProfileData, updateMyProfileData }

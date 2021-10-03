@@ -1,9 +1,8 @@
 interface IComponentProps {
-    type: string,
-    title: string,
+    _key: string,
+    tier: string,
     description: string,
-    onClick?: Function,
-    isSelected?: boolean
+    title: string,
 }
 
 export default IComponentProps

@@ -25,8 +25,8 @@ const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, t
                                         color={variables.errorColor}
                                     />
                                 </div>
-                                <ReactTooltip multiline id={`input-error-message-${label}`} type="error">
-                                    {invalidDataMessage}
+                                <ReactTooltip multiline className="tooltip error" id={`input-error-message-${label}`}>
+                                    <p className="text">{invalidDataMessage}</p>
                                 </ReactTooltip>
                             </>
                         ) : ''}

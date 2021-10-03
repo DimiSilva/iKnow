@@ -9,9 +9,9 @@ const utils = require('../../utils')
 module.exports = async ({ userId }) => {
     const user = await User.findById(userId)
     const lastLoginDate = user.achievementsControl.lastLoginDate ? new Date(user.achievementsControl.lastLoginDate) : undefined
-    const lastLoginDateMoreOneDay = new Date(lastLoginDate.setDate(lastLoginDate.getDate() + 1))
+    const lastLoginDateMoreOneDay = lastLoginDate ? new Date(lastLoginDate.setDate(lastLoginDate.getDate() + 1)) : undefined
 
-    if (!user || lastLoginDateMoreOneDay > new Date()) return
+    if (!user || (!!lastLoginDateMoreOneDay && lastLoginDateMoreOneDay > new Date())) return
 
     user.achievementsControl.lastLoginDate = new Date()
 

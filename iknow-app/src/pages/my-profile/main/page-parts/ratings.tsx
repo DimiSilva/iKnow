@@ -37,8 +37,10 @@ const Ratings: React.FC = () => {
                         color={variables.iconsColor}
                     />
                 </div>
-                <ReactTooltip multiline id="my-profile-page-ratings-info" type="info">
-                    Aqui você pode ver sua avaliação e quantas vezes você foi avaliado, para aumentar a avaliação, é preciso completar missões
+                <ReactTooltip multiline className="tooltip" id="my-profile-page-ratings-info">
+                    <p className="text">
+                        Aqui você pode ver sua avaliação e quantas vezes você foi avaliado, para aumentar a avaliação, é preciso completar missões
+                    </p>
                 </ReactTooltip>
             </div>
         </div>

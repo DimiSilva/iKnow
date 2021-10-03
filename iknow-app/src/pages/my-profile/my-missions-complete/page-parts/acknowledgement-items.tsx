@@ -31,6 +31,7 @@ const AcknowledgementItems: React.FC = () => {
                             <div key={acknowledgement._id}>
                                 <Acknowledgement
                                     type={acknowledgement.type}
+                                    title={acknowledgement.title}
                                     description={acknowledgement.description}
                                     onClick={() => myMissionsProvider.setAcknowledgement(acknowledgement)}
                                     isSelected={((myMissionsProvider.acknowledgement || {})._id || '') === acknowledgement._id}

@@ -25,8 +25,8 @@ const ProfileAcknowledgements: React.FC<IComponentProps> = ({ acknowledgements }
             <Collapse
                 title="Reconhecimento"
                 info={`\
-                    Nessa sessão você pode ver o seu reconhecimento, as pessoas vão te dar reconhecimento com base nas suas ações`}
-                emptyContentMessage="Nenhum reconhecimento ainda, mas não desanime, continue se esforçando"
+Nessa sessão você pode o reconhecimento, as pessoas dão reconhecimento com base em ações e comportamentos`}
+                emptyContentMessage="Ops, nenhum reconhecimento ainda..."
                 defaultState="open"
             >
 
@@ -38,6 +38,7 @@ const ProfileAcknowledgements: React.FC<IComponentProps> = ({ acknowledgements }
                                     <div key={acknowledgement.data._id}>
                                         <Acknowledgement
                                             type={acknowledgement.data.type}
+                                            title={acknowledgement.data.title}
                                             description={acknowledgement.data.description}
                                         />
                                         <div className="profile-acknowledgements-acknowledgements-item-quantity">

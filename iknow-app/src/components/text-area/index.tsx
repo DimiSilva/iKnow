@@ -25,8 +25,8 @@ const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value
                                         color={variables.errorColor}
                                     />
                                 </div>
-                                <ReactTooltip multiline id={`text-area-error-message-${label}`} type="error">
-                                    {invalidDataMessage}
+                                <ReactTooltip multiline className="tooltip error" id={`text-area-error-message-${label}`}>
+                                    <p className="text">{invalidDataMessage}</p>
                                 </ReactTooltip>
                             </>
                         ) : ''}

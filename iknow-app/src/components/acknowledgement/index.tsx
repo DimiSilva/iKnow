@@ -21,7 +21,7 @@ const acknowledgementIcons = {
     [acknowledgementTypes.WISE]: wiseIcon,
 }
 
-const Acknowledgement: React.FC<IComponentProps> = ({ type, description, onClick, isSelected }) => (
+const Acknowledgement: React.FC<IComponentProps> = ({ type, title, description, onClick, isSelected }) => (
     <div
         className="acknowledgement"
         style={{
@@ -34,8 +34,9 @@ const Acknowledgement: React.FC<IComponentProps> = ({ type, description, onClick
         </button>
         {description
             ? (
-                <ReactTooltip multiline id={`acknowledgement-description-${type}`} type="info">
-                    {description}
+                <ReactTooltip multiline className="tooltip" id={`acknowledgement-description-${type}`}>
+                    <p className="title">{title}</p>
+                    <p className="text">{description}</p>
                 </ReactTooltip>
             ) : ''}
     </div>

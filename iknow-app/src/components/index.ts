@@ -14,7 +14,10 @@ import InfiniteScroll from './infinte-scroll'
 import LabelText from './label-text'
 import MissionsList from './missions-list'
 import Acknowledgement from './acknowledgement'
+import Achievement from './achievement'
 import ProfileAcknowledgements from './profile-acknowledgements'
+import ProfileAchievements from './profile-achievements'
+import ProfileData from './profile-data'
 
 export {
     BaseLayout,
@@ -33,5 +36,8 @@ export {
     LabelText,
     MissionsList,
     Acknowledgement,
+    Achievement,
     ProfileAcknowledgements,
+    ProfileAchievements,
+    ProfileData,
 }

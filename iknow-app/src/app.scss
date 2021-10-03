@@ -106,3 +106,18 @@ button {
     box-sizing: border-box;
     transition: all 0.5s;
 }
+
+.tooltip{
+    max-width: 70vw;
+    .title {
+        color: $tertiary-color;
+    }
+    .text {
+        font-size: 16px!important;
+    }
+    background-color: $quintenary-color;
+
+    &.error {  
+        background-color: $error-color!important;
+    }
+}

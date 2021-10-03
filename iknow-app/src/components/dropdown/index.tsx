@@ -27,8 +27,8 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
                                     color={variables.errorColor}
                                 />
                             </div>
-                            <ReactTooltip multiline id={`input-error-message-${label}`} type="error">
-                                {invalidDataMessage}
+                            <ReactTooltip multiline className="tooltip error" id={`input-error-message-${label}`}>
+                                <p className="text">{invalidDataMessage}</p>
                             </ReactTooltip>
                         </>
                     ) : ''}
