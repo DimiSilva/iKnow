@@ -12,6 +12,8 @@ services:
         - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
         - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   iknow-messaging-consumers:
     container_name: iknow-messaging-consumers
@@ -30,6 +32,8 @@ services:
       - iknow-rabbitmq
     networks:
       - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
       
   iknow-api:
     container_name: iknow-api
@@ -54,6 +58,8 @@ services:
       - iknow-messaging-consumers
     networks:
       - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   iknow:
