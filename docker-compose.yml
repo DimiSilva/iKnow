@@ -51,7 +51,7 @@ services:
       MESSAGING_SERVICE_CONNECTION_URL: "amqp://host.docker.internal:5673"
     depends_on:
       - iknow-rabbitmq
-      - iknow-achievements-worker
+      - iknow-messaging-consumers
     networks:
       - iknow
 
