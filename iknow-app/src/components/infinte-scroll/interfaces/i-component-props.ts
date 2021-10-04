@@ -1,7 +1,9 @@
 interface IComponentProps {
     onScrollEnd: () => void,
     loading?: boolean,
-    emptyMessage: string
+    inverse?: boolean,
+    emptyMessage: string,
+    scrollToBottomOnUpdate?: boolean
 }
 
 export default IComponentProps

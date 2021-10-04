@@ -10,6 +10,8 @@ const MessagesList: React.FC<IComponentProps> = ({ onScrollEnd, loading, message
             onScrollEnd={onScrollEnd}
             emptyMessage="Nenhuma mensagem..."
             loading={loading}
+            scrollToBottomOnUpdate
+            inverse
         >
             {messages.length > 0 ? messages
                 .sort((a, b) => {
@@ -18,12 +20,17 @@ const MessagesList: React.FC<IComponentProps> = ({ onScrollEnd, loading, message
                     return 0
                 })
                 .map((message, messageIndex) => (
-                    <div key={messageIndex} className="messages-list-message-container">
-                        {
-                            messageIndex > 0 && message.from.id === messages[messageIndex - 1].from.id
-                                ? <p className={`messages-list-message-container-text ${message.fromLoggedUser ? 'inverse' : ''}`}>{message.text}</p>
-                                : <LabelText inverse={message.fromLoggedUser} label={message.from.name} text={message.text} />
-                        }
+                    <div key={messageIndex} className={`messages-list-message-container ${message.fromLoggedUser ? 'inverse' : ''}`}>
+                        <div className="messages-list-message-container-internal">
+                            {messageIndex > 0 && message.from.id === messages[messageIndex - 1].from.id
+                                ? ''
+                                : <p className="messages-list-message-container-internal-label">{message.from.name}</p>}
+
+                            <p className="messages-list-message-container-internal-text">{message.text}</p>
+                            <p className="messages-list-message-container-internal-date">
+                                {new Date(message.createdAt).toLocaleString()}
+                            </p>
+                        </div>
                     </div>
                 )) : undefined}
         </InfiniteScroll>

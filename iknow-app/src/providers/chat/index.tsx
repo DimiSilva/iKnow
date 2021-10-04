@@ -56,10 +56,8 @@ export const ChatProvider: React.FC = ({ children }) => {
     }, [recipientUser])
 
     const getNextPage = () => {
-        if (paginationData.page < paginationData.totalPages) getMessages({ ...paginationData, page: paginationData.page + 1 })
+        if (messages.length < paginationData.total) getMessages({ ...paginationData, page: paginationData.page + 1 })
     }
-
-    console.log(messages)
 
     const getMessages = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
@@ -72,18 +70,14 @@ export const ChatProvider: React.FC = ({ children }) => {
                         : new Date(mostOldMessageDate) > new Date(message.createdAt)
                             ? message.createdAt
                             : mostOldMessageDate
-                ), undefined)
+                ), new Date().toISOString())
                 : undefined,
-            page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
         }, _.isNil),
         toastsProvider.addToast)
         setLoadingsData((loadingsData) => {
             if (res) {
-                const newMessagesSet = [...res.data, ...messages]
-                const uniqueMessagesIds = Array.from(new Set(newMessagesSet.map((newMessage) => newMessage._id)))
-                setMessages(uniqueMessagesIds.map((id) => {
-                    const message = newMessagesSet.find((newMessage) => newMessage._id === id)
+                const newMessages = res.data.map((message: any) => {
                     const fromLoggedUser = message.from === authProvider.loggedUserData.userId
                     return {
                         ...message,
@@ -98,7 +92,10 @@ export const ChatProvider: React.FC = ({ children }) => {
                         text: message.content,
                         fromLoggedUser,
                     }
-                }))
+                })
+                const newMessagesSet = [...newMessages, ...messages]
+                const uniqueMessagesIds = Array.from(new Set(newMessagesSet.map((newMessage) => newMessage._id)))
+                setMessages(uniqueMessagesIds.map((uniqueMessageId) => newMessagesSet.find((newMessage) => newMessage._id === uniqueMessageId)))
                 setPaginationData({ ...(paginationDataAsParam || paginationData), total: res.total, totalPages: res.totalPages })
             }
             return ({ ...loadingsData, searching: false })

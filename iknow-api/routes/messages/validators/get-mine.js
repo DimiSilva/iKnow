@@ -6,7 +6,6 @@ const fv = new FastestValidator({
 })
 
 const validator = fv.compile({
-    page: { type: 'number', convert: true, default: 1 },
     perPage: { type: 'number', convert: true, default: 10 },
     withUser: { type: 'string', convert: true, optional: true },
     createdAtMax: { type: 'date', convert: true, optional: true },

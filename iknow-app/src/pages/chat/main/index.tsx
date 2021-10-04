@@ -22,8 +22,7 @@ const Network: React.FC<IComponentProps> = () => {
         <div className="chat-page">
             <MessagesList
                 messages={chatProvider.messages}
-                // onScrollEnd={chatProvider.getNextPage}
-                onScrollEnd={() => {}}
+                onScrollEnd={chatProvider.getNextPage}
                 loading={chatProvider.loadingsData.searching}
             />
             <pageParts.MessageInput />

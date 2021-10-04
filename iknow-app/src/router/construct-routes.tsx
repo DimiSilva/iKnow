@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
 import { loggedPages, loginPages } from './pages'
 
@@ -9,6 +9,11 @@ const constructRoutes = (token: string) => {
             <page.component />
         </Route>
     ))
+
+    routes.push((
+        <Route>
+            <Redirect to="/" />
+        </Route>))
 
     return routes
 }

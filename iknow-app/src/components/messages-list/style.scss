@@ -10,20 +10,47 @@
     &-message-container {
         display: flex;
         width: 100%;
-        padding: 0 0 8px 0;
+        margin: 0 0 8px 0;
 
-        &-remitter {
+        &-internal {
+            display: flex;
+            flex-direction: column;
+            padding: 8px;
+            background-color: $primary-color;
+            border-radius: 8px;
+
+            display: flex;
+            align-items: flex-start;
+
+            &-text {
+                padding: 8px 0 16px 0;
+            }
+
+            &-date {
+                font-size: 12px;
+                opacity: 0.6;
+            }
+            &-label {
+                color: $tertiary-color;
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+
+        &.inverse {
             justify-content: flex-end;
-        }
-        
-        &-recipient {
-            justify-content: flex-start;
-        }
+            .messages-list-message-container-internal {
+                align-items: flex-end;
 
-        &-text {
-            width: 100%;
-            &.inverse {
-                direction: rtl;
+                &-text {
+                    direction: rtl;
+                }
+
+                &-date {
+                }
+                &-label {
+                    direction: rtl;
+                }
             }
         }
     }

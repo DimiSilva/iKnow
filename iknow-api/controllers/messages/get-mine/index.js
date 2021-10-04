@@ -11,22 +11,20 @@ const { Message } = require('../../../models')
  */
 
 const getMine = async (req, res, next) => {
-    const { page, perPage, withUser, createdAtMax } = _.get(req, 'body', {})
+    const { perPage, withUser, createdAtMax } = _.get(req, 'body', {})
     const { userId } = _.get(req, 'userPayload', {})
 
     const query = {
         ...(withUser ? { $or: [{ to: withUser }, { to: userId }] } : {}),
-        ...(createdAtMax ? { createdAt: { $gte: createdAtMax } } : {}),
+        ...(createdAtMax ? { createdAt: { $lt: createdAtMax } } : {}),
         $or: [
             { from: userId },
             (withUser ? { from: withUser } : {}),
         ],
-
     }
 
     const messages = await Message.find(query)
         .sort({ createdAt: -1 })
-        .skip(page * perPage - perPage)
         .limit(perPage)
 
     const total = await Message.count(query)
@@ -34,7 +32,7 @@ const getMine = async (req, res, next) => {
     res.status(200).send({
         data: messages,
         perPage,
-        page,
+        createdAtMax,
         total,
         totalPages: Math.ceil(total / perPage),
     })
