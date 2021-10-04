@@ -733,10 +733,10 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-iknow-common@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.2.tgz#fe6191de134f0d0baab215184a6389a27d0c76fb"
-  integrity sha512-mJWWrgVC1PXNL860EnbeGa69vbC5YK9HfOY5wt2+/s7+5epv0QJ1RK91lGgAmjy72Glu3Aj+lhfzDGPI3EDQXQ==
+iknow-common@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/iknow-common/-/iknow-common-1.2.5.tgz#bcd33328907bf4d9031ff26d434b19d36e9a6231"
+  integrity sha512-g2WPKY1TTiJ8nAXhTx1PeOqpYLcGRFwqoso5AWs/kdUBOuP2Xb+SkihMkOeI6scE02Qmzvf6DufPWQrNClJVmQ==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"

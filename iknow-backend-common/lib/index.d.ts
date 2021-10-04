@@ -8,5 +8,6 @@ export var setupModels: ($mongoose?: typeof import("mongoose")) => {
     Achievement: import("mongoose").Model<any, {}, {}, {}>;
     UserAchievement: import("mongoose").Model<any, {}, {}, {}>;
     UserAcknowledgement: import("mongoose").Model<any, {}, {}, {}>;
+    Message: import("mongoose").Model<any, {}, {}, {}>;
 };
 export var messaging: typeof import("./messaging");

@@ -8,6 +8,7 @@ const Connection = require('./connection')
 const Achievement = require('./achievement')
 const UserAchievement = require('./user-achievement')
 const UserAcknowledgement = require('./user-acknowledgement')
+const Message = require('./message')
 
 const setupModels = ($mongoose = mongoose) => ({
     User: User($mongoose),
@@ -18,6 +19,7 @@ const setupModels = ($mongoose = mongoose) => ({
     Achievement: Achievement($mongoose),
     UserAchievement: UserAchievement($mongoose),
     UserAcknowledgement: UserAcknowledgement($mongoose),
+    Message: Message($mongoose),
 })
 
 module.exports = setupModels

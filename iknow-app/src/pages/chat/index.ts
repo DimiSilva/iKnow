@@ -1,3 +1,3 @@
-import Chat from './chat'
+import Main from './main'
 
-export default { Chat }
+export default { Main }

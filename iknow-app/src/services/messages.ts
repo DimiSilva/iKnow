@@ -1,0 +1,24 @@
+import { AddToast } from 'react-toast-notifications'
+import { constructQueryString } from 'iknow-common/utils'
+import utils from '../utils'
+
+const baseApiUrl = process.env.REACT_APP_BASE_API_URL
+const serviceEndpoint = 'messages'
+
+const getMine: (
+    token: string,
+    data: { page?: number, perPage?: number, withUser?: string, createdAtMax?: string},
+    addToast: AddToast
+) => Promise<any> = (
+    token,
+    data,
+    addToast,
+) => utils.httpRequest(
+    `${baseApiUrl}/${serviceEndpoint}/my${constructQueryString(data)}`,
+    'GET',
+    undefined,
+    { Authorization: `Bearer ${token}` },
+    addToast,
+)
+
+export default { getMine }

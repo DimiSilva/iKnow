@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Icons, TextArea } from '../../../../components'
-import { useApp } from '../../../../providers/app'
+import { Button, TextArea } from '../../../../components'
 import { useChat } from '../../../../providers/chat'
 
 const HeaderActionsButtons: React.FC = () => {
@@ -9,7 +8,17 @@ const HeaderActionsButtons: React.FC = () => {
     return (
         <div className="chat-page-message-input">
             <div className="chat-page-message-input-input-container">
-                <TextArea maxLength={1000} label="Mensagem" onChange={chatProvider.setMessage} value={chatProvider.message} />
+                <TextArea
+                    onEnterPress={() => {
+                        if (chatProvider.message) {
+                            chatProvider.send()
+                        }
+                    }}
+                    maxLength={1000}
+                    label="Mensagem"
+                    onChange={chatProvider.setMessage}
+                    value={chatProvider.message}
+                />
             </div>
             <div className="chat-page-message-input-button-container">
                 <Button text="Enviar" onClick={chatProvider.send} disabled={!chatProvider.message} style={{ height: '100%' }} />

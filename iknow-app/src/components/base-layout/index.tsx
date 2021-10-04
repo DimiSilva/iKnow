@@ -43,14 +43,6 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                             <Icons.World color={variables.iconsColor} />
                         </button>
                         <button
-                            className={appProvider.currentPathName === '/chat' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
-                            type="button"
-                            onClick={() => appProvider.navigateTo('/chat')}
-                            disabled
-                        >
-                            <Icons.Chat color={variables.iconsColor} />
-                        </button>
-                        <button
                             className={appProvider.currentPathName === '/buscar-contatos' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
                             onClick={() => appProvider.navigateTo('/buscar-contatos')}

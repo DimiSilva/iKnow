@@ -1,6 +1,7 @@
 import common from '../../common'
 
 const message: {
+    _id?: string,
     from: {
         id: string,
         name: string,
@@ -45,6 +46,7 @@ const context: {
     call: (userId: string) => void,
     send: () => void
     clear: () => void
+    getNextPage: () => void
 } = {
     loadingsData: loadings,
     messages,
@@ -54,6 +56,7 @@ const context: {
     call: (userId: string) => undefined,
     send: () => undefined,
     clear: () => undefined,
+    getNextPage: () => undefined,
 }
 
 export default { context, loadings, message, messages }

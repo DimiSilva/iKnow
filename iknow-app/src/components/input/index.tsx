@@ -1,6 +1,6 @@
 import './style.scss'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
@@ -8,6 +8,11 @@ import variables from '../../theme/variables'
 
 const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, type, invalidDataMessage }) => {
     const [remainingCharacters, setRemainingCharacter] = useState(maxLength || '')
+
+    useEffect(() => {
+        if (maxLength !== undefined)
+            setRemainingCharacter(maxLength - String(value).length)
+    }, [value])
 
     return (
         <div className={invalidDataMessage ? 'input-container-with-error' : 'input-container'}>
@@ -39,12 +44,7 @@ const Input: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, t
             <input
                 maxLength={maxLength}
                 value={value}
-                onChange={(e) => {
-                    if (maxLength !== undefined)
-                        setRemainingCharacter(maxLength - String(e.target.value).length)
-
-                    onChange(e.target.value)
-                }}
+                onChange={(e) => onChange(e.target.value)}
                 type={type}
             />
         </div>

@@ -1,6 +1,6 @@
 {
   "name": "iknow-backend-common",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "index.js",
   "types": "./lib/index.d.ts",
@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.8.0",
-    "iknow-common": "^1.2.2",
+    "iknow-common": "^1.2.5",
     "mongoose": "^6.0.8"
   },
   "devDependencies": {

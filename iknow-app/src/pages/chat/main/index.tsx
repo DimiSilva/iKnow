@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import { MessagesList } from '../../../components'
 import { useChat } from '../../../providers/chat'
+import { useApp } from '../../../providers/app'
 import IComponentProps from './interfaces/i-component-props'
 import pageParts from './page-parts'
 import './style.scss'
 
 const Network: React.FC<IComponentProps> = () => {
     const chatProvider = useChat()
+    const appProvider = useApp()
 
     useEffect(() => {
         ''
 
-        //    chatProvider.getMessages()1
+        //    chatProvider.getMessages()
         return chatProvider.clear
     },
     [])

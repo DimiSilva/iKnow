@@ -8,5 +8,6 @@ declare function setupModels($mongoose?: typeof mongoose): {
     Achievement: mongoose.Model<any, {}, {}, {}>;
     UserAchievement: mongoose.Model<any, {}, {}, {}>;
     UserAcknowledgement: mongoose.Model<any, {}, {}, {}>;
+    Message: mongoose.Model<any, {}, {}, {}>;
 };
 import mongoose = require("mongoose");

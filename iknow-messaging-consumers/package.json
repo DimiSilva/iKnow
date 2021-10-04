@@ -6,8 +6,8 @@
   "keywords": [],
   "author": "Edmilson Nelson da Silva Junior",
   "dependencies": {
-    "iknow-backend-common": "^1.4.0",
-    "iknow-common": "^1.2.4",
+    "iknow-backend-common": "^1.4.1",
+    "iknow-common": "^1.2.5",
     "mongoose": "^6.0.8"
   },
   "devDependencies": {

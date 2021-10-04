@@ -1,13 +1,18 @@
 import './style.scss'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import IComponentProps from './interfaces/i-component-props'
 import { Icons } from '../index'
 import variables from '../../theme/variables'
 
-const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, invalidDataMessage }) => {
+const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value, invalidDataMessage, onEnterPress }) => {
     const [remainingCharacters, setRemainingCharacter] = useState(maxLength || '')
+
+    useEffect(() => {
+        if (maxLength !== undefined)
+            setRemainingCharacter(maxLength - String(value).length)
+    }, [value])
 
     return (
         <div className={invalidDataMessage ? 'text-area-with-error' : 'text-area'}>
@@ -41,16 +46,17 @@ const TextArea: React.FC<IComponentProps> = ({ label, maxLength, onChange, value
                 maxLength={maxLength}
                 value={value}
                 onChange={(e) => {
-                    if (maxLength !== undefined)
-                        setRemainingCharacter(maxLength - String(e.target.value).length)
-
+                    if (onEnterPress && e.target.value === '\n') return
                     onChange(e.target.value)
+                }}
+                onKeyPress={(e) => {
+                    if (onEnterPress && e.key === 'Enter' && !e.shiftKey) return onEnterPress()
                 }}
             />
         </div>
     )
 }
 
-TextArea.defaultProps = { maxLength: undefined, label: 'Label', invalidDataMessage: undefined }
+TextArea.defaultProps = { maxLength: undefined, label: 'Label', invalidDataMessage: undefined, onEnterPress: undefined }
 
 export default TextArea

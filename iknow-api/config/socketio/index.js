@@ -1,5 +1,6 @@
 const socketio = require('socket.io')
 const http = require('http')
+const { Message } = require('../../models')
 
 /**
  * @param {http.Server} server
@@ -16,7 +17,6 @@ const setupChat = (server) => {
     io.use((socket, next) => {
         const { userId } = socket.handshake.auth
         if (!userId) {
-            console.log('testes')
             return next(new Error('invalid userId'))
         }
         socket.userId = userId
@@ -24,17 +24,14 @@ const setupChat = (server) => {
     })
 
     io.on('connection', (socket) => {
-        console.log(`join ${socket.userId}`)
         socket.join(socket.userId)
         socket.on('private message', ({ content, to }) => {
-            console.log(`to ${to}`)
             socket.to(to).emit('private message', {
                 content,
                 from: socket.userId,
             })
-        })
-        socket.on('disconnect', () => {
-            console.log('[SOCKET] Disconnect => A connection was disconnected')
+            const newMessage = new Message({ to, from: socket.userId, content })
+            newMessage.save()
         })
     })
 }

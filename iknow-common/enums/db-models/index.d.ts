@@ -6,3 +6,4 @@ export const MISSION: string;
 export const USER: string;
 export const USER_ACHIEVEMENT: string;
 export const USER_ACKNOWLEDGEMENT: string;
+export const MESSAGE: string;
