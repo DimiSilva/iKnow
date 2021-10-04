@@ -6,6 +6,6 @@
   "author": "Dimi Silva <jnn.sla@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "docker compose down && docker compose up --build -d"
+    "start": "docker-compose down && docker-compose up --build -d"
   }
 }
