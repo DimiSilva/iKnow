@@ -20,9 +20,7 @@ const expressConfig = () => {
 
     app.use(errorHandler)
 
-    app.listen(process.env.PORT, () => {
-        console.info(`api running on port ${process.env.PORT}`)
-    })
+    return app
 }
 
 module.exports = expressConfig

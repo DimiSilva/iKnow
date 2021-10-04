@@ -6,5 +6,6 @@ import Common from './common'
 import Missions from './missions'
 import Network from './network'
 import SearchContacts from './search-contacts'
+import Chat from './chat'
 
-export default { Login, Register, MyProfile, Profile, Common, Missions, Network, SearchContacts }
+export default { Login, Register, MyProfile, Profile, Common, Missions, Network, SearchContacts, Chat }

@@ -10,29 +10,32 @@ import { MyAcceptedMissionsProvider } from './my-accepted-missions'
 import { GamificationProvider } from './gamification'
 import { NetworkProvider } from './network'
 import { SearchContactsProvider } from './search-contacts'
+import { ChatProvider } from './chat'
 
 const Providers: React.FC = ({ children }) => (
     <AppProvider>
         <FieldEditingProvider>
             <LoginProvider>
                 <RegisterProvider>
-                    <GamificationProvider>
-                        <MyProfileProvider>
-                            <ProfileProvider>
-                                <MyMissionsProvider>
-                                    <MissionsProvider>
-                                        <MyAcceptedMissionsProvider>
-                                            <NetworkProvider>
-                                                <SearchContactsProvider>
-                                                    {children}
-                                                </SearchContactsProvider>
-                                            </NetworkProvider>
-                                        </MyAcceptedMissionsProvider>
-                                    </MissionsProvider>
-                                </MyMissionsProvider>
-                            </ProfileProvider>
-                        </MyProfileProvider>
-                    </GamificationProvider>
+                    <ChatProvider>
+                        <GamificationProvider>
+                            <MyProfileProvider>
+                                <ProfileProvider>
+                                    <MyMissionsProvider>
+                                        <MissionsProvider>
+                                            <MyAcceptedMissionsProvider>
+                                                <NetworkProvider>
+                                                    <SearchContactsProvider>
+                                                        {children}
+                                                    </SearchContactsProvider>
+                                                </NetworkProvider>
+                                            </MyAcceptedMissionsProvider>
+                                        </MissionsProvider>
+                                    </MyMissionsProvider>
+                                </ProfileProvider>
+                            </MyProfileProvider>
+                        </GamificationProvider>
+                    </ChatProvider>
                 </RegisterProvider>
             </LoginProvider>
         </FieldEditingProvider>

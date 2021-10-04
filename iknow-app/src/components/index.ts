@@ -19,6 +19,7 @@ import Achievement from './achievement'
 import ProfileAcknowledgements from './profile-acknowledgements'
 import ProfileAchievements from './profile-achievements'
 import ProfileData from './profile-data'
+import MessagesList from './messages-list'
 
 export {
     BaseLayout,
@@ -42,4 +43,5 @@ export {
     ProfileAcknowledgements,
     ProfileAchievements,
     ProfileData,
+    MessagesList,
 }

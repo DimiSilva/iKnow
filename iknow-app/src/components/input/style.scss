@@ -39,6 +39,7 @@
     height: 45px;
     width: 100%;
     border: 1px solid $error-color;
+    box-shadow: 0px 4px 2px $shadow-color;
 
     .input-header-container {
         display: flex;

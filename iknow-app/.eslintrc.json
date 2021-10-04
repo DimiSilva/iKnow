@@ -94,6 +94,7 @@
         "nonblock-statement-body-position": 0,
         "curly": 0,
         "no-nested-ternary": 0,
-        "jsx-a11y/control-has-associated-label": 0
+        "jsx-a11y/control-has-associated-label": 0,
+        "react/no-array-index-key": 0
     }
 }

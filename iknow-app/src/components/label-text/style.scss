@@ -11,11 +11,22 @@
             font-weight: 700;
             color: $tertiary-color;
         }
+
+        &.inverse {
+            h3 {
+                direction: rtl;
+            }
+        }
     }
 
-    &-text-container {
+    &-text-container { 
         p {
 
+        }
+        &.inverse {
+            p {
+                direction: rtl;
+            }
         }
     }
 }

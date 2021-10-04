@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useToasts } from 'react-toast-notifications'
+import jwtDecode from 'jwt-decode'
 import services from '../../services'
 import dataModels from './data-models'
 
@@ -11,6 +12,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [token, setToken] = useState('')
+    const [loggedUserData, setLoggedUserData] = useState(dataModels.loggedUser)
     const [tokenLoaded, setTokenLoaded] = useState(false)
     const [loginSignalInterval, setLoginSignalInterval] = useState<NodeJS.Timeout>()
 
@@ -27,6 +29,7 @@ export const AuthProvider: React.FC = ({ children }) => {
             localStorage.setItem('token', token)
             if (!loginSignalInterval) setLoginSignalInterval(setInterval(() => services.users.loginSignal(token, toastProvider.addToast), 120000))
             else if (!token) clearInterval(loginSignalInterval)
+            if (token) setLoggedUserData(jwtDecode(token))
         }
     }, [token])
 
@@ -35,7 +38,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ token, setToken, tokenLoaded, logout }}>
+        <AuthContext.Provider value={{ token, setToken, tokenLoaded, logout, loggedUserData }}>
             {children}
         </AuthContext.Provider>
     )
