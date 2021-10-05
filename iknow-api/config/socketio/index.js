@@ -25,13 +25,24 @@ const setupChat = (server) => {
 
     io.on('connection', (socket) => {
         socket.join(socket.userId)
+        console.log('connect', socket.userId)
+
+        console.log('connections', [...io.of('/').sockets].map(([s, a]) => a.userId))
+
         socket.on('private message', ({ content, to }) => {
+            console.log('to', content)
+            console.log('content', to)
             socket.to(to).emit('private message', {
                 content,
                 from: socket.userId,
             })
             const newMessage = new Message({ to, from: socket.userId, content })
             newMessage.save()
+        })
+
+        socket.on('disconnect', () => {
+            console.log('disconnect', socket.userId)
+            console.log('connections', [...io.of('/').sockets].map(([s, a]) => a.userId))
         })
     })
 }

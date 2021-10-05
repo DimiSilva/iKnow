@@ -20,7 +20,7 @@ const addContact = async (req, res, next) => {
     const { userId: remitter } = _.get(req, 'userPayload', {})
 
     const alreadyExistentConnection = await Connection.findOne({
-        $or: [
+        $and: [
             { remitter },
             { recipient },
         ],

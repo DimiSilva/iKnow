@@ -15,12 +15,18 @@ const getMine = async (req, res, next) => {
     const { userId } = _.get(req, 'userPayload', {})
 
     const query = {
-        ...(withUser ? { $or: [{ to: withUser }, { to: userId }] } : {}),
+        ...(withUser
+            ? { $or:
+                [
+                    { to: withUser, from: userId },
+                    { from: withUser, to: userId },
+                ],
+            }
+            : {}),
+        ...(!withUser
+            ? { from: userId }
+            : {}),
         ...(createdAtMax ? { createdAt: { $lt: createdAtMax } } : {}),
-        $or: [
-            { from: userId },
-            (withUser ? { from: withUser } : {}),
-        ],
     }
 
     const messages = await Message.find(query)

@@ -19,7 +19,9 @@ const MissionsList: React.FC<IComponentProps> = ({ onScrollEnd, loading, users, 
                     >
                         <div className="network-list-collapse-container-content-container">
                             <div className="network-list-collapse-container-content-container-content">
-                                {user.whoIAm}
+                                <p>
+                                    {user.whoIAm}
+                                </p>
                             </div>
                         </div>
                     </Collapse>

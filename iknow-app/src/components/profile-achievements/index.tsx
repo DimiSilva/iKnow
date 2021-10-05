@@ -15,9 +15,9 @@ const tiersOrder = {
 const ProfileAchievements: React.FC<IComponentProps> = ({ achievements }) => (
     <div className="profile-achievements">
         <Collapse
-            title="Reconhecimento"
+            title="Conquistas"
             info={`\
-Nessa sessão você pode as conquistas, conquistas podem ser ganhas realizando determinadas ações`}
+Nessa sessão você pode ver as conquistas, conquistas podem ser ganhas realizando determinadas ações`}
             emptyContentMessage="Ops, nenhuma conquista ainda..."
             defaultState="open"
         >

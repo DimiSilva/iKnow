@@ -21,16 +21,22 @@ const MissionsList: React.FC<IComponentProps> = ({ onScrollEnd, onAuthorClick, l
                         <div className="missions-list-collapse-container-content-container">
                             <div className="missions-list-collapse-container-content-container-header">
                                 <div className="missions-list-collapse-container-content-container-header-created-by-container">
-                                    <span>Criado Por: </span>
-                                    <LinkButton text={mission.owner.name} onClick={() => onAuthorClick(mission.owner._id)} />
+                                    <p>
+                                        <span>Criado Por: </span>
+                                        <LinkButton text={mission.owner.name} onClick={() => onAuthorClick(mission.owner._id)} />
+                                    </p>
                                 </div>
                                 <div className="missions-list-collapse-container-content-container-header-status-container">
-                                    <span>Status: </span>
-                                    {missionStatusMasksEnum[mission.status]}
+                                    <p>
+                                        <span>Status: </span>
+                                        {missionStatusMasksEnum[mission.status]}
+                                    </p>
                                 </div>
                             </div>
                             <div className="missions-list-collapse-container-content-container-content">
-                                {mission.description}
+                                <p>
+                                    {mission.description}
+                                </p>
                             </div>
                         </div>
                     </Collapse>

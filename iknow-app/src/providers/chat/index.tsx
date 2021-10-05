@@ -148,14 +148,15 @@ export const ChatProvider: React.FC = ({ children }) => {
     }
 
     const clear = () => {
-        if (socket) {
-            socket.disconnect()
-            setSocket(undefined)
-        }
+        setSocket((s) => {
+            if (s) s.disconnect()
+            return s
+        })
         setMessages([])
         setMessage('')
         setRecipientUser(common.dataModels.profileData)
         setLoadingsData(dataModels.loadings)
+        setPaginationData(common.dataModels.paginationData)
     }
 
     return (
