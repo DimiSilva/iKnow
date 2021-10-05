@@ -61,7 +61,9 @@
     "start:prod": "env-cmd -f ./environments/.prod.env react-scripts start",
     "build:local": "env-cmd -f ./environments/.local.env react-scripts build",
     "build:dev": "env-cmd -f ./environments/.dev.env react-scripts build",
-    "build:prod": "env-cmd -f ./environments/.prod.env react-scripts build"
+    "build:prod": "env-cmd -f ./environments/.prod.env react-scripts build",
+    "surge-deploy:dev": "./scripts/surge-deploy-dev.sh",
+    "surge-deploy:prod": "./scripts/surge-deploy-prod.sh"
   },
   "eslintConfig": {
     "extends": [
