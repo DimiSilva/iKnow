@@ -98,6 +98,20 @@ h6 {
 
 button {
     background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &:disabled{
+        cursor: not-allowed;
+    }
+}
+
+textarea:focus, input:focus {
+    color: $text-color;
+}
+
+input, select, textarea{
+    color: $text-color;
 }
 
 * {

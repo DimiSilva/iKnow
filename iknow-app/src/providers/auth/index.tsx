@@ -12,7 +12,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [token, setToken] = useState('')
-    const [loggedUserData, setLoggedUserData] = useState(dataModels.loggedUser)
+    const [loggedUserData, setLoggedUserData] = useState<typeof dataModels.loggedUser | any>(dataModels.loggedUser)
     const [tokenLoaded, setTokenLoaded] = useState(false)
     const [loginSignalInterval, setLoginSignalInterval] = useState<NodeJS.Timeout>()
 
@@ -29,7 +29,11 @@ export const AuthProvider: React.FC = ({ children }) => {
             localStorage.setItem('token', token)
             if (!loginSignalInterval) setLoginSignalInterval(setInterval(() => services.users.loginSignal(token, toastProvider.addToast), 120000))
             else if (!token) clearInterval(loginSignalInterval)
-            if (token) setLoggedUserData(jwtDecode(token))
+            try {
+                if (token) setLoggedUserData(jwtDecode(token || ''))
+            } catch (e) {
+                console.log(e)
+            }
         }
     }, [token])
 

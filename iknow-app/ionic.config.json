@@ -1,7 +1,0 @@
-{
-  "name": "iknow",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}

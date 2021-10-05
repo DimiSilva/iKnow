@@ -10,7 +10,7 @@ const Name: React.FC = () => {
 
     return (
         <div className="my-profile-page-name-container">
-            <div className="my-profile-page-name-container-text-container">{myProfileProvider.myProfileData.name}</div>
+            <div className="my-profile-page-name-container-text-container"><p>{myProfileProvider.myProfileData.name}</p></div>
             <div className="my-profile-page-name-container-action-container">
                 <button
                     type="button"

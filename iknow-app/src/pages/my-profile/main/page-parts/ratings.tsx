@@ -23,12 +23,14 @@ const Ratings: React.FC = () => {
                 {renderStars()}
             </div>
             <div className="my-profile-page-ratings-container-evaluation-container">
-                {(myProfileProvider.myProfileData.evaluationsMedia || 0).toFixed(1)}
+                <p>{(myProfileProvider.myProfileData.evaluationsMedia || 0).toFixed(1)}</p>
             </div>
             <div className="my-profile-page-ratings-container-quantity-container">
-                (
-                {myProfileProvider.myProfileData.totalEvalutions}
-                )
+                <p>
+                    (
+                    {myProfileProvider.myProfileData.totalEvalutions}
+                    )
+                </p>
             </div>
             <div className="my-profile-page-ratings-container-info-container">
                 <div className="my-profile-page-ratings-container-info-container-icon-container" data-tip data-for="my-profile-page-ratings-info">

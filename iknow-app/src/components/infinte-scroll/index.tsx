@@ -30,7 +30,7 @@ const InfiniteScroll: React.FC<IComponentProps> = ({ children, onScrollEnd, inve
                     <PropagateLoader color={variables.quaternaryColor} size="12px" speedMultiplier={1} />
                 </div>
             ) : ''}
-            {children || (!loading ? <div className="infinite-scroll-empty-message-container">{emptyMessage}</div> : '')}
+            {children || (!loading ? <div className="infinite-scroll-empty-message-container"><p>{emptyMessage}</p></div> : '')}
             {!inverse && loading ? (
                 <div className="infinite-scroll-loading-container">
                     <PropagateLoader color={variables.quaternaryColor} size="12px" speedMultiplier={1} />

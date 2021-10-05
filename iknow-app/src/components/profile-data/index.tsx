@@ -15,7 +15,7 @@ const ProfileData: React.FC<IComponentProps> = ({ title, info, onClickEdit, empt
             } : undefined}
         >
             {content
-                ? <div className="profile-data-content">{content}</div>
+                ? <div className="profile-data-content"><p>{content}</p></div>
                 : ''}
         </Collapse>
     </div>

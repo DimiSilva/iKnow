@@ -45,7 +45,7 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
                     ...provided,
                     background: 'transparent',
                 }),
-                input: () => ({ }),
+                input: () => ({ color: variables.textColor }),
                 singleValue: () => ({ color: variables.textColor }),
                 indicatorsContainer: () => ({ }),
                 control: () => ({ display: 'flex' }),
@@ -57,13 +57,16 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
                 option: (provided, { isSelected }) => ({
                     ...provided,
                     background: isSelected ? variables.quintenaryColor : 'transparent',
+                    color: variables.textColor,
                     ':active': {
                         ...provided[':active'],
                         background: variables.quintenaryColor,
                     },
 
                 }),
-                dropdownIndicator: () => ({}),
+                dropdownIndicator: () => ({
+                    color: variables.textColor,
+                }),
             }}
             isSearchable
             onInputChange={(e) => onInputChange(e)}
