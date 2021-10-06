@@ -6,7 +6,7 @@ const Name: React.FC = () => {
 
     return (
         <div className="profile-page-name-container">
-            <div className="profile-page-name-container-text-container"><p>{profileProvider.profileData.name}</p></div>
+            <div className="profile-page-name-container-text-container"><h1>{profileProvider.profileData.name}</h1></div>
             <div className="profile-page-name-container-action-container" />
         </div>
     )

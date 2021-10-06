@@ -12,7 +12,7 @@ const Collapse: React.FC<IComponentProps> = ({ children, title, style, info, act
         <div className="collapse" style={style}>
             <div className="collapse-header">
                 <div className="collapse-header-title-container">
-                    {title}
+                    <p>{title}</p>
                     {info ? (
                         <>
                             <div className="collapse-header-title-container-info-container" data-tip data-for={`input-error-message-${title}`}>

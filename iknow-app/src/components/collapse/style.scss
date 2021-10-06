@@ -14,8 +14,13 @@
         &-title-container {
             display: flex;
             align-items: center;
-            color: $tertiary-color;
-            font-weight: 700;
+            
+            p{
+                font-weight: 700;
+                font-size: 20px;
+                color: $tertiary-color;
+            }
+
             &-info-container {
                 display: flex;
                 justify-content: center;

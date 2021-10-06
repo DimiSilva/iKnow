@@ -10,7 +10,7 @@ const Name: React.FC = () => {
 
     return (
         <div className="my-profile-page-name-container">
-            <div className="my-profile-page-name-container-text-container"><p>{myProfileProvider.myProfileData.name}</p></div>
+            <div className="my-profile-page-name-container-text-container"><h1>{myProfileProvider.myProfileData.name}</h1></div>
             <div className="my-profile-page-name-container-action-container">
                 <button
                     type="button"
@@ -27,7 +27,7 @@ const Name: React.FC = () => {
                     })}
                 >
                     <Icons.Edit
-                        size="18px"
+                        size="24px"
                         color={variables.iconsColor}
                     />
                 </button>

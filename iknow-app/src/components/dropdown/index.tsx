@@ -45,8 +45,8 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
                     ...provided,
                     background: 'transparent',
                 }),
-                input: () => ({ color: variables.textColor }),
-                singleValue: () => ({ color: variables.textColor }),
+                input: () => ({ color: variables.textColor, fontSize: '16px' }),
+                singleValue: () => ({ color: variables.textColor, fontSize: '16px' }),
                 indicatorsContainer: () => ({ }),
                 control: () => ({ display: 'flex' }),
                 indicatorSeparator: () => ({ }),
@@ -58,6 +58,7 @@ const Dropdown: React.FC<IComponentProps> = ({ label, options, onChange, onInput
                     ...provided,
                     background: isSelected ? variables.quintenaryColor : 'transparent',
                     color: variables.textColor,
+                    fontSize: '16px',
                     ':active': {
                         ...provided[':active'],
                         background: variables.quintenaryColor,

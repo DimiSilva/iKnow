@@ -16,14 +16,19 @@ const MissionsList: React.FC<IComponentProps> = ({ onScrollEnd, loading, users, 
                     <Collapse
                         title={user.name}
                         action={{ icon: Icons.Forward, onClick: () => view(user._id) }}
+                        emptyContentMessage="O usuário não tem uma descrição de quem é"
                     >
-                        <div className="network-list-collapse-container-content-container">
-                            <div className="network-list-collapse-container-content-container-content">
-                                <p>
-                                    {user.whoIAm}
-                                </p>
+                        { user.whoIAm ? (
+                            <div className="network-list-collapse-container-content-container">
+                                <div className="network-list-collapse-container-content-container-content">
+                                    (
+                                    <p>
+                                        {user.whoIAm}
+                                    </p>
+                                    )
+                                </div>
                             </div>
-                        </div>
+                        ) : undefined}
                     </Collapse>
                 </div>
             )) : undefined}
