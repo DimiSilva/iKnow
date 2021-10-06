@@ -4,11 +4,13 @@ import { useToasts } from 'react-toast-notifications'
 import jwtDecode from 'jwt-decode'
 import services from '../../services'
 import dataModels from './data-models'
+import { useSocket } from '../socket'
 
 const AuthContext = createContext(dataModels.context)
 
 export const AuthProvider: React.FC = ({ children }) => {
     const toastProvider = useToasts()
+    const socketProvider = useSocket()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [token, setToken] = useState('')
@@ -30,7 +32,11 @@ export const AuthProvider: React.FC = ({ children }) => {
             if (!loginSignalInterval) setLoginSignalInterval(setInterval(() => services.users.loginSignal(token, toastProvider.addToast), 120000))
             else if (!token) clearInterval(loginSignalInterval)
             try {
-                if (token) setLoggedUserData(jwtDecode(token || ''))
+                if (token) {
+                    const tokenPayload = jwtDecode(token || '')
+                    setLoggedUserData(tokenPayload)
+                    socketProvider.connectToSocket((tokenPayload as any).userId || '')
+                }
             } catch (e) {
                 console.log(e)
             }

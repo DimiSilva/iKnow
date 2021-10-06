@@ -3,13 +3,16 @@ import Router from './router'
 
 import './app.scss'
 import { AuthProvider } from './providers/auth'
+import { SocketProvider } from './providers/socket'
 
 const App = () => (
     <div className="app">
         <ToastProvider placement="top-center">
-            <AuthProvider>
-                <Router />
-            </AuthProvider>
+            <SocketProvider>
+                <AuthProvider>
+                    <Router />
+                </AuthProvider>
+            </SocketProvider>
         </ToastProvider>
     </div>
 )

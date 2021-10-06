@@ -7,6 +7,7 @@ import common from '../../common'
 import services from '../../services'
 import { useApp } from '../app'
 import { useAuth } from '../auth'
+import { useSocket } from '../socket'
 import dataModels from './data-models'
 
 const ChatContext = createContext(dataModels.context)
@@ -14,6 +15,7 @@ const ChatContext = createContext(dataModels.context)
 export const ChatProvider: React.FC = ({ children }) => {
     const appProvider = useApp()
     const authProvider = useAuth()
+    const socketProvider = useSocket()
     const toastsProvider = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
@@ -22,36 +24,32 @@ export const ChatProvider: React.FC = ({ children }) => {
     const [paginationData, setPaginationData] = useState(common.dataModels.paginationData)
     const [loadingsData, setLoadingsData] = useState(dataModels.loadings)
     const [recipientUser, setRecipientUser] = useState(common.dataModels.profileData)
-    const [socket, setSocket] = useState<Socket | undefined>()
 
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     useEffect(() => {
-        if (alreadyRanOnce && !!socket) {
-            socket.on('private message', ({ content, from }) => {
-                if (from === recipientUser.id) {
-                    setMessages((messages) => [...messages, {
-                        createdAt: new Date().toISOString(),
-                        from: {
-                            id: from,
-                            name: recipientUser.name,
-                        },
-                        text: content,
-                        to: {
-                            id: authProvider.loggedUserData.userId,
-                            name: authProvider.loggedUserData.name,
-                        },
-                        fromLoggedUser: false,
-                    }])
-                }
-            })
-            getMessages()
-        }
-    }, [socket])
-
-    useEffect(() => {
         if (alreadyRanOnce) {
             appProvider.setCurrentPageTitle(recipientUser.name)
+            if (socketProvider.socket)
+                socketProvider.socket.on('private message', ({ content, from }) => {
+                    if (from === recipientUser.id) {
+                        setMessages((messages) => [...messages, {
+                            createdAt: new Date().toISOString(),
+                            from: {
+                                id: from,
+                                name: recipientUser.name,
+                            },
+                            text: content,
+                            to: {
+                                id: authProvider.loggedUserData.userId,
+                                name: authProvider.loggedUserData.name,
+                            },
+                            fromLoggedUser: false,
+                        }])
+                    }
+                })
+
+            getMessages()
         }
     }, [recipientUser])
 
@@ -112,19 +110,12 @@ export const ChatProvider: React.FC = ({ children }) => {
     const call = async (userId: string) => {
         appProvider.navigateTo('/conversa', true)
 
-        const socket = io(process.env.REACT_APP_BASE_API_URL || '', {
-            auth: {
-                userId: authProvider.loggedUserData.userId,
-            },
-        })
-
         await getProfileData(userId)
-        setSocket(socket)
     }
 
     const send = () => {
-        if (socket) {
-            socket.emit('private message', {
+        if (socketProvider.socket) {
+            socketProvider.socket.emit('private message', {
                 to: recipientUser.id,
                 content: message,
             })
@@ -148,10 +139,7 @@ export const ChatProvider: React.FC = ({ children }) => {
     }
 
     const clear = () => {
-        setSocket((s) => {
-            if (s) s.disconnect()
-            return s
-        })
+        if (socketProvider.socket) socketProvider.socket.off('private message')
         setMessages([])
         setMessage('')
         setRecipientUser(common.dataModels.profileData)
