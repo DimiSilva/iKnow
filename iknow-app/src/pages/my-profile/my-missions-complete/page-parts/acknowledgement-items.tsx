@@ -17,7 +17,7 @@ const AcknowledgementItems: React.FC = () => {
     return (
         <div className="my-mission-complete-page-acknowledgement">
             <div className="my-mission-complete-page-acknowledgement-header">
-                Elogiar
+                <p>Elogiar</p>
             </div>
             {gamificationProvider.loadingsData.searchingAcknowledgements
                 ? (

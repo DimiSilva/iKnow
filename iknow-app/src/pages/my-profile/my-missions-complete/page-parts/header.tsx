@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
     return (
         <div className="my-mission-complete-page-header">
-            <span>Avaliar: </span>
+            <p><span>Avaliar: </span></p>
             <LinkButton
                 text={(myMissionsProvider.missionInVisualization.acceptedBy || {}).name || ''}
                 onClick={() => profileProvider.call((myMissionsProvider.missionInVisualization.acceptedBy || {})._id || '')}
