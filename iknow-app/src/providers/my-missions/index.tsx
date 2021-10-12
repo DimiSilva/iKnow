@@ -11,9 +11,9 @@ import common from '../../common'
 const MyMissionsContext = createContext(dataModels.context)
 
 export const MyMissionsProvider: React.FC = ({ children }) => {
-    const appProvider = useApp()
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
+    const appContext = useApp()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [missions, setMissions] = useState(dataModels.missions)
@@ -54,12 +54,12 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
 
     const getMissions = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.missions.getMine(authProvider.token, _.omitBy({
+        const res = await services.missions.getMine(authContext.token, _.omitBy({
             page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
             ...filtersFormData,
         }, _.isNil),
-        toastsProvider.addToast)
+        toastsContext.addToast)
         if (res) {
             const newMissionsSet = [...missions, ...res.data]
             const uniqueMissionsIds = Array.from(new Set(newMissionsSet.map((newMission) => newMission._id)))
@@ -75,30 +75,30 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
         setCreateSubmitted(true)
         if (Object.values(invalidCreateFormData).some((message) => message !== undefined)) return
         setLoadingsData((loadingsData) => ({ ...loadingsData, createSubmitting: true }))
-        const res = await services.missions.create(authProvider.token, createFormData, toastsProvider.addToast)
+        const res = await services.missions.create(authContext.token, createFormData, toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Missão criada com sucesso', { appearance: 'success', autoDismiss: true })
-            appProvider.navigateTo('/meu-perfil/missoes')
+            toastsContext.addToast('Missão criada com sucesso', { appearance: 'success', autoDismiss: true })
+            appContext.navigateTo('/meu-perfil/missoes')
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, createSubmitting: false }))
     }
 
     const view = async (mission: typeof common.dataModels.mission, dontNavigate?: boolean, dontGoBack?: boolean) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        if (!dontNavigate) appProvider.navigateTo('/meu-perfil/missoes/visualizacao', !dontGoBack)
-        const res = await services.missions.getOne(authProvider.token, mission._id, toastsProvider.addToast)
+        if (!dontNavigate) appContext.navigateTo('/meu-perfil/missoes/visualizacao', !dontGoBack)
+        const res = await services.missions.getOne(authContext.token, mission._id, toastsContext.addToast)
         if (res) setMissionInVisualization(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const complete = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, completing: true }))
-        const res = await services.missions.complete(authProvider.token,
+        const res = await services.missions.complete(authContext.token,
             missionInVisualization._id,
             { acknowledgement: (acknowledgement || {})._id, evaluation },
-            toastsProvider.addToast)
+            toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Você finalizou da missão', { appearance: 'success', autoDismiss: true })
+            toastsContext.addToast('Você finalizou da missão', { appearance: 'success', autoDismiss: true })
             view(missionInVisualization, false, true)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, completing: false }))
@@ -106,9 +106,9 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
 
     const unbind = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, unbinding: true }))
-        const res = await services.missions.unbind(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
+        const res = await services.missions.unbind(authContext.token, missionInVisualization._id, toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Você desistiu da missão', { appearance: 'success', autoDismiss: true })
+            toastsContext.addToast('Você desistiu da missão', { appearance: 'success', autoDismiss: true })
             view(missionInVisualization, true)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, unbinding: false }))
@@ -116,9 +116,9 @@ export const MyMissionsProvider: React.FC = ({ children }) => {
 
     const cancel = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, cancelling: true }))
-        const res = await services.missions.cancel(authProvider.token, missionInVisualization._id, toastsProvider.addToast)
+        const res = await services.missions.cancel(authContext.token, missionInVisualization._id, toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Você cancelou a missão', { appearance: 'success', autoDismiss: true })
+            toastsContext.addToast('Você cancelou a missão', { appearance: 'success', autoDismiss: true })
             view(missionInVisualization, true)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, cancelling: false }))

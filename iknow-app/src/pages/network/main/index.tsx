@@ -7,22 +7,22 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const Network: React.FC<IComponentProps> = () => {
-    const networkProvider = useNetwork()
-    const profileProvider = useProfile()
+    const networkContext = useNetwork()
+    const profileContext = useProfile()
 
     useEffect(() => {
-        networkProvider.getUsers()
-        return networkProvider.clear
+        networkContext.getUsers()
+        return networkContext.clear
     }, [])
 
     return (
         <div className="network-page">
             <pageParts.HeaderActionsButtons />
             <NetworkList
-                users={networkProvider.users}
-                onScrollEnd={networkProvider.getNextPage}
-                view={profileProvider.call}
-                loading={networkProvider.loadingsData.searching}
+                users={networkContext.users}
+                onScrollEnd={networkContext.getNextPage}
+                view={profileContext.call}
+                loading={networkContext.loadingsData.searching}
             />
         </div>
     )

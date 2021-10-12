@@ -7,23 +7,18 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const Network: React.FC<IComponentProps> = () => {
-    const chatProvider = useChat()
-    const appProvider = useApp()
+    const chatContext = useChat()
+    const appContext = useApp()
 
-    useEffect(() => {
-        ''
-
-        //    chatProvider.getMessages()
-        return chatProvider.clear
-    },
-    [])
+    useEffect(() => chatContext.clear,
+        [])
 
     return (
         <div className="chat-page">
             <MessagesList
-                messages={chatProvider.messages}
-                onScrollEnd={chatProvider.getNextPage}
-                loading={chatProvider.loadingsData.searching}
+                messages={chatContext.messages}
+                onScrollEnd={chatContext.getNextPage}
+                loading={chatContext.loadingsData.searching}
             />
             <pageParts.MessageInput />
         </div>

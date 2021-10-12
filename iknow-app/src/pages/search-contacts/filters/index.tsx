@@ -6,10 +6,10 @@ import './style.scss'
 import { useSearchContacts } from '../../../providers/search-contacts'
 
 const MissionsFilters: React.FC<IComponentProps> = () => {
-    const searchContactsProvider = useSearchContacts()
+    const searchContactsContext = useSearchContacts()
 
     return (
-        !searchContactsProvider.loadingsData.searching ? (
+        !searchContactsContext.loadingsData.searching ? (
             <div className="network-filters-page">
                 <pageParts.Form />
                 <pageParts.FooterActionsButtons />

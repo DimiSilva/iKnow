@@ -4,14 +4,14 @@ import { useApp } from '../../../../providers/app'
 import variables from '../../../../theme/variables'
 
 const HeaderActionsButtons: React.FC = () => {
-    const appProvider = useApp()
+    const appContext = useApp()
 
     return (
         <div className="search-contacts-page-header-actions-buttons-container">
             <div className="search-contacts-page-header-actions-buttons-container-button-container" />
             <div className="search-contacts-page-header-actions-buttons-container-button-container">
                 <button
-                    onClick={() => appProvider.navigateTo('/buscar-contatos/filtros', true)}
+                    onClick={() => appContext.navigateTo('/buscar-contatos/filtros', true)}
                     className="search-contacts-page-header-actions-buttons-container-button-container-filter-button"
                     type="button"
                 >

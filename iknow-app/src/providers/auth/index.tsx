@@ -9,8 +9,8 @@ import { useSocket } from '../socket'
 const AuthContext = createContext(dataModels.context)
 
 export const AuthProvider: React.FC = ({ children }) => {
-    const toastProvider = useToasts()
-    const socketProvider = useSocket()
+    const toastContext = useToasts()
+    const socketContext = useSocket()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [token, setToken] = useState('')
@@ -29,13 +29,13 @@ export const AuthProvider: React.FC = ({ children }) => {
     useEffect(() => {
         if (alreadyRanOnce) {
             localStorage.setItem('token', token)
-            if (!loginSignalInterval) setLoginSignalInterval(setInterval(() => services.users.loginSignal(token, toastProvider.addToast), 120000))
+            if (!loginSignalInterval) setLoginSignalInterval(setInterval(() => services.users.loginSignal(token, toastContext.addToast), 120000))
             else if (!token) clearInterval(loginSignalInterval)
             try {
                 if (token) {
                     const tokenPayload = jwtDecode(token || '')
                     setLoggedUserData(tokenPayload)
-                    socketProvider.connectToSocket((tokenPayload as any).userId || '')
+                    socketContext.connectToSocket((tokenPayload as any).userId || '')
                 }
             } catch (e) {
                 console.log(e)

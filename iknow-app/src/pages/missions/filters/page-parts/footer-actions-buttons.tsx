@@ -4,22 +4,22 @@ import { useApp } from '../../../../providers/app'
 import { useMissions } from '../../../../providers/missions'
 
 const HeaderActionsButtons: React.FC = () => {
-    const appProvider = useApp()
-    const missionsProvider = useMissions()
+    const appContext = useApp()
+    const missionsContext = useMissions()
 
     return (
         <div className="missions-filters-page-footer-actions-buttons">
             <div className="missions-filters-page-footer-actions-buttons-button-container">
                 <Button
                     onClick={() => {
-                        missionsProvider.clearFiltersForm()
-                        appProvider.navigateTo('/missoes')
+                        missionsContext.clearFiltersForm()
+                        appContext.navigateTo('/missoes')
                     }}
                     text="Limpar"
                 />
             </div>
             <div className="missions-filters-page-footer-actions-buttons-button-container">
-                <Button onClick={() => appProvider.navigateTo('/missoes')} text="Filtrar" />
+                <Button onClick={() => appContext.navigateTo('/missoes')} text="Filtrar" />
             </div>
         </div>
     )

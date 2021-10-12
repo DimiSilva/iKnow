@@ -6,19 +6,19 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyProfile: React.FC<IComponentProps> = () => {
-    const profileProvider = useProfile()
+    const profileContext = useProfile()
 
     return (
-        !profileProvider.loadingsData.searching ? (
+        !profileContext.loadingsData.searching ? (
             <div className="profile-page">
                 <pageParts.Name />
                 <pageParts.Ratings />
                 <pageParts.HeaderActionsButtons />
-                <ProfileAchievements achievements={profileProvider
+                <ProfileAchievements achievements={profileContext
                     .profileData
                     .achievements.map((userAchievement) => userAchievement.achievement)}
                 />
-                <ProfileAcknowledgements acknowledgements={profileProvider
+                <ProfileAcknowledgements acknowledgements={profileContext
                     .profileData
                     .acknowledgements.map((userAcknowledgement) => userAcknowledgement.acknowledgement)}
                 />

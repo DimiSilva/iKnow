@@ -5,8 +5,8 @@ import { useProfile } from '../../../../providers/profile'
 import { useMyAcceptedMissions } from '../../../../providers/my-accepted-missions'
 
 const Data: React.FC = () => {
-    const myAcceptedMissionsProvider = useMyAcceptedMissions()
-    const profileProvider = useProfile()
+    const myAcceptedMissionsContext = useMyAcceptedMissions()
+    const profileContext = useProfile()
 
     return (
         <form className="my-accepted-mission-view-page-form">
@@ -14,27 +14,27 @@ const Data: React.FC = () => {
                 <div className="my-accepted-mission-view-page-form-row-label-text-container">
                     <LabelText
                         label="Criada Por"
-                        text={myAcceptedMissionsProvider.missionInVisualization.owner.name}
+                        text={myAcceptedMissionsContext.missionInVisualization.owner.name}
                         onTextClick={
-                            () => profileProvider.call((myAcceptedMissionsProvider.missionInVisualization.owner._id))
+                            () => profileContext.call((myAcceptedMissionsContext.missionInVisualization.owner._id))
                         }
                     />
                 </div>
                 <div className="my-accepted-mission-view-page-form-row-label-text-container">
-                    <LabelText label="Aceita Por" text={(myAcceptedMissionsProvider.missionInVisualization.acceptedBy || {}).name || ''} />
+                    <LabelText label="Aceita Por" text={(myAcceptedMissionsContext.missionInVisualization.acceptedBy || {}).name || ''} />
                 </div>
             </div>
             <div className="my-accepted-mission-view-page-form-row">
                 <div className="my-accepted-mission-view-page-form-row-label-text-container">
-                    <LabelText label="Título" text={myAcceptedMissionsProvider.missionInVisualization.title} />
+                    <LabelText label="Título" text={myAcceptedMissionsContext.missionInVisualization.title} />
                 </div>
                 <div className="my-accepted-mission-view-page-form-row-label-text-container">
-                    <LabelText label="Categoria" text={enums.missionCategoriesMasksEnum[myAcceptedMissionsProvider.missionInVisualization.category]} />
+                    <LabelText label="Categoria" text={enums.missionCategoriesMasksEnum[myAcceptedMissionsContext.missionInVisualization.category]} />
                 </div>
             </div>
             <div className="my-accepted-mission-view-page-form-row">
                 <div className="my-accepted-mission-view-page-form-row-label-text-container">
-                    <LabelText label="Descrição" text={myAcceptedMissionsProvider.missionInVisualization.description} />
+                    <LabelText label="Descrição" text={myAcceptedMissionsContext.missionInVisualization.description} />
                 </div>
             </div>
         </form>

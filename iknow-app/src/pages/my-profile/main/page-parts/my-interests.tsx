@@ -4,24 +4,24 @@ import { useMyProfile } from '../../../../providers/my-profile'
 import { useFieldEditing } from '../../../../providers/field-editing'
 
 const MyInterests: React.FC = () => {
-    const fieldEditingProvider = useFieldEditing()
-    const myProfileProvider = useMyProfile()
+    const fieldEditingContext = useFieldEditing()
+    const myProfileContext = useMyProfile()
 
     return (
         <ProfileData
             title="Meus Interesses"
-            content={myProfileProvider.myProfileData.myInterests}
+            content={myProfileContext.myProfileData.myInterests}
             emptyContentMessage="Edite essa sessão para contar seus interesses"
             info={`\
 Nessa sessão você pode falar sobre tudo que almeja`}
-            onClickEdit={() => fieldEditingProvider.call({
+            onClickEdit={() => fieldEditingContext.call({
                 backPath: '/meu-perfil',
                 fieldLabel: 'Meus Interesses',
                 fieldKey: 'myInterests',
-                onSave: myProfileProvider.updateData,
+                onSave: myProfileContext.updateData,
                 pageTitle: 'Editando Perfil',
                 fieldMaxLength: 1000,
-                initialValue: myProfileProvider.myProfileData.myInterests,
+                initialValue: myProfileContext.myProfileData.myInterests,
                 inputType: 'textArea',
             })}
         />

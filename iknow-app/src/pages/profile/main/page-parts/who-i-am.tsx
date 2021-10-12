@@ -3,12 +3,12 @@ import { ProfileData } from '../../../../components'
 import { useProfile } from '../../../../providers/profile'
 
 const WhoIAm: React.FC = () => {
-    const profileProvider = useProfile()
+    const profileContext = useProfile()
 
     return (
         <ProfileData
             title="Quem eu Sou"
-            content={profileProvider.profileData.whoIAm}
+            content={profileContext.profileData.whoIAm}
             emptyContentMessage="O usuário não contou nada sobre quem é"
             info={`\
             Nessa sessão está descrito o quem o usuário é`}

@@ -6,48 +6,48 @@ import { useLogin } from '../../../providers/login'
 import { useApp } from '../../../providers/app'
 
 const Login: React.FC<IComponentProps> = () => {
-    const loginProvider = useLogin()
-    const appProvider = useApp()
+    const loginContext = useLogin()
+    const appContext = useApp()
 
-    useEffect(loginProvider.clearForm, [])
+    useEffect(loginContext.clearForm, [])
 
     return (
         <div className="login-page">
             <Card style={{ maxWidth: '600px' }}>
                 <div className="login-page-card-content">
-                    <PageHeader title={appProvider.currentPageTitle} />
+                    <PageHeader title={appContext.currentPageTitle} />
                     <div className="login-page-card-content-internal">
                         <form className="login-page-card-content-internal-form">
                             <div className="login-page-card-content-internal-form-input-container">
                                 <Input
                                     label="E-mail"
-                                    value={loginProvider.formData.email}
-                                    onChange={(value) => loginProvider.setFormData({ ...loginProvider.formData, email: value })}
+                                    value={loginContext.formData.email}
+                                    onChange={(value) => loginContext.setFormData({ ...loginContext.formData, email: value })}
                                     maxLength={100}
                                     type="email"
-                                    invalidDataMessage={loginProvider.submitted ? loginProvider.invalidFormData.email : undefined}
+                                    invalidDataMessage={loginContext.submitted ? loginContext.invalidFormData.email : undefined}
                                 />
                             </div>
                             <div className="login-page-card-content-internal-form-input-container">
                                 <Input
                                     label="Senha"
-                                    value={loginProvider.formData.password}
-                                    onChange={(value) => loginProvider.setFormData({ ...loginProvider.formData, password: value })}
+                                    value={loginContext.formData.password}
+                                    onChange={(value) => loginContext.setFormData({ ...loginContext.formData, password: value })}
                                     maxLength={30}
                                     type="password"
-                                    invalidDataMessage={loginProvider.submitted ? loginProvider.invalidFormData.password : undefined}
+                                    invalidDataMessage={loginContext.submitted ? loginContext.invalidFormData.password : undefined}
                                 />
                             </div>
                         </form>
                         <div className="login-page-card-content-internal-action-buttons-container">
                             <div className="login-page-card-content-internal-action-buttons-container-button-container">
-                                <Button text="Entrar" onClick={loginProvider.login} />
+                                <Button text="Entrar" onClick={loginContext.login} />
                             </div>
                             {/* <div className="login-page-link-button-container">
                                 <LinkButton text="Recuperar Senha" onClick={() => {}} />
                             </div> */}
                             <div className="login-page-card-content-internal-action-buttons-container-link-button-container">
-                                <LinkButton text="Cadastrar-se" onClick={() => appProvider.navigateTo('/cadastro', true)} />
+                                <LinkButton text="Cadastrar-se" onClick={() => appContext.navigateTo('/cadastro', true)} />
                             </div>
                         </div>
                     </div>

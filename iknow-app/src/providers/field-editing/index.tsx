@@ -6,8 +6,8 @@ import { useApp } from '../app'
 const FieldEditingContext = createContext(dataModels.context)
 
 export const FieldEditingProvider: React.FC = ({ children }) => {
-    const appProvider = useApp()
-    const toastsProvider = useToasts()
+    const appContext = useApp()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [formData, setFormData] = useState(dataModels.formData)
@@ -29,8 +29,8 @@ export const FieldEditingProvider: React.FC = ({ children }) => {
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
         await fieldContext.onSave({ [fieldContext.fieldKey]: formData.field })
-        if (fieldContext.successMessage) toastsProvider.addToast(fieldContext.successMessage, { autoDismiss: true, appearance: 'success' })
-        appProvider.navigateTo(fieldContext.backPath)
+        if (fieldContext.successMessage) toastsContext.addToast(fieldContext.successMessage, { autoDismiss: true, appearance: 'success' })
+        appContext.navigateTo(fieldContext.backPath)
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 
@@ -42,7 +42,7 @@ export const FieldEditingProvider: React.FC = ({ children }) => {
     const call: typeof dataModels.context.call = (newFieldContext) => {
         setFieldContext(newFieldContext)
         if (newFieldContext.initialValue) setFormData({ field: newFieldContext.initialValue })
-        appProvider.navigateTo('/editando', true)
+        appContext.navigateTo('/editando', true)
     }
 
     const quit = () => {

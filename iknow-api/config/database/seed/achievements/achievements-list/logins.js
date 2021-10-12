@@ -2,7 +2,7 @@ const { achievementKeys, achievementTiers } = require('iknow-common/enums')
 
 module.exports = [
     {
-        title: 'Bem vindo',
+        title: 'Bem-vindo',
         description: '1º login diário, seja bem vindo!',
         key: achievementKeys.LOGIN,
         requiredQuantity: 1,

@@ -3,7 +3,7 @@ import { Collapse } from '../../../../components'
 import { useProfile } from '../../../../providers/profile'
 
 const Achievements: React.FC = () => {
-    const profileProvider = useProfile()
+    const profileContext = useProfile()
 
     return (
         <div className="profile-page-collapse-container">

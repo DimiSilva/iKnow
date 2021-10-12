@@ -9,9 +9,9 @@ import { useApp } from '../app'
 const LoginContext = createContext(dataModels.context)
 
 export const LoginProvider: React.FC = ({ children }) => {
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
-    const appProvider = useApp()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
+    const appContext = useApp()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [formData, setFormData] = useState(dataModels.formData)
@@ -28,8 +28,8 @@ export const LoginProvider: React.FC = ({ children }) => {
         setSubmitted(true)
         if (Object.values(invalidFormData).some((message) => message !== undefined)) return
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
-        const res = await services.users.login(formData, toastsProvider.addToast)
-        if (res) authProvider.setToken(res.token)
+        const res = await services.users.login(formData, toastsContext.addToast)
+        if (res) authContext.setToken(res.token)
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 

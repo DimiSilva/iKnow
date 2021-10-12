@@ -5,24 +5,24 @@ import { useFieldEditing } from '../../../../providers/field-editing'
 import variables from '../../../../theme/variables'
 
 const Name: React.FC = () => {
-    const fieldEditingProvider = useFieldEditing()
-    const myProfileProvider = useMyProfile()
+    const fieldEditingContext = useFieldEditing()
+    const myProfileContext = useMyProfile()
 
     return (
         <div className="my-profile-page-name-container">
-            <div className="my-profile-page-name-container-text-container"><h1>{myProfileProvider.myProfileData.name}</h1></div>
+            <div className="my-profile-page-name-container-text-container"><h1>{myProfileContext.myProfileData.name}</h1></div>
             <div className="my-profile-page-name-container-action-container">
                 <button
                     type="button"
-                    onClick={() => fieldEditingProvider.call({
+                    onClick={() => fieldEditingContext.call({
                         backPath: '/meu-perfil',
                         fieldLabel: 'Nome',
                         fieldKey: 'name',
                         isValidCheck: (name) => !!name,
-                        onSave: myProfileProvider.updateData,
+                        onSave: myProfileContext.updateData,
                         pageTitle: 'Editando Perfil',
                         fieldMaxLength: 100,
-                        initialValue: myProfileProvider.myProfileData.name,
+                        initialValue: myProfileContext.myProfileData.name,
                         invalidFieldMessage: 'É necessário preencher o nome',
                     })}
                 >

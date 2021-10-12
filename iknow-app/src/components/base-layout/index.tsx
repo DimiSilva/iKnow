@@ -8,7 +8,7 @@ import { useApp } from '../../providers/app'
 import variables from '../../theme/variables'
 
 const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
-    const appProvider = useApp()
+    const appContext = useApp()
 
     return (
         active
@@ -16,36 +16,36 @@ const BaseLayout: React.FC<IComponentProps> = ({ children, active }) => {
                 <div className="base-layout">
                     <div className="base-layout-main">
                         <div className="base-layout-main-header-container">
-                            <PageHeader title={appProvider.currentPageTitle} backPath={appProvider.backPath} />
+                            <PageHeader title={appContext.currentPageTitle} backPath={appContext.backPath} />
                         </div>
                         <div className="base-layout-main-content">{children}</div>
                     </div>
                     <div className="base-layout-tabs">
                         <button
-                            className={appProvider.currentPathName === '/meu-perfil' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            className={appContext.currentPathName === '/meu-perfil' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
-                            onClick={() => appProvider.navigateTo('/meu-perfil')}
+                            onClick={() => appContext.navigateTo('/meu-perfil')}
                         >
                             <Icons.Person color={variables.iconsColor} />
                         </button>
                         <button
-                            className={appProvider.currentPathName === '/missoes' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            className={appContext.currentPathName === '/missoes' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
-                            onClick={() => appProvider.navigateTo('/missoes')}
+                            onClick={() => appContext.navigateTo('/missoes')}
                         >
                             <Icons.Book color={variables.iconsColor} />
                         </button>
                         <button
-                            className={appProvider.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            className={appContext.currentPathName === '/rede' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
-                            onClick={() => appProvider.navigateTo('/rede')}
+                            onClick={() => appContext.navigateTo('/rede')}
                         >
                             <Icons.World color={variables.iconsColor} />
                         </button>
                         <button
-                            className={appProvider.currentPathName === '/buscar-contatos' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
+                            className={appContext.currentPathName === '/buscar-contatos' ? 'base-layout-tabs-tab-active' : 'base-layout-tabs-tab'}
                             type="button"
-                            onClick={() => appProvider.navigateTo('/buscar-contatos')}
+                            onClick={() => appContext.navigateTo('/buscar-contatos')}
                         >
                             <Icons.PersonSearch color={variables.iconsColor} />
                         </button>

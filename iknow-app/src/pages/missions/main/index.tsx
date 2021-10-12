@@ -7,23 +7,23 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const Missions: React.FC<IComponentProps> = () => {
-    const missionsProvider = useMissions()
-    const profileProvider = useProfile()
+    const missionsContext = useMissions()
+    const profileContext = useProfile()
 
     useEffect(() => {
-        missionsProvider.getMissions()
-        return missionsProvider.clear
+        missionsContext.getMissions()
+        return missionsContext.clear
     }, [])
 
     return (
         <div className="missions-page">
             <pageParts.HeaderActionsButtons />
             <MissionsList
-                missions={missionsProvider.missions}
-                onAuthorClick={profileProvider.call}
-                onScrollEnd={missionsProvider.getNextPage}
-                view={missionsProvider.view}
-                loading={missionsProvider.loadingsData.searching}
+                missions={missionsContext.missions}
+                onAuthorClick={profileContext.call}
+                onScrollEnd={missionsContext.getNextPage}
+                view={missionsContext.view}
+                loading={missionsContext.loadingsData.searching}
             />
         </div>
     )

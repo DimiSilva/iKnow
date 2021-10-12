@@ -5,7 +5,7 @@ import { Input, Dropdown } from '../../../../components'
 import { useMissions } from '../../../../providers/missions'
 
 const WhoIAm: React.FC = () => {
-    const missionsProvider = useMissions()
+    const missionsContext = useMissions()
     const [subjectInputValue, setSubjectInputValue] = useState('')
 
     return (
@@ -13,8 +13,8 @@ const WhoIAm: React.FC = () => {
             <div className="missions-filters-page-form-row">
                 <div className="missions-filters-page-form-row-input-container">
                     <Input
-                        onChange={(value) => missionsProvider.setFiltersFormData({ ...missionsProvider.filtersFormData, search: value })}
-                        value={missionsProvider.filtersFormData.search || ''}
+                        onChange={(value) => missionsContext.setFiltersFormData({ ...missionsContext.filtersFormData, search: value })}
+                        value={missionsContext.filtersFormData.search || ''}
                         type="text"
                         label="Busca"
                         maxLength={100}
@@ -22,10 +22,10 @@ const WhoIAm: React.FC = () => {
                 </div>
                 <div className="missions-filters-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => missionsProvider.setFiltersFormData({ ...missionsProvider.filtersFormData, category: value })}
+                        onChange={(value) => missionsContext.setFiltersFormData({ ...missionsContext.filtersFormData, category: value })}
                         options={Object.values(missionCategoriesEnum).map((type) => ({ label: missionCategoriesMasksEnum[type], value: type }))}
                         label="Categoria"
-                        value={missionsProvider.filtersFormData.category || ''}
+                        value={missionsContext.filtersFormData.category || ''}
                         inputValue={subjectInputValue}
                         onInputChange={setSubjectInputValue}
                     />

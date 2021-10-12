@@ -6,10 +6,10 @@ import './style.scss'
 import { useNetwork } from '../../../providers/network'
 
 const MissionsFilters: React.FC<IComponentProps> = () => {
-    const networkProvider = useNetwork()
+    const networkContext = useNetwork()
 
     return (
-        !networkProvider.loadingsData.searching ? (
+        !networkContext.loadingsData.searching ? (
             <div className="network-filters-page">
                 <pageParts.Form />
                 <pageParts.FooterActionsButtons />

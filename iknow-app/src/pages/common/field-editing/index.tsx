@@ -7,50 +7,50 @@ import { useApp } from '../../../providers/app'
 import { useFieldEditing } from '../../../providers/field-editing'
 
 const FieldEditing: React.FC<IComponentProps> = () => {
-    const appProvider = useApp()
-    const fieldEditingProvider = useFieldEditing()
+    const appContext = useApp()
+    const fieldEditingContext = useFieldEditing()
 
     useEffect(() => {
         setTimeout(() => {
-            appProvider.setCurrentPageTitle(fieldEditingProvider.fieldContext.pageTitle)
+            appContext.setCurrentPageTitle(fieldEditingContext.fieldContext.pageTitle)
         }, 10)
-        return fieldEditingProvider.quit
+        return fieldEditingContext.quit
     }, [])
 
     return (
         <div className="field-edit">
             <div className="field-edit-input-container">
-                { fieldEditingProvider.fieldContext.inputType === 'textArea'
+                { fieldEditingContext.fieldContext.inputType === 'textArea'
                     ? (
                         <TextArea
-                            onChange={(value) => fieldEditingProvider.setFormData({ field: value })}
-                            value={fieldEditingProvider.formData.field}
-                            label={fieldEditingProvider.fieldContext.fieldLabel}
-                            maxLength={fieldEditingProvider.fieldContext.fieldMaxLength}
+                            onChange={(value) => fieldEditingContext.setFormData({ field: value })}
+                            value={fieldEditingContext.formData.field}
+                            label={fieldEditingContext.fieldContext.fieldLabel}
+                            maxLength={fieldEditingContext.fieldContext.fieldMaxLength}
                             invalidDataMessage={
-                                fieldEditingProvider.submitted && fieldEditingProvider.invalidFormData.field
-                                    ? fieldEditingProvider.fieldContext.invalidFieldMessage
+                                fieldEditingContext.submitted && fieldEditingContext.invalidFormData.field
+                                    ? fieldEditingContext.fieldContext.invalidFieldMessage
                                     : undefined
                             }
                         />
                     )
                     : (
                         <Input
-                            onChange={(value) => fieldEditingProvider.setFormData({ field: value })}
-                            value={fieldEditingProvider.formData.field}
-                            label={fieldEditingProvider.fieldContext.fieldLabel}
-                            maxLength={fieldEditingProvider.fieldContext.fieldMaxLength}
+                            onChange={(value) => fieldEditingContext.setFormData({ field: value })}
+                            value={fieldEditingContext.formData.field}
+                            label={fieldEditingContext.fieldContext.fieldLabel}
+                            maxLength={fieldEditingContext.fieldContext.fieldMaxLength}
                             invalidDataMessage={
-                                fieldEditingProvider.submitted && fieldEditingProvider.invalidFormData.field
-                                    ? fieldEditingProvider.fieldContext.invalidFieldMessage
+                                fieldEditingContext.submitted && fieldEditingContext.invalidFormData.field
+                                    ? fieldEditingContext.fieldContext.invalidFieldMessage
                                     : undefined
                             }
-                            type={fieldEditingProvider.fieldContext.inputType}
+                            type={fieldEditingContext.fieldContext.inputType}
                         />
                     )}
             </div>
             <div className="field-edit-actions-buttons-container">
-                <Button onClick={fieldEditingProvider.save} text="Salvar" loading={fieldEditingProvider.loadingsData.submitting} />
+                <Button onClick={fieldEditingContext.save} text="Salvar" loading={fieldEditingContext.loadingsData.submitting} />
             </div>
         </div>
     )

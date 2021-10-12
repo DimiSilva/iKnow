@@ -4,7 +4,7 @@ import { Input, Dropdown } from '../../../../components'
 import { useMyAcceptedMissions } from '../../../../providers/my-accepted-missions'
 
 const WhoIAm: React.FC = () => {
-    const myAcceptedMissionsProvider = useMyAcceptedMissions()
+    const myAcceptedMissionsContext = useMyAcceptedMissions()
     const [statusInputValue, setStatusInputValue] = useState('')
     const [subjectInputValue, setSubjectInputValue] = useState('')
 
@@ -13,8 +13,8 @@ const WhoIAm: React.FC = () => {
             <div className="my-accepted-missions-filters-page-form-row">
                 <div className="my-accepted-missions-filters-page-form-row-input-container">
                     <Input
-                        onChange={(value) => myAcceptedMissionsProvider.setFiltersFormData({ ...myAcceptedMissionsProvider.filtersFormData, search: value })}
-                        value={myAcceptedMissionsProvider.filtersFormData.search || ''}
+                        onChange={(value) => myAcceptedMissionsContext.setFiltersFormData({ ...myAcceptedMissionsContext.filtersFormData, search: value })}
+                        value={myAcceptedMissionsContext.filtersFormData.search || ''}
                         type="text"
                         label="Busca"
                         maxLength={100}
@@ -24,21 +24,21 @@ const WhoIAm: React.FC = () => {
             <div className="my-accepted-missions-filters-page-form-row">
                 <div className="my-accepted-missions-filters-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => myAcceptedMissionsProvider.setFiltersFormData({ ...myAcceptedMissionsProvider.filtersFormData, status: value })}
+                        onChange={(value) => myAcceptedMissionsContext.setFiltersFormData({ ...myAcceptedMissionsContext.filtersFormData, status: value })}
                         options={[missionStatusEnum.COMPLETED, missionStatusEnum.IN_PROGRESS]
                             .map((type) => ({ label: missionStatusMasksEnum[type], value: type }))}
                         label="Status"
-                        value={myAcceptedMissionsProvider.filtersFormData.status || ''}
+                        value={myAcceptedMissionsContext.filtersFormData.status || ''}
                         inputValue={statusInputValue}
                         onInputChange={setStatusInputValue}
                     />
                 </div>
                 <div className="my-accepted-missions-filters-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => myAcceptedMissionsProvider.setFiltersFormData({ ...myAcceptedMissionsProvider.filtersFormData, category: value })}
+                        onChange={(value) => myAcceptedMissionsContext.setFiltersFormData({ ...myAcceptedMissionsContext.filtersFormData, category: value })}
                         options={Object.values(missionCategoriesEnum).map((type) => ({ label: missionCategoriesMasksEnum[type], value: type }))}
                         label="Categoria"
-                        value={myAcceptedMissionsProvider.filtersFormData.category || ''}
+                        value={myAcceptedMissionsContext.filtersFormData.category || ''}
                         inputValue={subjectInputValue}
                         onInputChange={setSubjectInputValue}
                     />

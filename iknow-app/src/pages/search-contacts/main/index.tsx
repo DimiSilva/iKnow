@@ -8,22 +8,22 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const SearchContacts: React.FC<IComponentProps> = () => {
-    const searchContactsProvider = useSearchContacts()
-    const profileProvider = useProfile()
+    const searchContactsContext = useSearchContacts()
+    const profileContext = useProfile()
 
     useEffect(() => {
-        searchContactsProvider.getUsers()
-        return searchContactsProvider.clear
+        searchContactsContext.getUsers()
+        return searchContactsContext.clear
     }, [])
 
     return (
         <div className="search-contacts-page">
             <pageParts.HeaderActionsButtons />
             <NetworkList
-                users={searchContactsProvider.users}
-                onScrollEnd={searchContactsProvider.getNextPage}
-                view={profileProvider.call}
-                loading={searchContactsProvider.loadingsData.searching}
+                users={searchContactsContext.users}
+                onScrollEnd={searchContactsContext.getNextPage}
+                view={profileContext.call}
+                loading={searchContactsContext.loadingsData.searching}
             />
         </div>
     )

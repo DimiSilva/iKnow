@@ -7,13 +7,13 @@ import { useApp } from '../../providers/app'
 import variables from '../../theme/variables'
 
 const PageHeader: React.FC<IComponentProps> = ({ style = {}, title, backPath }) => {
-    const appProvider = useApp()
+    const appContext = useApp()
 
     return (
         <header className="page-header" style={style}>
             <div className="page-header-back-handler-container">
                 {backPath ? (
-                    <button type="button" onClick={() => appProvider.navigateTo(backPath)}>
+                    <button type="button" onClick={() => appContext.navigateTo(backPath)}>
                         <Icons.BackArrow
                             color={variables.tertiaryColor}
                             size="43"

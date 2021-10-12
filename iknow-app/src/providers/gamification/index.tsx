@@ -8,9 +8,9 @@ import { useApp } from '../app'
 const GamificationContext = createContext(dataModels.context)
 
 export const GamificationProvider: React.FC = ({ children }) => {
-    const appProvider = useApp()
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
+    const appContext = useApp()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [achievements, setAchievements] = useState(dataModels.achievements)
@@ -21,14 +21,14 @@ export const GamificationProvider: React.FC = ({ children }) => {
 
     const getAcknowledgements = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searchingAcknowledgements: true }))
-        const res = await services.acknowledgements.getAll(authProvider.token, { page: 1, perPage: 1000 }, toastsProvider.addToast)
+        const res = await services.acknowledgements.getAll(authContext.token, { page: 1, perPage: 1000 }, toastsContext.addToast)
         if (res) setAcknowledgements(res.data)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searchingAcknowledgements: false }))
     }
 
     const getAchievements = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searchingAchievements: true }))
-        const res = await services.achievements.getAll(authProvider.token, { page: 1, perPage: 1000 }, toastsProvider.addToast)
+        const res = await services.achievements.getAll(authContext.token, { page: 1, perPage: 1000 }, toastsContext.addToast)
         if (res) setAchievements(res.data)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searchingAchievements: false }))
     }

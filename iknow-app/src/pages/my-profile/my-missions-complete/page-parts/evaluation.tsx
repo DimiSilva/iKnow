@@ -6,18 +6,18 @@ import { useProfile } from '../../../../providers/profile'
 import variables from '../../../../theme/variables'
 
 const Evaluation: React.FC = () => {
-    const myMissionsProvider = useMyMissions()
+    const myMissionsContext = useMyMissions()
 
     const renderStars = () => Array(5).fill('').map((_, index) => {
         const position = index + 1
-        const Icon = myMissionsProvider.evaluation && myMissionsProvider.evaluation >= position
+        const Icon = myMissionsContext.evaluation && myMissionsContext.evaluation >= position
             ? Icons.StarFull
             : Icons.StarEmpty
 
         return (
             <button
                 onClick={
-                    () => myMissionsProvider.setEvaluation(myMissionsProvider.evaluation === position ? undefined : position)
+                    () => myMissionsContext.setEvaluation(myMissionsContext.evaluation === position ? undefined : position)
                 }
                 type="button"
                 key={position}

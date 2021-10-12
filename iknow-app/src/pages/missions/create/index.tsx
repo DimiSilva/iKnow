@@ -6,12 +6,12 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MissionsCreate: React.FC<IComponentProps> = () => {
-    const missionsProvider = useMissions()
+    const missionsContext = useMissions()
 
-    useEffect(missionsProvider.clear, [])
+    useEffect(missionsContext.clear, [])
 
     return (
-        !missionsProvider.loadingsData.searching ? (
+        !missionsContext.loadingsData.searching ? (
             <div className="missions-create-page">
                 <pageParts.Form />
                 <pageParts.FooterActionsButtons />

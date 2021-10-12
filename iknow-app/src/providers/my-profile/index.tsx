@@ -8,8 +8,8 @@ import common from '../../common'
 const MyProfileContext = createContext(dataModels.context)
 
 export const MyProfileProvider: React.FC = ({ children }) => {
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [myProfileData, setMyProfileData] = useState(common.dataModels.profileData)
@@ -19,13 +19,13 @@ export const MyProfileProvider: React.FC = ({ children }) => {
 
     const getMyProfileData = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.getMyProfileData(authProvider.token, toastsProvider.addToast)
+        const res = await services.users.getMyProfileData(authContext.token, toastsContext.addToast)
         if (res) setMyProfileData(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const updateData = async (updatedData: object) => {
-        await services.users.updateMyProfileData(authProvider.token, updatedData, toastsProvider.addToast)
+        await services.users.updateMyProfileData(authContext.token, updatedData, toastsContext.addToast)
         await getMyProfileData()
     }
 

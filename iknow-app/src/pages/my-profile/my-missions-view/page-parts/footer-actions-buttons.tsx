@@ -5,21 +5,21 @@ import { useMyMissions } from '../../../../providers/my-missions'
 import { useApp } from '../../../../providers/app'
 
 const HeaderActionsButtons: React.FC = () => {
-    const myMissionsProvider = useMyMissions()
-    const appProvider = useApp()
+    const myMissionsContext = useMyMissions()
+    const appContext = useApp()
 
     return (
-        myMissionsProvider.missionInVisualization.status === missionStatusEnum.IDLE ? (
+        myMissionsContext.missionInVisualization.status === missionStatusEnum.IDLE ? (
             <div className="my-mission-view-page-footer-actions-buttons">
                 <div className="my-mission-view-page-footer-actions-buttons-button-container">
                     <Button
-                        onClick={myMissionsProvider.cancel}
+                        onClick={myMissionsContext.cancel}
                         text="Cancelar"
-                        loading={myMissionsProvider.loadingsData.cancelling}
+                        loading={myMissionsContext.loadingsData.cancelling}
                     />
                 </div>
             </div>
-        ) : myMissionsProvider.missionInVisualization.status === missionStatusEnum.IN_PROGRESS ? (
+        ) : myMissionsContext.missionInVisualization.status === missionStatusEnum.IN_PROGRESS ? (
             <div className="my-mission-view-page-footer-actions-buttons">
                 <div className="my-mission-view-page-footer-actions-buttons-button-container">
                     <Button
@@ -31,19 +31,19 @@ const HeaderActionsButtons: React.FC = () => {
                 </div>
                 <div className="my-mission-view-page-footer-actions-buttons-button-container">
                     <Button
-                        onClick={myMissionsProvider.unbind}
+                        onClick={myMissionsContext.unbind}
                         text="Desvincular"
-                        loading={myMissionsProvider.loadingsData.unbinding}
+                        loading={myMissionsContext.loadingsData.unbinding}
                     />
                 </div>
                 <div className="my-mission-view-page-footer-actions-buttons-button-container">
                     <Button
-                        onClick={() => appProvider.navigateTo('/meu-perfil/missoes/completar', true)}
+                        onClick={() => appContext.navigateTo('/meu-perfil/missoes/completar', true)}
                         text="Concluir"
                     />
                 </div>
             </div>
-        ) : myMissionsProvider.missionInVisualization.status === missionStatusEnum.COMPLETED ? (
+        ) : myMissionsContext.missionInVisualization.status === missionStatusEnum.COMPLETED ? (
             <div className="my-mission-view-page-notification-of-completed">
                 <p>Missão concluída!</p>
             </div>

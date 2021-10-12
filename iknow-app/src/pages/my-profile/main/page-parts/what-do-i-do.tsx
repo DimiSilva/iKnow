@@ -4,24 +4,24 @@ import { useMyProfile } from '../../../../providers/my-profile'
 import { useFieldEditing } from '../../../../providers/field-editing'
 
 const WhatDoIDo: React.FC = () => {
-    const fieldEditingProvider = useFieldEditing()
-    const myProfileProvider = useMyProfile()
+    const fieldEditingContext = useFieldEditing()
+    const myProfileContext = useMyProfile()
 
     return (
         <ProfileData
             title="O Que eu Faço"
-            content={myProfileProvider.myProfileData.whatDoIDo}
+            content={myProfileContext.myProfileData.whatDoIDo}
             emptyContentMessage="Edite essa sessão para contar o que você faz"
             info={`\
 Aqui você pode contar para as pessoas todas as suas habilidades`}
-            onClickEdit={() => fieldEditingProvider.call({
+            onClickEdit={() => fieldEditingContext.call({
                 backPath: '/meu-perfil',
                 fieldLabel: 'O Que eu Faço',
                 fieldKey: 'whatDoIDo',
-                onSave: myProfileProvider.updateData,
+                onSave: myProfileContext.updateData,
                 pageTitle: 'Editando Perfil',
                 fieldMaxLength: 1000,
-                initialValue: myProfileProvider.myProfileData.whatDoIDo,
+                initialValue: myProfileContext.myProfileData.whatDoIDo,
                 inputType: 'textArea',
             })}
         />

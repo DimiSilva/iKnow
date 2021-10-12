@@ -4,24 +4,24 @@ import { useMyProfile } from '../../../../providers/my-profile'
 import { useFieldEditing } from '../../../../providers/field-editing'
 
 const WhoIAm: React.FC = () => {
-    const fieldEditingProvider = useFieldEditing()
-    const myProfileProvider = useMyProfile()
+    const fieldEditingContext = useFieldEditing()
+    const myProfileContext = useMyProfile()
 
     return (
         <ProfileData
             title="Quem eu Sou"
-            content={myProfileProvider.myProfileData.whoIAm}
+            content={myProfileContext.myProfileData.whoIAm}
             emptyContentMessage="Edite essa sessão para contar quem você é"
             info={`\
     Use essa sessão para se descrever, sinta-se à vontade para contar para as pessoas tudo que você achar relevante`}
-            onClickEdit={() => fieldEditingProvider.call({
+            onClickEdit={() => fieldEditingContext.call({
                 backPath: '/meu-perfil',
                 fieldLabel: 'Quem eu Sou',
                 fieldKey: 'whoIAm',
-                onSave: myProfileProvider.updateData,
+                onSave: myProfileContext.updateData,
                 pageTitle: 'Editando Perfil',
                 fieldMaxLength: 1000,
-                initialValue: myProfileProvider.myProfileData.whoIAm,
+                initialValue: myProfileContext.myProfileData.whoIAm,
                 inputType: 'textArea',
             })}
         />

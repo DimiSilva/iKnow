@@ -9,7 +9,7 @@ const MissionsList: React.FC<IComponentProps> = ({ onScrollEnd, onAuthorClick, l
     <div className="missions-list">
         <InfiniteScroll
             onScrollEnd={onScrollEnd}
-            emptyMessage="Nenhuma missão cadastrada"
+            emptyMessage="Nenhuma missão"
             loading={loading}
         >
             {missions.length > 0 ? missions.map((mission) => (

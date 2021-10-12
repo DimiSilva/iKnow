@@ -8,9 +8,9 @@ import dataModels from './data-models'
 const AppContext = createContext(dataModels.context)
 
 export const AppProvider: React.FC = ({ children }) => {
-    const historyProvider = useHistory()
-    const locationProvider = useLocation()
-    const authProvider = useAuth()
+    const historyContext = useHistory()
+    const locationContext = useLocation()
+    const authContext = useAuth()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [currentPageTitle, setCurrentPageTitle] = useState('')
@@ -20,24 +20,24 @@ export const AppProvider: React.FC = ({ children }) => {
     useEffect(() => { setAlreadyRanOnce(true) }, [])
 
     useEffect(() => {
-        const pageTitle: string = enums.pagesNames[locationProvider.pathname] || ''
+        const pageTitle: string = enums.pagesNames[locationContext.pathname] || ''
         setCurrentPageTitle(pageTitle)
-        setCurrentPathName(locationProvider.pathname)
+        setCurrentPathName(locationContext.pathname)
     }, [])
 
     useEffect(() => {
-        if (authProvider.tokenLoaded) {
-            const routes = authProvider.token ? loggedPages : loginPages
-            const route: any = routes.find((route) => route.path === locationProvider.pathname)
+        if (authContext.tokenLoaded) {
+            const routes = authContext.token ? loggedPages : loginPages
+            const route: any = routes.find((route) => route.path === locationContext.pathname)
             if (!route) navigateTo(routes[0].path)
         }
-    }, [locationProvider.pathname])
+    }, [locationContext.pathname])
 
     const navigateTo = (path: string, shouldSetBackPath?: boolean) => {
-        historyProvider.push(path)
-        if (shouldSetBackPath) setBackPath(locationProvider.pathname)
+        historyContext.push(path)
+        if (shouldSetBackPath) setBackPath(locationContext.pathname)
         else setBackPath(undefined)
-        const routes = authProvider.token ? loggedPages : loginPages
+        const routes = authContext.token ? loggedPages : loginPages
         const pageTitle: string = (routes.find((route) => route.path === path) || { pageTitle: '' }).pageTitle
         setCurrentPageTitle(pageTitle)
         setCurrentPathName(path)

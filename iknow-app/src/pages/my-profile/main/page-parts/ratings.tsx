@@ -5,10 +5,10 @@ import { useMyProfile } from '../../../../providers/my-profile'
 import variables from '../../../../theme/variables'
 
 const Ratings: React.FC = () => {
-    const myProfileProvider = useMyProfile()
+    const myProfileContext = useMyProfile()
 
     const renderStars = () => {
-        const evaluationsMedia = myProfileProvider.myProfileData.evaluationsMedia
+        const evaluationsMedia = myProfileContext.myProfileData.evaluationsMedia
 
         return Array(5).fill('').map((_, index) => {
             const position = (index + 1)
@@ -23,12 +23,12 @@ const Ratings: React.FC = () => {
                 {renderStars()}
             </div>
             <div className="my-profile-page-ratings-container-evaluation-container">
-                <p>{(myProfileProvider.myProfileData.evaluationsMedia || 0).toFixed(1)}</p>
+                <p>{(myProfileContext.myProfileData.evaluationsMedia || 0).toFixed(1)}</p>
             </div>
             <div className="my-profile-page-ratings-container-quantity-container">
                 <p>
                     (
-                    {myProfileProvider.myProfileData.totalEvalutions}
+                    {myProfileContext.myProfileData.totalEvalutions}
                     )
                 </p>
             </div>

@@ -7,23 +7,23 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyMissions: React.FC<IComponentProps> = () => {
-    const myMissionsProvider = useMyMissions()
-    const appProvider = useApp()
+    const myMissionsContext = useMyMissions()
+    const appContext = useApp()
 
     useEffect(() => {
-        myMissionsProvider.getMissions()
-        return myMissionsProvider.clear
+        myMissionsContext.getMissions()
+        return myMissionsContext.clear
     }, [])
 
     return (
         <div className="my-missions-page">
             <pageParts.HeaderActionsButtons />
             <MissionsList
-                missions={myMissionsProvider.missions}
-                onAuthorClick={() => appProvider.navigateTo('/meu-perfil')}
-                onScrollEnd={myMissionsProvider.getNextPage}
-                view={myMissionsProvider.view}
-                loading={myMissionsProvider.loadingsData.searching}
+                missions={myMissionsContext.missions}
+                onAuthorClick={() => appContext.navigateTo('/meu-perfil')}
+                onScrollEnd={myMissionsContext.getNextPage}
+                view={myMissionsContext.view}
+                loading={myMissionsContext.loadingsData.searching}
             />
         </div>
     )

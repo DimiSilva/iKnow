@@ -9,9 +9,9 @@ import common from '../../common'
 const ProfileContext = createContext(dataModels.context)
 
 export const ProfileProvider: React.FC = ({ children }) => {
-    const appProvider = useApp()
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
+    const appContext = useApp()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [profileData, setProfileData] = useState(common.dataModels.profileData)
@@ -21,21 +21,21 @@ export const ProfileProvider: React.FC = ({ children }) => {
 
     const getProfileData = async (userId: string) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.getProfileData(authProvider.token, { userId, checkIfIsConnected: true }, toastsProvider.addToast)
+        const res = await services.users.getProfileData(authContext.token, { userId, checkIfIsConnected: true }, toastsContext.addToast)
         if (res) setProfileData(res)
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const call = (userId: string) => {
-        appProvider.navigateTo('/perfil', true)
+        appContext.navigateTo('/perfil', true)
         getProfileData(userId)
     }
 
     const addContact = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, addingContact: true }))
-        const res = await services.users.addContact(authProvider.token, { userId: profileData.id }, toastsProvider.addToast)
+        const res = await services.users.addContact(authContext.token, { userId: profileData.id }, toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Você adicionou o contato com sucesso', { appearance: 'success', autoDismiss: true })
+            toastsContext.addToast('Você adicionou o contato com sucesso', { appearance: 'success', autoDismiss: true })
             call(profileData.id)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, addingContact: false }))
@@ -43,9 +43,9 @@ export const ProfileProvider: React.FC = ({ children }) => {
 
     const removeContact = async () => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, removingContact: true }))
-        const res = await services.users.removeContact(authProvider.token, { userId: profileData.id }, toastsProvider.addToast)
+        const res = await services.users.removeContact(authContext.token, { userId: profileData.id }, toastsContext.addToast)
         if (res) {
-            toastsProvider.addToast('Você removeu o contato com sucesso', { appearance: 'success', autoDismiss: true })
+            toastsContext.addToast('Você removeu o contato com sucesso', { appearance: 'success', autoDismiss: true })
             call(profileData.id)
         }
         setLoadingsData((loadingsData) => ({ ...loadingsData, removingContact: false }))

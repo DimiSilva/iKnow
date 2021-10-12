@@ -6,21 +6,21 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyProfile: React.FC<IComponentProps> = () => {
-    const myProfileProvider = useMyProfile()
+    const myProfileContext = useMyProfile()
 
-    useEffect(myProfileProvider.getMyProfileData, [])
+    useEffect(myProfileContext.getMyProfileData, [])
 
     return (
-        !myProfileProvider.loadingsData.searching ? (
+        !myProfileContext.loadingsData.searching ? (
             <div className="my-profile-page">
                 <pageParts.Name />
                 <pageParts.Ratings />
                 <pageParts.HeaderActionsButtons />
-                <ProfileAchievements achievements={myProfileProvider
+                <ProfileAchievements achievements={myProfileContext
                     .myProfileData
                     .achievements.map((userAchievement) => userAchievement.achievement)}
                 />
-                <ProfileAcknowledgements acknowledgements={myProfileProvider
+                <ProfileAcknowledgements acknowledgements={myProfileContext
                     .myProfileData
                     .acknowledgements.map((userAcknowledgement) => userAcknowledgement.acknowledgement)}
                 />

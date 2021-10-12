@@ -5,7 +5,7 @@ import { Input, Dropdown } from '../../../../components'
 import { useMyMissions } from '../../../../providers/my-missions'
 
 const WhoIAm: React.FC = () => {
-    const myMissionsProvider = useMyMissions()
+    const myMissionsContext = useMyMissions()
     const [statusInputValue, setStatusInputValue] = useState('')
     const [subjectInputValue, setSubjectInputValue] = useState('')
 
@@ -14,8 +14,8 @@ const WhoIAm: React.FC = () => {
             <div className="my-missions-filters-page-form-row">
                 <div className="my-missions-filters-page-form-row-input-container">
                     <Input
-                        onChange={(value) => myMissionsProvider.setFiltersFormData({ ...myMissionsProvider.filtersFormData, search: value })}
-                        value={myMissionsProvider.filtersFormData.search || ''}
+                        onChange={(value) => myMissionsContext.setFiltersFormData({ ...myMissionsContext.filtersFormData, search: value })}
+                        value={myMissionsContext.filtersFormData.search || ''}
                         type="text"
                         label="Busca"
                         maxLength={100}
@@ -25,20 +25,20 @@ const WhoIAm: React.FC = () => {
             <div className="my-missions-filters-page-form-row">
                 <div className="my-missions-filters-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => myMissionsProvider.setFiltersFormData({ ...myMissionsProvider.filtersFormData, status: value })}
+                        onChange={(value) => myMissionsContext.setFiltersFormData({ ...myMissionsContext.filtersFormData, status: value })}
                         options={Object.values(missionStatusEnum).map((type) => ({ label: missionStatusMasksEnum[type], value: type }))}
                         label="Status"
-                        value={myMissionsProvider.filtersFormData.status || ''}
+                        value={myMissionsContext.filtersFormData.status || ''}
                         inputValue={statusInputValue}
                         onInputChange={setStatusInputValue}
                     />
                 </div>
                 <div className="my-missions-filters-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => myMissionsProvider.setFiltersFormData({ ...myMissionsProvider.filtersFormData, category: value })}
+                        onChange={(value) => myMissionsContext.setFiltersFormData({ ...myMissionsContext.filtersFormData, category: value })}
                         options={Object.values(missionCategoriesEnum).map((type) => ({ label: missionCategoriesMasksEnum[type], value: type }))}
                         label="Categoria"
-                        value={myMissionsProvider.filtersFormData.category || ''}
+                        value={myMissionsContext.filtersFormData.category || ''}
                         inputValue={subjectInputValue}
                         onInputChange={setSubjectInputValue}
                     />

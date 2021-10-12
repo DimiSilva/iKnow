@@ -4,22 +4,22 @@ import { useApp } from '../../../../providers/app'
 import { useNetwork } from '../../../../providers/network'
 
 const HeaderActionsButtons: React.FC = () => {
-    const appProvider = useApp()
-    const networkProvider = useNetwork()
+    const appContext = useApp()
+    const networkContext = useNetwork()
 
     return (
         <div className="network-filters-page-footer-actions-buttons">
             <div className="network-filters-page-footer-actions-buttons-button-container">
                 <Button
                     onClick={() => {
-                        networkProvider.clearFiltersForm()
-                        appProvider.navigateTo('/rede')
+                        networkContext.clearFiltersForm()
+                        appContext.navigateTo('/rede')
                     }}
                     text="Limpar"
                 />
             </div>
             <div className="network-filters-page-footer-actions-buttons-button-container">
-                <Button onClick={() => appProvider.navigateTo('/rede')} text="Filtrar" />
+                <Button onClick={() => appContext.navigateTo('/rede')} text="Filtrar" />
             </div>
         </div>
     )

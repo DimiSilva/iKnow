@@ -6,12 +6,12 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyMissionView: React.FC<IComponentProps> = () => {
-    const myMissionsProvider = useMyMissions()
+    const myMissionsContext = useMyMissions()
 
-    useEffect(myMissionsProvider.clear, [])
+    useEffect(myMissionsContext.clear, [])
 
     return (
-        !myMissionsProvider.loadingsData.searching ? (
+        !myMissionsContext.loadingsData.searching ? (
             <div className="my-mission-view-page">
                 <pageParts.Data />
                 <pageParts.FooterActionsButtons />

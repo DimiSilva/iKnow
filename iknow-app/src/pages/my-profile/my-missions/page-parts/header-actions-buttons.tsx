@@ -4,16 +4,16 @@ import { useApp } from '../../../../providers/app'
 import variables from '../../../../theme/variables'
 
 const HeaderActionsButtons: React.FC = () => {
-    const appProvider = useApp()
+    const appContext = useApp()
 
     return (
         <div className="my-missions-page-header-actions-buttons-container">
             <div className="my-missions-page-header-actions-buttons-container-button-container">
-                <Button onClick={() => appProvider.navigateTo('/meu-perfil/missoes/cadastro', true)} text="Criar missão" />
+                <Button onClick={() => appContext.navigateTo('/meu-perfil/missoes/cadastro', true)} text="Criar missão" />
             </div>
             <div className="my-missions-page-header-actions-buttons-container-button-container">
                 <button
-                    onClick={() => appProvider.navigateTo('/meu-perfil/missoes/filtros', true)}
+                    onClick={() => appContext.navigateTo('/meu-perfil/missoes/filtros', true)}
                     className="my-missions-page-header-actions-buttons-container-button-container-filter-button"
                     type="button"
                 >

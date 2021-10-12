@@ -6,10 +6,10 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyMissionsFilters: React.FC<IComponentProps> = () => {
-    const myAcceptedMissionsProvider = useMyAcceptedMissions()
+    const myAcceptedMissionsContext = useMyAcceptedMissions()
 
     return (
-        !myAcceptedMissionsProvider.loadingsData.searching ? (
+        !myAcceptedMissionsContext.loadingsData.searching ? (
             <div className="my-accepted-missions-filters-page">
                 <pageParts.Form />
                 <pageParts.FooterActionsButtons />

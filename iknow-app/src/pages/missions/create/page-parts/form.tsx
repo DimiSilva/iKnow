@@ -5,7 +5,7 @@ import { Input, Dropdown, TextArea } from '../../../../components'
 import { useMissions } from '../../../../providers/missions'
 
 const Form: React.FC = () => {
-    const missionsProvider = useMissions()
+    const missionsContext = useMissions()
     const [subjectInputValue, setSubjectInputValue] = useState('')
 
     return (
@@ -13,31 +13,31 @@ const Form: React.FC = () => {
             <div className="missions-create-page-form-row">
                 <div className="missions-create-page-form-row-input-container">
                     <Input
-                        onChange={(value) => missionsProvider.setCreateFormData({ ...missionsProvider.createFormData, title: value })}
-                        value={missionsProvider.createFormData.title || ''}
+                        onChange={(value) => missionsContext.setCreateFormData({ ...missionsContext.createFormData, title: value })}
+                        value={missionsContext.createFormData.title || ''}
                         type="text"
                         label="Título"
                         maxLength={100}
-                        invalidDataMessage={missionsProvider.createSubmitted ? missionsProvider.invalidCreateFormData.title : undefined}
+                        invalidDataMessage={missionsContext.createSubmitted ? missionsContext.invalidCreateFormData.title : undefined}
                     />
                 </div>
                 <div className="missions-create-page-form-row-input-container">
                     <Dropdown
-                        onChange={(value) => missionsProvider.setCreateFormData({ ...missionsProvider.createFormData, category: value })}
+                        onChange={(value) => missionsContext.setCreateFormData({ ...missionsContext.createFormData, category: value })}
                         options={Object.values(missionCategoriesEnum).map((type) => ({ label: missionCategoriesMasksEnum[type], value: type }))}
                         label="Categoria"
-                        value={missionsProvider.createFormData.category || ''}
+                        value={missionsContext.createFormData.category || ''}
                         inputValue={subjectInputValue}
                         onInputChange={setSubjectInputValue}
-                        invalidDataMessage={missionsProvider.createSubmitted ? missionsProvider.invalidCreateFormData.category : undefined}
+                        invalidDataMessage={missionsContext.createSubmitted ? missionsContext.invalidCreateFormData.category : undefined}
                     />
                 </div>
             </div>
             <div className="missions-create-page-form-row">
                 <div className="missions-create-page-form-row-input-container">
                     <TextArea
-                        onChange={(value) => missionsProvider.setCreateFormData({ ...missionsProvider.createFormData, description: value })}
-                        value={missionsProvider.createFormData.description || ''}
+                        onChange={(value) => missionsContext.setCreateFormData({ ...missionsContext.createFormData, description: value })}
+                        value={missionsContext.createFormData.description || ''}
                         label="Descrição"
                         maxLength={1000}
                     />

@@ -9,8 +9,8 @@ import dataModels from './data-models'
 const SearchContactsContext = createContext(dataModels.context)
 
 export const SearchContactsProvider: React.FC = ({ children }) => {
-    const authProvider = useAuth()
-    const toastsProvider = useToasts()
+    const authContext = useAuth()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [users, setUsers] = useState(dataModels.users)
@@ -26,13 +26,13 @@ export const SearchContactsProvider: React.FC = ({ children }) => {
 
     const getUsers = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.get(authProvider.token, _.omitBy({
+        const res = await services.users.get(authContext.token, _.omitBy({
             page: paginationDataAsParam ? paginationDataAsParam.page : paginationData.page,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
             ...filtersFormData,
             dontBringMyContacts: true,
         }, _.isNil),
-        toastsProvider.addToast)
+        toastsContext.addToast)
         setLoadingsData((loadingsData) => {
             if (res) {
                 const newUsersSet = [...users, ...res.data]

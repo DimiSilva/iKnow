@@ -7,11 +7,11 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MissionsFilters: React.FC<IComponentProps> = () => {
-    const missionsProvider = useMissions()
-    const appProvider = useApp()
+    const missionsContext = useMissions()
+    const appContext = useApp()
 
     return (
-        !missionsProvider.loadingsData.searching ? (
+        !missionsContext.loadingsData.searching ? (
             <div className="missions-filters-page">
                 <pageParts.Form />
                 <pageParts.FooterActionsButtons />

@@ -6,12 +6,12 @@ import pageParts from './page-parts'
 import './style.scss'
 
 const MyMissionComplete: React.FC<IComponentProps> = () => {
-    const myMissionsProvider = useMyMissions()
+    const myMissionsContext = useMyMissions()
 
-    useEffect(myMissionsProvider.clear, [])
+    useEffect(myMissionsContext.clear, [])
 
     return (
-        !myMissionsProvider.loadingsData.searching ? (
+        !myMissionsContext.loadingsData.searching ? (
             <div className="my-mission-complete-page">
                 <pageParts.Header />
                 <pageParts.Evaluation />

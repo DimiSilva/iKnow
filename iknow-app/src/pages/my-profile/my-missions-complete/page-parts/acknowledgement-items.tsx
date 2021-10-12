@@ -6,12 +6,12 @@ import { useGamification } from '../../../../providers/gamification'
 import variables from '../../../../theme/variables'
 
 const AcknowledgementItems: React.FC = () => {
-    const myMissionsProvider = useMyMissions()
-    const gamificationProvider = useGamification()
+    const myMissionsContext = useMyMissions()
+    const gamificationContext = useGamification()
 
     useEffect(() => {
-        gamificationProvider.getAcknowledgements()
-        return myMissionsProvider.clear
+        gamificationContext.getAcknowledgements()
+        return myMissionsContext.clear
     }, [])
 
     return (
@@ -19,7 +19,7 @@ const AcknowledgementItems: React.FC = () => {
             <div className="my-mission-complete-page-acknowledgement-header">
                 <p>Elogiar</p>
             </div>
-            {gamificationProvider.loadingsData.searchingAcknowledgements
+            {gamificationContext.loadingsData.searchingAcknowledgements
                 ? (
                     <div className="my-mission-complete-page-acknowledgement-loading">
                         <PropagateLoader color={variables.quaternaryColor} size="12px" speedMultiplier={1} />
@@ -27,14 +27,14 @@ const AcknowledgementItems: React.FC = () => {
                 )
                 : (
                     <div className="my-mission-complete-page-acknowledgement-items">
-                        {gamificationProvider.acknowledgements.map((acknowledgement) => (
+                        {gamificationContext.acknowledgements.map((acknowledgement) => (
                             <div key={acknowledgement._id}>
                                 <Acknowledgement
                                     type={acknowledgement.type}
                                     title={acknowledgement.title}
                                     description={acknowledgement.description}
-                                    onClick={() => myMissionsProvider.setAcknowledgement(acknowledgement)}
-                                    isSelected={((myMissionsProvider.acknowledgement || {})._id || '') === acknowledgement._id}
+                                    onClick={() => myMissionsContext.setAcknowledgement(acknowledgement)}
+                                    isSelected={((myMissionsContext.acknowledgement || {})._id || '') === acknowledgement._id}
                                 />
                             </div>
                         ))}

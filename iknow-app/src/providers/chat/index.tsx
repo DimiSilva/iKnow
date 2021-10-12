@@ -13,10 +13,10 @@ import dataModels from './data-models'
 const ChatContext = createContext(dataModels.context)
 
 export const ChatProvider: React.FC = ({ children }) => {
-    const appProvider = useApp()
-    const authProvider = useAuth()
-    const socketProvider = useSocket()
-    const toastsProvider = useToasts()
+    const appContext = useApp()
+    const authContext = useAuth()
+    const socketContext = useSocket()
+    const toastsContext = useToasts()
 
     const [alreadyRanOnce, setAlreadyRanOnce] = useState(false)
     const [message, setMessage] = useState('')
@@ -30,9 +30,9 @@ export const ChatProvider: React.FC = ({ children }) => {
     useEffect(() => {
         if (alreadyRanOnce) {
             if (recipientUser.id) {
-                appProvider.setCurrentPageTitle(recipientUser.name)
-                if (socketProvider.socket)
-                    socketProvider.socket.on('private message', ({ content, from }) => {
+                appContext.setCurrentPageTitle(recipientUser.name)
+                if (socketContext.socket)
+                    socketContext.socket.on('private message', ({ content, from }) => {
                         if (from === recipientUser.id) {
                             setMessages((messages) => [...messages, {
                                 createdAt: new Date().toISOString(),
@@ -42,8 +42,8 @@ export const ChatProvider: React.FC = ({ children }) => {
                                 },
                                 text: content,
                                 to: {
-                                    id: authProvider.loggedUserData.userId,
-                                    name: authProvider.loggedUserData.name,
+                                    id: authContext.loggedUserData.userId,
+                                    name: authContext.loggedUserData.name,
                                 },
                                 fromLoggedUser: false,
                             }])
@@ -55,7 +55,7 @@ export const ChatProvider: React.FC = ({ children }) => {
         }
 
         return () => {
-            if (socketProvider.socket) socketProvider.socket.off('private message')
+            if (socketContext.socket) socketContext.socket.off('private message')
         }
     }, [recipientUser])
 
@@ -63,7 +63,7 @@ export const ChatProvider: React.FC = ({ children }) => {
 
     const getMessages = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.messages.getMine(authProvider.token, _.omitBy({
+        const res = await services.messages.getMine(authContext.token, _.omitBy({
             withUser: recipientUser.id,
             createdAtMax: messages.length > 0
                 ? messages.reduce<any>((mostOldMessageDate, message) => (
@@ -76,20 +76,20 @@ export const ChatProvider: React.FC = ({ children }) => {
                 : undefined,
             perPage: paginationDataAsParam ? paginationDataAsParam.perPage : paginationData.perPage,
         }, _.isNil),
-        toastsProvider.addToast)
+        toastsContext.addToast)
         setLoadingsData((loadingsData) => {
             if (res) {
                 const newMessages = res.data.map((message: any) => {
-                    const fromLoggedUser = message.from === authProvider.loggedUserData.userId
+                    const fromLoggedUser = message.from === authContext.loggedUserData.userId
                     return {
                         ...message,
                         from: {
                             id: message.from,
-                            name: fromLoggedUser ? authProvider.loggedUserData.name : recipientUser.name,
+                            name: fromLoggedUser ? authContext.loggedUserData.name : recipientUser.name,
                         },
                         to: {
                             id: message.to,
-                            name: !fromLoggedUser ? authProvider.loggedUserData.name : recipientUser.name,
+                            name: !fromLoggedUser ? authContext.loggedUserData.name : recipientUser.name,
                         },
                         text: message.content,
                         fromLoggedUser,
@@ -106,20 +106,20 @@ export const ChatProvider: React.FC = ({ children }) => {
 
     const getProfileData = async (userId: string) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))
-        const res = await services.users.getProfileData(authProvider.token, { userId, checkIfIsConnected: true }, toastsProvider.addToast)
+        const res = await services.users.getProfileData(authContext.token, { userId, checkIfIsConnected: true }, toastsContext.addToast)
         if (res) setRecipientUser({ id: userId, ...res })
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: false }))
     }
 
     const call = async (userId: string) => {
-        appProvider.navigateTo('/conversa', true)
+        appContext.navigateTo('/conversa', true)
 
         await getProfileData(userId)
     }
 
     const send = () => {
-        if (socketProvider.socket) {
-            socketProvider.socket.emit('private message', {
+        if (socketContext.socket) {
+            socketContext.socket.emit('private message', {
                 to: recipientUser.id,
                 content: message,
             })
@@ -128,8 +128,8 @@ export const ChatProvider: React.FC = ({ children }) => {
         setMessages((messages) => [...messages, {
             createdAt: new Date().toISOString(),
             from: {
-                id: authProvider.loggedUserData.userId,
-                name: authProvider.loggedUserData.name,
+                id: authContext.loggedUserData.userId,
+                name: authContext.loggedUserData.name,
             },
             text: message,
             to: {
@@ -143,7 +143,7 @@ export const ChatProvider: React.FC = ({ children }) => {
     }
 
     const clear = () => {
-        if (socketProvider.socket) socketProvider.socket.off('private message')
+        if (socketContext.socket) socketContext.socket.off('private message')
         setMessages([])
         setMessage('')
         setRecipientUser(common.dataModels.profileData)

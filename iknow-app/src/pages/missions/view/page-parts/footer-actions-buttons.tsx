@@ -3,16 +3,16 @@ import { Button } from '../../../../components'
 import { useMissions } from '../../../../providers/missions'
 
 const HeaderActionsButtons: React.FC = () => {
-    const missionsProvider = useMissions()
+    const missionsContext = useMissions()
 
     return (
-        !missionsProvider.missionInVisualization.acceptedBy ? (
+        !missionsContext.missionInVisualization.acceptedBy ? (
             <div className="mission-view-page-footer-actions-buttons">
                 <div className="mission-view-page-footer-actions-buttons-button-container">
                     <Button
-                        onClick={missionsProvider.accept}
+                        onClick={missionsContext.accept}
                         text="Aceitar"
-                        loading={missionsProvider.loadingsData.accepting}
+                        loading={missionsContext.loadingsData.accepting}
                     />
                 </div>
             </div>
@@ -28,9 +28,9 @@ const HeaderActionsButtons: React.FC = () => {
                 </div>
                 <div className="mission-view-page-footer-actions-buttons-button-container">
                     <Button
-                        onClick={missionsProvider.giveUp}
+                        onClick={missionsContext.giveUp}
                         text="Desistir"
-                        loading={missionsProvider.loadingsData.givingUp}
+                        loading={missionsContext.loadingsData.givingUp}
                     />
                 </div>
             </div>

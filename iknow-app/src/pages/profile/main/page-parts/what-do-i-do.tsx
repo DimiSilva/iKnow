@@ -5,12 +5,12 @@ import { useFieldEditing } from '../../../../providers/field-editing'
 import { useProfile } from '../../../../providers/profile'
 
 const WhatDoIDo: React.FC = () => {
-    const profileProvider = useProfile()
+    const profileContext = useProfile()
 
     return (
         <ProfileData
             title="O Que eu Faço"
-            content={profileProvider.profileData.whatDoIDo}
+            content={profileContext.profileData.whatDoIDo}
             emptyContentMessage="O usuário não contou nada sobre o que faz"
             info={`\
             Nessa sessão está descrito o que o usuário faz`}

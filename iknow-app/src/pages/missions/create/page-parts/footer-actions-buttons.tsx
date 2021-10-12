@@ -4,16 +4,16 @@ import { useApp } from '../../../../providers/app'
 import { useMissions } from '../../../../providers/missions'
 
 const HeaderActionsButtons: React.FC = () => {
-    const appProvider = useApp()
-    const missionsProvider = useMissions()
+    const appContext = useApp()
+    const missionsContext = useMissions()
 
     return (
         <div className="missions-create-page-footer-actions-buttons">
             <div className="missions-create-page-footer-actions-buttons-button-container">
                 <Button
-                    onClick={missionsProvider.create}
+                    onClick={missionsContext.create}
                     text="Criar"
-                    loading={missionsProvider.loadingsData.createSubmitting}
+                    loading={missionsContext.loadingsData.createSubmitting}
                 />
             </div>
         </div>
