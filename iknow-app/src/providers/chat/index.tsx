@@ -29,33 +29,37 @@ export const ChatProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         if (alreadyRanOnce) {
-            appProvider.setCurrentPageTitle(recipientUser.name)
-            if (socketProvider.socket)
-                socketProvider.socket.on('private message', ({ content, from }) => {
-                    if (from === recipientUser.id) {
-                        setMessages((messages) => [...messages, {
-                            createdAt: new Date().toISOString(),
-                            from: {
-                                id: from,
-                                name: recipientUser.name,
-                            },
-                            text: content,
-                            to: {
-                                id: authProvider.loggedUserData.userId,
-                                name: authProvider.loggedUserData.name,
-                            },
-                            fromLoggedUser: false,
-                        }])
-                    }
-                })
+            if (recipientUser.id) {
+                appProvider.setCurrentPageTitle(recipientUser.name)
+                if (socketProvider.socket)
+                    socketProvider.socket.on('private message', ({ content, from }) => {
+                        if (from === recipientUser.id) {
+                            setMessages((messages) => [...messages, {
+                                createdAt: new Date().toISOString(),
+                                from: {
+                                    id: from,
+                                    name: recipientUser.name,
+                                },
+                                text: content,
+                                to: {
+                                    id: authProvider.loggedUserData.userId,
+                                    name: authProvider.loggedUserData.name,
+                                },
+                                fromLoggedUser: false,
+                            }])
+                        }
+                    })
 
-            getMessages()
+                getMessages()
+            }
+        }
+
+        return () => {
+            if (socketProvider.socket) socketProvider.socket.off('private message')
         }
     }, [recipientUser])
 
-    const getNextPage = () => {
-        if (messages.length < paginationData.total) getMessages({ ...paginationData, page: paginationData.page + 1 })
-    }
+    const getNextPage = () => (messages.length < paginationData.total && recipientUser.id) && getMessages({ ...paginationData, page: paginationData.page + 1 })
 
     const getMessages = async (paginationDataAsParam?: typeof common.dataModels.paginationData) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, searching: true }))

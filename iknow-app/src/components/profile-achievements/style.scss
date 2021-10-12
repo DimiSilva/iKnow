@@ -10,7 +10,6 @@
         width: 100%;
         overflow-x: auto;
         -ms-overflow-style: none; 
-        scrollbar-width: none; 
 
         & > div { 
             position: relative;
@@ -38,10 +37,6 @@
             &:last-child {
                 padding-right: 0;
             }
-        }
-
-        &::-webkit-scrollbar {
-            display: none; 
         }
     }
 }

@@ -30,7 +30,6 @@ export const LoginProvider: React.FC = ({ children }) => {
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: true }))
         const res = await services.users.login(formData, toastsProvider.addToast)
         if (res) authProvider.setToken(res.token)
-        appProvider.navigateTo('/meu-perfil')
         setLoadingsData((loadingsData) => ({ ...loadingsData, submitting: false }))
     }
 

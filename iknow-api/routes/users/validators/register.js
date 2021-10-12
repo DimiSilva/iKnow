@@ -21,7 +21,7 @@ const validator = fv.compile({
             return v
         },
     },
-    phone: { type: 'string', length: 11 },
+    phone: { type: 'string', optional: true },
     password: { type: 'string',
         min: 6,
         max: 30,

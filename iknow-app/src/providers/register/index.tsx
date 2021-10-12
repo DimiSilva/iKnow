@@ -24,7 +24,8 @@ export const RegisterProvider: React.FC = ({ children }) => {
     useEffect(dataValidators.name({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.name])
     useEffect(dataValidators.email({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.email])
     useEffect(dataValidators.phone({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.phone])
-    useEffect(dataValidators.password({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }), [formData.password])
+    useEffect(dataValidators.password({ formData, invalidFormData, setInvalidFormData, shouldRunValidation: alreadyRanOnce }),
+        [formData.password, formData.passwordConfirm])
 
     const register = async () => {
         setSubmitted(true)

@@ -21,7 +21,7 @@ const Register: React.FC<IComponentProps> = () => {
                         <form className="register-page-card-content-internal-form">
                             <div className="register-page-card-content-internal-form-input-container">
                                 <Input
-                                    label="Nome"
+                                    label="Nome*"
                                     value={registerProvider.formData.name}
                                     onChange={(value) => registerProvider.setFormData({ ...registerProvider.formData, name: value })}
                                     maxLength={100}
@@ -30,7 +30,7 @@ const Register: React.FC<IComponentProps> = () => {
                             </div>
                             <div className="register-page-card-content-internal-form-input-container">
                                 <Input
-                                    label="E-mail"
+                                    label="E-mail*"
                                     value={registerProvider.formData.email}
                                     onChange={(value) => registerProvider.setFormData({ ...registerProvider.formData, email: value })}
                                     maxLength={100}
@@ -48,12 +48,22 @@ const Register: React.FC<IComponentProps> = () => {
                             </div>
                             <div className="register-page-card-content-internal-form-input-container">
                                 <Input
-                                    label="Senha"
+                                    label="Senha*"
                                     value={registerProvider.formData.password}
                                     onChange={(value) => registerProvider.setFormData({ ...registerProvider.formData, password: value })}
                                     maxLength={30}
                                     type="password"
                                     invalidDataMessage={registerProvider.submitted ? registerProvider.invalidFormData.password : undefined}
+                                />
+                            </div>
+                            <div className="register-page-card-content-internal-form-input-container">
+                                <Input
+                                    label="Confirmar Senha*"
+                                    value={registerProvider.formData.passwordConfirm}
+                                    onChange={(value) => registerProvider.setFormData({ ...registerProvider.formData, passwordConfirm: value })}
+                                    maxLength={30}
+                                    type="password"
+                                    invalidDataMessage={registerProvider.submitted ? registerProvider.invalidFormData.passwordConfirm : undefined}
                                 />
                             </div>
                         </form>

@@ -119,6 +119,11 @@ input, select, textarea{
     box-sizing: border-box;
     transition: all 0.5s;
     font-family: Roboto;
+    scrollbar-width: none; 
+
+    &::-webkit-scrollbar {
+        display: none; 
+    }
 }
 
 .tooltip{

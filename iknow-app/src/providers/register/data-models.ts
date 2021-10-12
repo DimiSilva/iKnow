@@ -1,20 +1,23 @@
-const formData: {name: string, email: string, phone: string, password: string} = {
+const formData: {name: string, email: string, phone: string, password: string, passwordConfirm: string} = {
     name: '',
     email: '',
     phone: '',
     password: '',
+    passwordConfirm: '',
 }
 
 const invalidFormData: {
     name: string | undefined,
     email: string | undefined,
     phone: string | undefined,
-    password: string | undefined
+    password: string | undefined,
+    passwordConfirm: string | undefined
 } = {
     name: undefined,
     email: undefined,
     phone: undefined,
     password: undefined,
+    passwordConfirm: undefined,
 }
 
 const loadings: {submitting: boolean} = { submitting: false }

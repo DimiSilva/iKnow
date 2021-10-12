@@ -13,7 +13,7 @@ const { User } = require('../../../models')
 const register = async (req, res, next) => {
     const { name, email, password, phone } = get(req, 'body', {})
 
-    const user = new User({ name, email, password, phone })
+    const user = new User({ name, email, password, phone: phone || undefined })
     const registeredUser = await user.save()
 
     res.status(200).send({ id: registeredUser._id })
