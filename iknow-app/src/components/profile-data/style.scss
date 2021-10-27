@@ -1,0 +1,11 @@
+@import "../../theme/variables";
+
+.profile-data {
+    display: flex;
+    padding: 0 0 8px 0;
+    width: 100%;
+    &-content {
+        display: flex;
+        width: 100%;
+    }
+}

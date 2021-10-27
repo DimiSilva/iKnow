@@ -1,0 +1,23 @@
+@import "../../../theme/variables";
+
+.chat-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &-message-input {
+        display: flex;
+        width: 100%;
+        padding: 0 0 16px 0;
+        &-input-container {
+            display: flex;
+            width: 100%;
+            padding: 0 8px 0 0;
+        }
+        &-button-container {
+            display: flex;
+        }
+    }
+}

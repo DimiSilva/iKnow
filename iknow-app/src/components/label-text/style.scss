@@ -1,0 +1,32 @@
+@import "../../theme/variables";
+
+.label-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-label-container {
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: $tertiary-color;
+        }
+
+        &.inverse {
+            h3 {
+                direction: rtl;
+            }
+        }
+    }
+
+    &-text-container { 
+        p {
+
+        }
+        &.inverse {
+            p {
+                direction: rtl;
+            }
+        }
+    }
+}

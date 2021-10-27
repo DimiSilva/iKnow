@@ -1,0 +1,8 @@
+module.exports.login = require('./login')
+module.exports.register = require('./register')
+module.exports.updateMyProfileData = require('./update-my-profile-data')
+module.exports.getProfileData = require('./get-profile-data')
+module.exports.get = require('./get')
+module.exports.getContacts = require('./get-contacts')
+module.exports.addContact = require('./add-contact')
+module.exports.removeContact = require('./remove-contact')

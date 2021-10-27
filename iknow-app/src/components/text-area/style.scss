@@ -1,0 +1,82 @@
+@import "../../theme/variables";
+
+.text-area {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 8px;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    box-shadow: 0px 4px 2px $shadow-color;
+
+    .text-area-header {
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-weight: 700;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+    }
+    textarea {
+        height: 100%;
+        width: 100%;
+        background: none;
+        border: none;
+        resize: vertical;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.text-area-with-error {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    border: 1px solid $error-color;
+    box-shadow: 0px 4px 2px $shadow-color;
+
+    .text-area-header {
+        display: flex;
+        justify-content: space-between;
+        height: 13px;
+
+        .text-area-header-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding-right: 8px;
+            }
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+    }
+    textarea {
+        height: 100%;
+        width: 100%;
+        background: none;
+        border: none;
+        resize: vertical;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+version: "3.8"
+services:
+  iknow-rabbitmq:
+    image: rabbitmq:3.9.7-management-alpine
+    hostname: iknow-rabbitmq
+    container_name: 'iknow-rabbitmq'
+    ports:
+        - 5673:5672
+        - 15673:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/usr/lib/rabbitmq
+        - ~/.docker-conf/rabbitmq/log/:/usr/log/rabbitmq
+    networks:
+        - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  iknow-messaging-consumers:
+    container_name: iknow-messaging-consumers
+    hostname: iknow-messaging-consumers
+    build:
+      context: ./iknow-messaging-consumers
+      dockerfile: Dockerfile
+    volumes:
+      - ./iknow-messaging-consumers/:/usr/src/app/
+      - /usr/src/app/node_modules
+    environment:
+      MESSAGING_SERVICE_CONNECTION_URL: "${MESSAGING_SERVICE_CONNECTION_URL}"
+      MONGO_CONNECTION_URL: "${MONGO_CONNECTION_URL}"
+    restart: unless-stopped
+    depends_on:
+      - iknow-rabbitmq
+    networks:
+      - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
+  iknow-api:
+    container_name: iknow-api
+    hostname: iknow-api
+    build:
+      context: ./iknow-api
+      dockerfile: Dockerfile
+    ports:
+     - ${PORT}:${PORT}
+    volumes:
+      - ./iknow-api/:/usr/src/app/
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    environment:
+      PORT: ${PORT}
+      MONGO_CONNECTION_URL: "${MONGO_CONNECTION_URL}"
+      PASSWORD_HASH_SALT_ROUNDS: ${PASSWORD_HASH_SALT_ROUNDS}
+      AUTHENTICATION_SECRET: "${AUTHENTICATION_SECRET}"
+      MESSAGING_SERVICE_CONNECTION_URL: "${MESSAGING_SERVICE_CONNECTION_URL}"
+    depends_on:
+      - iknow-rabbitmq
+      - iknow-messaging-consumers
+    networks:
+      - iknow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  iknow:
+    name: 'iknow'
+    driver: bridge

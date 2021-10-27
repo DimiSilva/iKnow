@@ -1,0 +1,11 @@
+{
+  "name": "iknow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://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@github.com/DimiSilva/iKnow.git",
+  "author": "Dimi Silva <jnn.sla@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "docker-compose down && docker-compose up --build -d"
+  }
+}

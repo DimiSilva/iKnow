@@ -1,0 +1,77 @@
+@import "../../theme/variables";
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 8px;
+    height: 60px;
+    width: 100%;
+    box-shadow: 0px 4px 2px $shadow-color;
+
+    .input-header-container {
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-weight: 700;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+    }
+    input {
+        height: 100%;
+        background: none;
+        border: none;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.input-container-with-error {
+    display: flex;
+    flex-direction: column;
+    background: $primary-color;
+    border-radius: 6px;
+    padding: 4px;
+    height: 60px;
+    width: 100%;
+    border: 1px solid $error-color;
+    box-shadow: 0px 4px 2px $shadow-color;
+
+    .input-header-container {
+        display: flex;
+        justify-content: space-between;
+        height: 13px;
+
+        .input-header-label-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding-right: 8px;
+            }
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+    }
+    input {
+        height: 100%;
+        background: none;
+        border: none;
+        color: $text-color;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

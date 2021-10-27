@@ -1,0 +1,39 @@
+@import "../../theme/variables";
+
+.page-title {
+    display: inline-flex;
+    flex-direction: column;
+
+    &-text-container {
+        display: inline-flex;
+        h1 {
+            color: $tertiary-color;
+            font-weight: 900;
+        }
+    }
+    &-decoration-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        &-line-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1px 0;
+            &-line-1 {
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(to right, transparent, $tertiary-color);
+            }
+            &-line-2 {
+                width: 80%;
+                height: 2px;
+                background: linear-gradient(to right, transparent, $tertiary-color);
+            }
+            &-line-3 {
+                width: 60%;
+                height: 1px;
+                background: linear-gradient(to right, transparent, $tertiary-color);
+            }
+        }
+    }
+}
